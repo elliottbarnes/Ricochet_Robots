@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JCheckBox;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SettingsMenu {
 
@@ -113,6 +115,12 @@ public class SettingsMenu {
 		frmSettings.getContentPane().add(rdbtnDisable);
 		
 		JButton btnStart = new JButton("START");
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TakeTurn.main(null);
+				frmSettings.setVisible(false);
+			}
+		});
 		btnStart.setForeground(Color.WHITE);
 		btnStart.setBackground(new Color(0, 204, 51));
 		btnStart.setBounds(199, 460, 192, 51);
