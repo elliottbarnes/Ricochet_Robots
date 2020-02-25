@@ -51,13 +51,7 @@ public class TakeTurn {
 		frmTakeTurn = new JFrame();
 		frmTakeTurn.setResizable(false);
 		frmTakeTurn.setLocationRelativeTo(null);
-		
-		
-		
-		
-		
-		
-		
+
 		frmTakeTurn.setTitle("Take a Turn");
 		frmTakeTurn.setBounds(100, 100, 800, 700);
 		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
