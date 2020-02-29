@@ -1,0 +1,79 @@
+package view;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import java.awt.Scrollbar;
+
+public class Help extends JFrame implements ActionListener {
+
+	JFrame frmHelp;
+
+	public Help() {
+		frmHelp = new JFrame();
+		frmHelp.setTitle("Help");
+		frmHelp.setBounds(100, 100, 600, 600);
+		frmHelp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		ImageIcon img=new ImageIcon(this.getClass().getResource("/Page1.jpg"));
+		
+		JButton btnBack= new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Menu();
+				frmHelp.setVisible(false);
+			}
+		});
+		btnBack.setForeground(Color.BLACK);
+		btnBack.setIcon(new ImageIcon(this.getClass().getResource("/Back.png")));
+		btnBack.setBounds(10, 11, 108, 28);
+		frmHelp.getContentPane().add(btnBack);
+		
+		JLabel lblNum = new JLabel("1");
+		lblNum.setBackground(Color.WHITE);
+		lblNum.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNum.setBounds(264, 18, 28, 14);
+		frmHelp.getContentPane().add(lblNum);
+		
+		JButton btnPrevious = new JButton("Previous");
+		btnPrevious.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblNum.setText("1");
+			}
+		});
+		btnPrevious.setBounds(165, 14, 73, 23);
+		frmHelp.getContentPane().add(btnPrevious);
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblNum.setText("2");
+			}
+		});
+		btnNext.setBounds(321, 14, 73, 23);
+		frmHelp.getContentPane().add(btnNext);
+		
+		//Background has to be the last, if not the other components won't show
+		JLabel background; 
+		frmHelp.getContentPane().setLayout(null);
+		background = new JLabel("",img,JLabel.CENTER);;
+		background.setBounds(0, 44, 584, 517);
+		frmHelp.getContentPane().add(background);
+		
+		JScrollPane scroll = new JScrollPane(background, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setBounds(0, 44, 584, 517);
+		frmHelp.getContentPane().add(scroll);
+		
+		frmHelp.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// This is a required method
+		
+	}
+}
+

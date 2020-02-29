@@ -29,6 +29,8 @@ public class Menu extends JFrame implements ActionListener {
 		frmRicochetRobots.getContentPane().add(btnHelp);
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new Help();
+				frmRicochetRobots.setVisible(false);
 			}
 		});
 		
