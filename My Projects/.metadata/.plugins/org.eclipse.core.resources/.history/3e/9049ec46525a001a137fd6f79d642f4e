@@ -1,0 +1,9 @@
+package view;
+
+public class Help {
+
+	public Help() {
+		// TODO - create a form to show help
+	}
+
+}
