@@ -7,6 +7,8 @@ import javax.swing.*;
 import controller.GridSquare;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class TakeTurn extends JPanel {
 	
@@ -83,6 +85,16 @@ public class TakeTurn extends JPanel {
 		rightPanel.add(btnP4);
 		
 		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+	            if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+	            	textField.setEditable(true);
+	            } else {
+	            	textField.setEditable(false);
+	            }
+			}
+		});
 		textField.setEnabled(false);
 		textField.setVisible(false);
 		textField.setBounds(44, 115, 86, 20);
