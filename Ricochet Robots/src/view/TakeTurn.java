@@ -119,7 +119,6 @@ public class TakeTurn extends JPanel {
 		lblp4bid.setBounds(89, 273, 46, 14);
 		rightPanel.add(lblp4bid);
 		
-		;
 		rightPanel.add(textField);
 		textField.setColumns(10);
 		
@@ -152,11 +151,5 @@ public class TakeTurn extends JPanel {
 		
 		frmTakeTurn.setVisible(true);
 	}
-	public int getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(int player) {
-		this.player = player;
-	}
+	
 }
