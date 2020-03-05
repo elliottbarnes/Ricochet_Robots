@@ -1,0 +1,8 @@
+
+public class PlayerScorePanel {
+
+	public PlayerScorePanel() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
