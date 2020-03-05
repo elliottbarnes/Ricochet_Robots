@@ -1,9 +1,0 @@
-package view;
-
-public class HintButton {
-
-	public HintButton() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
