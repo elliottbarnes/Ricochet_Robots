@@ -1,0 +1,24 @@
+package view;
+import javax.swing.*;
+import java.awt.*;
+
+public class PlayerScorePanel extends JPanel {
+
+	public PlayerScorePanel() {
+		
+		JButton hintBtn = new JButton();
+		JLabel playerOneLbl = new JLabel("Player 1");
+		playerOneLbl.setLocation(0,0);
+		playerOneLbl.setSize(100,30);
+		playerOneLbl.setHorizontalAlignment(0);
+		playerOneLbl.set
+		JLabel playerTwoLbl = new JLabel("Player 2");
+		JLabel playerThreeLbl = new JLabel("Player 3");
+		JLabel playerFourLbl = new JLabel("Player 4");
+		JTextField playerOneScore = new JTextField();
+		JTextField playerTwoScore = new JTextField();
+		JTextField playerThreeScore = new JTextField();
+		JTextField playerFourScore = new JTextField();
+	}
+
+}
