@@ -17,6 +17,7 @@ public class TakeTurn extends JPanel {
 	private JTextField textField;
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
 	private int player;
+	private boolean flag;
 
 	public TakeTurn() {
 		
@@ -46,13 +47,30 @@ public class TakeTurn extends JPanel {
 		rightPanel.setSize(184, 600);
 		rightPanel.setLayout(null);
 		
+		flag = false;
+		
 		JButton btnBid = new JButton("Place Bid");
 		btnBid.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(flag==false) {
+					Timer();
+					flag=true;
+				}
 				textField.setVisible(false);
 				textField.setEnabled(false);
-				lblp1bid.setText(textField.getText());
-				
+				if(getPlayer()==1) {
+					lblp1bid.setText(textField.getText());
+					textField.setText("");
+				}else if(getPlayer()==2) {
+					lblp2bid.setText(textField.getText());
+					textField.setText("");
+				}else if(getPlayer()==3) {
+					lblp3bid.setText(textField.getText());
+					textField.setText("");
+				}else {
+					lblp4bid.setText(textField.getText());
+					textField.setText("");
+				}
 			}
 		});
 		btnBid.setBounds(46, 146, 89, 23);
@@ -62,6 +80,7 @@ public class TakeTurn extends JPanel {
 		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setPlayer(1);
 				textField.setVisible(true);
 				textField.setEnabled(true);
 			}
@@ -70,31 +89,42 @@ public class TakeTurn extends JPanel {
 		rightPanel.add(btnP1);
 		
 		JButton btnP2 = new JButton("P2");
+		btnP2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPlayer(2);
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
 		btnP2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP2.setBounds(26, 69, 45, 23);
 		rightPanel.add(btnP2);
 		
 		JButton btnP3 = new JButton("P3");
+		btnP3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPlayer(3);
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
 		btnP3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP3.setBounds(106, 35, 45, 23);
 		rightPanel.add(btnP3);
 		
 		JButton btnP4 = new JButton("P4");
+		btnP4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPlayer(4);
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
 		btnP4.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP4.setBounds(106, 69, 45, 23);
 		rightPanel.add(btnP4);
 		
 		textField = new JTextField();
-		textField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-	            if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
-	            	textField.setEditable(true);
-	            } else {
-	            	textField.setEditable(false);
-	            }
-			}
-		});
 		textField.setEnabled(false);
 		textField.setVisible(false);
 		textField.setBounds(44, 115, 86, 20);
@@ -142,13 +172,6 @@ public class TakeTurn extends JPanel {
 		frmTakeTurn.getContentPane().add(bottomPanel);
 		bottomPanel.setSize(784, 61);*/
 		
-		// implemented timer - Mar. 5th
-		gameTmr = new GameTimer();
-		gameTmr.setLocation(0,600);
-		frmTakeTurn.getContentPane().add(gameTmr);
-		gameTmr.setSize(784,61);
-		
-		
 		gridSquares = new GridSquare[x][y];
 		for (int column = 0; column < x; column++) {
 			for (int row = 0; row < y; row++) {
@@ -156,12 +179,24 @@ public class TakeTurn extends JPanel {
 				gridSquares[column][row].setOpaque(true);
 				gridSquares[column][row].setColor(column,row);
 				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
 				leftPanel.add(gridSquares[column][row]);
 			}
 		}
 		
 		frmTakeTurn.setVisible(true);
 	}
-	
+
+	public int getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(int player) {
+		this.player = player;
+	}
+	public void Timer() {
+		gameTmr = new GameTimer();
+		gameTmr.setLocation(0,600);
+		frmTakeTurn.getContentPane().add(gameTmr);
+		gameTmr.setSize(784,61);
+	}
 }

@@ -11,14 +11,20 @@ public class GameTimer extends JPanel {
 		Timer timer;
 		
 		tmrDisplay = new JLabel("...");
+		tmrDisplay.setFont(new Font("Tahoma", Font.BOLD, 14));
 		add(tmrDisplay);
 		timer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				count++;
-				if (count < 61) {
-					tmrDisplay.setText(Integer.toString(count));
-				} else {
+				if (count < 10) {
+					tmrDisplay.setText("0:0"+Integer.toString(count));
+				}else if(count < 60) {
+					tmrDisplay.setText("0:"+Integer.toString(count));
+				}else if(count == 60) {
+					tmrDisplay.setForeground(Color.RED);
+					tmrDisplay.setText("1:00");
+				}else {
 					((Timer) (e.getSource())).stop();
 				}
 			}

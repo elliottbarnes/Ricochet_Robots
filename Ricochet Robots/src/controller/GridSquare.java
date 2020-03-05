@@ -1,12 +1,14 @@
 package controller;
 
 import java.awt.Color;
+import java.util.Random;
 
 import javax.swing.*;
 
 public class GridSquare extends JPanel {
 	
 	private int xcoord, ycoord;
+	
 
 	public GridSquare(int xcoord, int ycoord) {
 		super();
