@@ -9,7 +9,6 @@ import controller.GridSquare;
 public class TakeTurn extends JPanel {
 	
 	private JFrame frmTakeTurn;
-	private GameTimer gameTmr;
 	
 	public TakeTurn() {
 		GridSquare[][] gridSquares; 
@@ -37,18 +36,11 @@ public class TakeTurn extends JPanel {
 		frmTakeTurn.getContentPane().add(rightPanel);
 		rightPanel.setSize(184, 600);
 		
-		/*JPanel bottomPanel = new JPanel();
+		JPanel bottomPanel = new JPanel();
 		bottomPanel.setBackground(Color.GRAY);
 		bottomPanel.setLocation(0, 600);
 		frmTakeTurn.getContentPane().add(bottomPanel);
-		bottomPanel.setSize(784, 61);*/
-		
-		// implemented timer - Mar. 5th
-		gameTmr = new GameTimer();
-		gameTmr.setLocation(0,600);
-		frmTakeTurn.getContentPane().add(gameTmr);
-		gameTmr.setSize(784,61);
-		
+		bottomPanel.setSize(784, 61);
 		
 		gridSquares = new GridSquare[x][y];
 		for (int column = 0; column < x; column++) {

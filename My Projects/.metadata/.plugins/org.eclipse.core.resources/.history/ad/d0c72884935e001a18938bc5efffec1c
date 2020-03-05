@@ -47,7 +47,6 @@ public class TakeTurn extends JPanel {
 		gameTmr = new GameTimer();
 		gameTmr.setLocation(0,600);
 		frmTakeTurn.getContentPane().add(gameTmr);
-		gameTmr.setSize(784,61);
 		
 		
 		gridSquares = new GridSquare[x][y];
