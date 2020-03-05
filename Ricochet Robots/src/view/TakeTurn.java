@@ -5,13 +5,26 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.GridSquare;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TakeTurn extends JPanel {
 	
 	private JFrame frmTakeTurn;
 	private GameTimer gameTmr;
+	private String Player1Name;
+	private String Player2Name;
+	private String Player3Name;
+	private String Player4Name;
+	private JTextField textField;
+	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
 	
-	public TakeTurn() {
+	public TakeTurn(String player1, String player2, String player3, String player4) {
+		this.Player1Name=player1;
+		this.Player2Name=player2;
+		this.Player3Name=player3;
+		this.Player4Name=player4;
+		
 		GridSquare[][] gridSquares; 
 		int x=16;
 		int y=16;
@@ -36,8 +49,87 @@ public class TakeTurn extends JPanel {
 		rightPanel.setLocation(600, 0);
 		frmTakeTurn.getContentPane().add(rightPanel);
 		rightPanel.setSize(184, 600);
-		PlayerScorePanel playerPanel = new PlayerScorePanel();
-		rightPanel.add(playerPanel);
+		rightPanel.setLayout(null);
+		
+		JButton btnBid = new JButton("Place Bid");
+		btnBid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setVisible(false);
+				textField.setEnabled(false);
+				lblp1bid.setText(textField.getText());
+				
+			}
+		});
+		btnBid.setBounds(46, 146, 89, 23);
+		rightPanel.add(btnBid);
+		
+		JButton btnP1 = new JButton("P1");
+		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnP1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
+		btnP1.setBounds(26, 35, 45, 23);
+		rightPanel.add(btnP1);
+		
+		JButton btnP2 = new JButton("P2");
+		btnP2.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnP2.setBounds(26, 69, 45, 23);
+		rightPanel.add(btnP2);
+		
+		JButton btnP3 = new JButton("P3");
+		btnP3.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnP3.setBounds(106, 35, 45, 23);
+		rightPanel.add(btnP3);
+		
+		JButton btnP4 = new JButton("P4");
+		btnP4.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnP4.setBounds(106, 69, 45, 23);
+		rightPanel.add(btnP4);
+		
+		textField = new JTextField();
+		textField.setEnabled(false);
+		textField.setVisible(false);
+		textField.setBounds(44, 115, 86, 20);
+		
+		lblP1 = new JLabel("Player 1");
+		lblP1.setBounds(25, 201, 46, 14);
+		rightPanel.add(lblP1);
+		
+		lblP2 = new JLabel("Player 2");
+		lblP2.setBounds(25, 223, 46, 14);
+		rightPanel.add(lblP2);
+		
+		lblP3 = new JLabel("Player 3");
+		lblP3.setBounds(25, 248, 46, 14);
+		rightPanel.add(lblP3);
+		
+		lblP4 = new JLabel("Player 4");
+		lblP4.setBounds(25, 273, 46, 14);
+		rightPanel.add(lblP4);
+		
+		lblp1bid = new JLabel("0");
+		lblp1bid.setBounds(89, 201, 46, 14);
+		rightPanel.add(lblp1bid);
+		
+		lblp2bid = new JLabel("0");
+		lblp2bid.setBounds(89, 223, 46, 14);
+		rightPanel.add(lblp2bid);
+		
+		lblp3bid = new JLabel("0");
+		lblp3bid.setBounds(89, 248, 46, 14);
+		rightPanel.add(lblp3bid);
+		
+		lblp4bid = new JLabel("0");
+		lblp4bid.setBounds(89, 273, 46, 14);
+		rightPanel.add(lblp4bid);
+		
+		;
+		rightPanel.add(textField);
+		textField.setColumns(10);
+		
 		
 		
 		/*JPanel bottomPanel = new JPanel();
@@ -67,5 +159,4 @@ public class TakeTurn extends JPanel {
 		
 		frmTakeTurn.setVisible(true);
 	}
-	
 }
