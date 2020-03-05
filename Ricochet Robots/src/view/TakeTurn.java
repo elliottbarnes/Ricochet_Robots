@@ -36,6 +36,9 @@ public class TakeTurn extends JPanel {
 		rightPanel.setLocation(600, 0);
 		frmTakeTurn.getContentPane().add(rightPanel);
 		rightPanel.setSize(184, 600);
+		PlayerScorePanel playerPanel = new PlayerScorePanel();
+		rightPanel.add(playerPanel);
+		
 		
 		/*JPanel bottomPanel = new JPanel();
 		bottomPanel.setBackground(Color.GRAY);
