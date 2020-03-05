@@ -12,18 +12,11 @@ public class TakeTurn extends JPanel {
 	
 	private JFrame frmTakeTurn;
 	private GameTimer gameTmr;
-	private String Player1Name;
-	private String Player2Name;
-	private String Player3Name;
-	private String Player4Name;
 	private JTextField textField;
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
-	
-	public TakeTurn(String player1, String player2, String player3, String player4) {
-		this.Player1Name=player1;
-		this.Player2Name=player2;
-		this.Player3Name=player3;
-		this.Player4Name=player4;
+	private int player;
+
+	public TakeTurn() {
 		
 		GridSquare[][] gridSquares; 
 		int x=16;
@@ -158,5 +151,12 @@ public class TakeTurn extends JPanel {
 		}
 		
 		frmTakeTurn.setVisible(true);
+	}
+	public int getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(int player) {
+		this.player = player;
 	}
 }

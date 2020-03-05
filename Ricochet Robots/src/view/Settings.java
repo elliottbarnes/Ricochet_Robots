@@ -10,11 +10,6 @@ import javax.swing.*;
 public class Settings extends JFrame implements ActionListener {
 
 	JFrame frmSettings;
-	String Player1="Player1";
-	String Player2="Player2";
-	String Player3="Player3";
-	String Player4="Player4";
-	String PlayerComputer ="Computer";
 	
 	public Settings() {
 		frmSettings = new JFrame();
@@ -113,16 +108,16 @@ public class Settings extends JFrame implements ActionListener {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPlayer1.isSelected()) {
-					new TakeTurn(Player1,PlayerComputer,PlayerComputer,PlayerComputer);
+					new TakeTurn();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer2.isSelected()){
-					new TakeTurn(Player1,Player2,PlayerComputer,PlayerComputer);
+					new TakeTurn();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer3.isSelected()) {
-					new TakeTurn(Player1,Player2,Player3,PlayerComputer);
+					new TakeTurn();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer4.isSelected()){
-					new TakeTurn(Player1,Player2,Player3,Player4);
+					new TakeTurn();
 					frmSettings.setVisible(false);
 				}else {
 					JOptionPane.showMessageDialog(frmSettings, "One player is need to be selected");
