@@ -259,7 +259,8 @@ public class GameGUI extends JPanel implements MouseListener {
 
 		if (selected instanceof Board) {
 			setXcoord(((Board) selected).getX()/37);
-			setYcoord(((Board) selected).getY()/37);		
+			setYcoord(((Board) selected).getY()/37);	
+			new Move();
 		}
 	}
 

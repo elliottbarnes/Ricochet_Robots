@@ -10,7 +10,7 @@ public class Move {
 	private int Yc; //Y coordinate
 //	private GridSquare[][] gridSquares;
 	
-	public Move(int num) {
+	public Move() {
 		Xc= view.GameGUI.getXcoord();
 		Yc= view.GameGUI.getYcoord();
 //		System.out.print(Xc+","+Yc);
