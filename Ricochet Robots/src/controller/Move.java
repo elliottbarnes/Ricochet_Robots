@@ -8,12 +8,12 @@ import view.GameGUI;
 public class Move {
 	private int Xc; //X coordinate
 	private int Yc; //Y coordinate
-//	private GridSquare[][] gridSquares;
 	
 	public Move() {
 		Xc= view.GameGUI.getXcoord();
 		Yc= view.GameGUI.getYcoord();
-//		System.out.print(Xc+","+Yc);
+		
+		view.GameGUI.setXcoord(15);
 	}
 	
 }

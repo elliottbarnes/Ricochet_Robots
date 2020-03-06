@@ -27,6 +27,18 @@ public class Board extends JPanel {
 		this.setBackground( colour );
 		
 	} 
+	public void setRobots( int xfor, int yfor)
+	{	
+		if(xfor==0 & yfor==0) {
+			this.setBackground( Color.RED );
+		}else if(xfor==0 & yfor==1) {
+			this.setBackground( Color.BLUE );
+		}else if(xfor==0 & yfor==2) {
+			this.setBackground( Color.GREEN);
+		}else if(xfor==0 & yfor==3) {
+			this.setBackground( Color.yellow);
+		}
+	} 
 
 	public int getXcoord() {
 		return xcoord;
