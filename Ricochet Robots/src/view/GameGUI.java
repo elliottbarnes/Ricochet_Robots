@@ -230,7 +230,7 @@ public class GameGUI extends JPanel implements MouseListener {
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/robot.jpg"));
 		JLabel background; 
 		background = new JLabel("",img,JLabel.CENTER);
-		
+		gridSquares[3][3].add(background);
 	}
 
 	public int getPlayer() {
@@ -259,7 +259,8 @@ public class GameGUI extends JPanel implements MouseListener {
 
 		if (selected instanceof Board) {
 			setXcoord(((Board) selected).getX()/37);
-			setYcoord(((Board) selected).getY()/37);		
+			setYcoord(((Board) selected).getY()/37);	
+			new Move();
 		}
 	}
 
