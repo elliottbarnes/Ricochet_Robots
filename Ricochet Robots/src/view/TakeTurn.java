@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import controller.GridSquare;
+import controller.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -20,6 +20,7 @@ public class TakeTurn extends JPanel implements MouseListener {
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
 	private int player;
 	private boolean flag;
+	private static int Xcoord, Ycoord;
 
 	public TakeTurn() {
 		
@@ -166,6 +167,42 @@ public class TakeTurn extends JPanel implements MouseListener {
 		rightPanel.add(textField);
 		textField.setColumns(10);
 		
+		JButton btnUp = new JButton("UP");
+		btnUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Move();
+			}
+		});
+		btnUp.setBounds(74, 458, 51, 23);
+		rightPanel.add(btnUp);
+		
+		JButton btnDown = new JButton("Down");
+		btnDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Move();
+			}
+		});
+		btnDown.setBounds(74, 522, 50, 23);
+		rightPanel.add(btnDown);
+		
+		JButton btnLeft = new JButton("Left");
+		btnLeft.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Move();
+			}
+		});
+		btnLeft.setBounds(45, 488, 51, 23);
+		rightPanel.add(btnLeft);
+		
+		JButton btnRight = new JButton("Right");
+		btnRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Move();
+			}
+		});
+		btnRight.setBounds(106, 488, 51, 23);
+		rightPanel.add(btnRight);
+		
 		
 		
 		/*JPanel bottomPanel = new JPanel();
@@ -214,7 +251,8 @@ public class TakeTurn extends JPanel implements MouseListener {
 		Object selected = e.getSource();
 
 		if (selected instanceof GridSquare) {
-			
+			setXcoord(((GridSquare) selected).getX()/37);
+			setYcoord(((GridSquare) selected).getY()/37);		
 		}
 	}
 
@@ -229,10 +267,28 @@ public class TakeTurn extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public static int getXcoord() {
+		return Xcoord;
+	}
+
+	public static void setXcoord(int xcoord) {
+		Xcoord = xcoord;
+	}
+
+	public static int getYcoord() {
+		return Ycoord;
+	}
+
+	public static void setYcoord(int ycoord) {
+		Ycoord = ycoord;
+	}
+
+
 }
