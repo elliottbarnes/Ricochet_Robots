@@ -172,7 +172,7 @@ public class GameGUI extends JPanel implements MouseListener {
 		JButton btnUp = new JButton("UP");
 		btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				gridSquares[0][3].setBackground(Color.RED);
+				
 			}
 		});
 		btnUp.setBounds(74, 458, 51, 23);
@@ -181,7 +181,8 @@ public class GameGUI extends JPanel implements MouseListener {
 		JButton btnDown = new JButton("Down");
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				gridSquares[15][3].setBackground(Color.RED);
+				LastRobot(getXcoord(),getYcoord());
+				RobotMove(15,getYcoord());
 			}
 		});
 		btnDown.setBounds(74, 518, 50, 23);
@@ -190,7 +191,7 @@ public class GameGUI extends JPanel implements MouseListener {
 		JButton btnLeft = new JButton("Left");
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				gridSquares[3][0].setBackground(Color.RED);
+				new Move();
 			}
 		});
 		btnLeft.setBounds(45, 488, 51, 23);
@@ -199,7 +200,7 @@ public class GameGUI extends JPanel implements MouseListener {
 		JButton btnRight = new JButton("Right");
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				gridSquares[3][15].setBackground(Color.RED);
+				new Move();
 			}
 		});
 		btnRight.setBounds(106, 488, 51, 23);
@@ -215,22 +216,26 @@ public class GameGUI extends JPanel implements MouseListener {
 				gridSquares[column][row] = new Board(x, y);
 				gridSquares[column][row].setOpaque(true);
 				gridSquares[column][row].setColor(column,row);
+				gridSquares[column][row].setRobots(column,row);
 				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				gridSquares[column][row].addMouseListener(this); 
 				leftPanel.add(gridSquares[column][row]);
 			}
 		}
-		Robot();
 		
 		frmTakeTurn.setVisible(true);
 	}
 
-	private void Robot() {
-		
-		ImageIcon img=new ImageIcon(this.getClass().getResource("/robot.jpg"));
-		JLabel background; 
-		background = new JLabel("",img,JLabel.CENTER);
-		gridSquares[3][3].add(background);
+	private void LastRobot(int currentX, int CurrentY) {
+		if(gridSquares[currentX][CurrentY].getBackground()==Color.RED) {
+			gridSquares[currentX][CurrentY].setBackground(Color.LIGHT_GRAY);
+		}else if(gridSquares[currentX][CurrentY].getBackground()==Color.BLUE) {
+			gridSquares[currentX][CurrentY].setBackground(Color.LIGHT_GRAY);
+		}
+	}
+	public void RobotMove(int xco, int yco) {
+		//I have to check for the all the colors
+		gridSquares[xco][yco].setBackground(Color.RED);
 	}
 
 	public int getPlayer() {
@@ -260,7 +265,6 @@ public class GameGUI extends JPanel implements MouseListener {
 		if (selected instanceof Board) {
 			setXcoord(((Board) selected).getX()/37);
 			setYcoord(((Board) selected).getY()/37);	
-			new Move();
 		}
 	}
 
