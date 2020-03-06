@@ -9,8 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class TakeTurn extends JPanel {
+public class TakeTurn extends JPanel implements MouseListener {
 	
 	private JFrame frmTakeTurn;
 	private GameTimer gameTmr;
@@ -179,6 +181,7 @@ public class TakeTurn extends JPanel {
 				gridSquares[column][row].setOpaque(true);
 				gridSquares[column][row].setColor(column,row);
 				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				gridSquares[column][row].addMouseListener(this); 
 				leftPanel.add(gridSquares[column][row]);
 			}
 		}
@@ -198,5 +201,38 @@ public class TakeTurn extends JPanel {
 		gameTmr.setLocation(0,600);
 		frmTakeTurn.getContentPane().add(gameTmr);
 		gameTmr.setSize(784,61);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		Object selected = e.getSource();
+
+		if (selected instanceof GridSquare) {
+			
+		}
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
