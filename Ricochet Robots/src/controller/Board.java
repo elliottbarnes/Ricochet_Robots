@@ -5,12 +5,12 @@ import java.util.Random;
 
 import javax.swing.*;
 
-public class GridSquare extends JPanel {
+public class Board extends JPanel {
 	
 	private int xcoord, ycoord;
 	
 
-	public GridSquare(int xcoord, int ycoord) {
+	public Board(int xcoord, int ycoord) {
 		super();
 		this.setSize(50,50);
 		this.xcoord = xcoord;

@@ -108,16 +108,16 @@ public class Settings extends JFrame implements ActionListener {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPlayer1.isSelected()) {
-					new TakeTurn();
+					new GameGUI();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer2.isSelected()){
-					new TakeTurn();
+					new GameGUI();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer3.isSelected()) {
-					new TakeTurn();
+					new GameGUI();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer4.isSelected()){
-					new TakeTurn();
+					new GameGUI();
 					frmSettings.setVisible(false);
 				}else {
 					JOptionPane.showMessageDialog(frmSettings, "One player is need to be selected");

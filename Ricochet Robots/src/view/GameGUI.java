@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -12,25 +13,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class TakeTurn extends JPanel implements MouseListener {
+public class GameGUI extends JPanel implements MouseListener {
 	
 	private JFrame frmTakeTurn;
 	private GameTimer gameTmr;
 	private JTextField textField;
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
+	private JPanel leftPanel, rightPanel;
 	private int player;
 	private boolean flag;
 	private static int Xcoord, Ycoord;
-	private GridSquare[][] gridSquares; 
+	private Board[][] gridSquares; 
 	
-	public TakeTurn() {
+	public GameGUI() {
 		
 		int x=16;
 		int y=16;
-		
-		ImageIcon img=new ImageIcon(this.getClass().getResource("/robot.jpg"));
-		JLabel background; 
-		background = new JLabel("",img,JLabel.CENTER);
 		
 		frmTakeTurn = new JFrame();
 		frmTakeTurn.setResizable(false);
@@ -41,13 +39,13 @@ public class TakeTurn extends JPanel implements MouseListener {
 		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTakeTurn.getContentPane().setLayout(null);
 		
-		JPanel leftPanel = new JPanel();
+		leftPanel = new JPanel();
 		leftPanel.setLocation(0, 0);
 		frmTakeTurn.getContentPane().add(leftPanel);
 		leftPanel.setLayout(new GridLayout(x, y, 0, 0));
 		leftPanel.setSize(600, 600);
 		
-		JPanel rightPanel = new JPanel();
+		rightPanel = new JPanel();
 		rightPanel.setBackground(Color.GREEN);
 		rightPanel.setLocation(600, 0);
 		frmTakeTurn.getContentPane().add(rightPanel);
@@ -174,7 +172,7 @@ public class TakeTurn extends JPanel implements MouseListener {
 		JButton btnUp = new JButton("UP");
 		btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gridSquares[0][3].setBackground(Color.RED);
+//				gridSquares[0][3].setBackground(Color.RED);
 			}
 		});
 		btnUp.setBounds(74, 458, 51, 23);
@@ -183,7 +181,7 @@ public class TakeTurn extends JPanel implements MouseListener {
 		JButton btnDown = new JButton("Down");
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gridSquares[15][3].setBackground(Color.RED);
+//				gridSquares[15][3].setBackground(Color.RED);
 			}
 		});
 		btnDown.setBounds(74, 518, 50, 23);
@@ -192,7 +190,7 @@ public class TakeTurn extends JPanel implements MouseListener {
 		JButton btnLeft = new JButton("Left");
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gridSquares[3][0].setBackground(Color.RED);
+//				gridSquares[3][0].setBackground(Color.RED);
 			}
 		});
 		btnLeft.setBounds(45, 488, 51, 23);
@@ -201,7 +199,7 @@ public class TakeTurn extends JPanel implements MouseListener {
 		JButton btnRight = new JButton("Right");
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gridSquares[3][15].setBackground(Color.RED);
+//				gridSquares[3][15].setBackground(Color.RED);
 			}
 		});
 		btnRight.setBounds(106, 488, 51, 23);
@@ -211,18 +209,10 @@ public class TakeTurn extends JPanel implements MouseListener {
 		btnHint.setBounds(52, 11, 89, 23);
 		rightPanel.add(btnHint);
 		
-		
-		
-		/*JPanel bottomPanel = new JPanel();
-		bottomPanel.setBackground(Color.GRAY);
-		bottomPanel.setLocation(0, 600);
-		frmTakeTurn.getContentPane().add(bottomPanel);
-		bottomPanel.setSize(784, 61);*/
-		
-		gridSquares = new GridSquare[x][y];
+		gridSquares = new Board[x][y];
 		for (int column = 0; column < x; column++) {
 			for (int row = 0; row < y; row++) {
-				gridSquares[column][row] = new GridSquare(x, y);
+				gridSquares[column][row] = new Board(x, y);
 				gridSquares[column][row].setOpaque(true);
 				gridSquares[column][row].setColor(column,row);
 				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -230,11 +220,17 @@ public class TakeTurn extends JPanel implements MouseListener {
 				leftPanel.add(gridSquares[column][row]);
 			}
 		}
-		
-		gridSquares[3][3].add(background);
-		
+		Robot();
 		
 		frmTakeTurn.setVisible(true);
+	}
+
+	private void Robot() {
+		
+		ImageIcon img=new ImageIcon(this.getClass().getResource("/robot.jpg"));
+		JLabel background; 
+		background = new JLabel("",img,JLabel.CENTER);
+		
 	}
 
 	public int getPlayer() {
@@ -261,9 +257,9 @@ public class TakeTurn extends JPanel implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		Object selected = e.getSource();
 
-		if (selected instanceof GridSquare) {
-			setXcoord(((GridSquare) selected).getX()/37);
-			setYcoord(((GridSquare) selected).getY()/37);		
+		if (selected instanceof Board) {
+			setXcoord(((Board) selected).getX()/37);
+			setYcoord(((Board) selected).getY()/37);		
 		}
 	}
 
