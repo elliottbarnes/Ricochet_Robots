@@ -20,7 +20,7 @@ public class Settings extends JFrame implements ActionListener {
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/Border.jpg"));
 		
 		JRadioButton rdbtnEasy = new JRadioButton("EASY");
-		rdbtnEasy.setSelected(true);
+//		rdbtnEasy.setSelected(true);
 		rdbtnEasy.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnEasy.setBounds(116, 202, 109, 23);
 		frmSettings.getContentPane().add(rdbtnEasy);
@@ -31,7 +31,7 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.getContentPane().add(rdbtnDifficult);
 		
 		JRadioButton rdbtnSimple = new JRadioButton("SIMPLE");
-		rdbtnSimple.setSelected(true);
+//		rdbtnSimple.setSelected(true);
 		rdbtnSimple.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnSimple.setBounds(116, 261, 109, 23);
 		frmSettings.getContentPane().add(rdbtnSimple);
@@ -64,7 +64,7 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.getContentPane().add(rdbtnRG);
 		
 		JRadioButton rdbtnClassic = new JRadioButton("Classic");
-		rdbtnClassic.setSelected(true);
+//		rdbtnClassic.setSelected(true);
 		rdbtnClassic.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnClassic.setBounds(116, 323, 109, 23);
 		frmSettings.getContentPane().add(rdbtnClassic);
@@ -75,7 +75,7 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.getContentPane().add(rdbtnBY);
 		
 		JRadioButton rdbtnEnable = new JRadioButton("ENABLE");
-		rdbtnEnable.setSelected(true);
+//		rdbtnEnable.setSelected(true);
 		rdbtnEnable.setBounds(116, 397, 109, 23);
 		frmSettings.getContentPane().add(rdbtnEnable);
 		
