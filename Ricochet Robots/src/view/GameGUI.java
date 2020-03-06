@@ -172,7 +172,8 @@ public class GameGUI extends JPanel implements MouseListener {
 		JButton btnUp = new JButton("UP");
 		btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				LastRobot(getXcoord(),getYcoord());
+				RobotMove(0,getYcoord(),Color.RED);
 			}
 		});
 		btnUp.setBounds(74, 458, 51, 23);
@@ -182,7 +183,7 @@ public class GameGUI extends JPanel implements MouseListener {
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LastRobot(getXcoord(),getYcoord());
-				RobotMove(15,getYcoord());
+				RobotMove(15,getYcoord(),Color.RED);
 			}
 		});
 		btnDown.setBounds(74, 518, 50, 23);
@@ -191,7 +192,8 @@ public class GameGUI extends JPanel implements MouseListener {
 		JButton btnLeft = new JButton("Left");
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Move();
+				LastRobot(getXcoord(),getYcoord());
+				RobotMove(getXcoord(),0,Color.RED);
 			}
 		});
 		btnLeft.setBounds(45, 488, 51, 23);
@@ -200,7 +202,8 @@ public class GameGUI extends JPanel implements MouseListener {
 		JButton btnRight = new JButton("Right");
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Move();
+				LastRobot(getXcoord(),getYcoord());
+				RobotMove(getXcoord(),15,Color.RED);
 			}
 		});
 		btnRight.setBounds(106, 488, 51, 23);
@@ -233,9 +236,11 @@ public class GameGUI extends JPanel implements MouseListener {
 			gridSquares[currentX][CurrentY].setBackground(Color.LIGHT_GRAY);
 		}
 	}
-	public void RobotMove(int xco, int yco) {
-		//I have to check for the all the colors
-		gridSquares[xco][yco].setBackground(Color.RED);
+	public Color getcolor(int currentX, int CurrentY ) {
+		return gridSquares[currentX][CurrentY].getBackground();
+	}
+	public void RobotMove(int xco, int yco, Color co) {
+		gridSquares[xco][yco].setBackground(co);
 	}
 
 	public int getPlayer() {
