@@ -34,7 +34,7 @@ public class GameGUI extends JPanel implements MouseListener {
 		frmTakeTurn.setResizable(false);
 		frmTakeTurn.setLocationRelativeTo(null);
 
-		frmTakeTurn.setTitle("Take a Turn");
+		frmTakeTurn.setTitle("Ricochet Robots");
 		frmTakeTurn.setBounds(100, 100, 800, 700);
 		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTakeTurn.getContentPane().setLayout(null);
@@ -252,9 +252,10 @@ public class GameGUI extends JPanel implements MouseListener {
 	}
 	public void Timer() {
 		gameTmr = new GameTimer();
-		gameTmr.setLocation(0,600);
-		frmTakeTurn.getContentPane().add(gameTmr);
-		gameTmr.setSize(784,61);
+		gameTmr.setBounds(67, 46, 58, 58);
+		//frmTakeTurn.getContentPane().add(gameTmr);
+		
+		rightPanel.add(gameTmr);
 	}
 
 	@Override
@@ -306,6 +307,4 @@ public class GameGUI extends JPanel implements MouseListener {
 	public static void setYcoord(int ycoord) {
 		Ycoord = ycoord;
 	}
-
-
 }

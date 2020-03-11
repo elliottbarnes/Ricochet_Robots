@@ -11,6 +11,7 @@ public class GameTimer extends JPanel {
 		Timer timer;
 		
 		tmrDisplay = new JLabel("...");
+		tmrDisplay.setForeground(Color.RED);
 		tmrDisplay.setFont(new Font("Tahoma", Font.BOLD, 14));
 		add(tmrDisplay);
 		timer = new Timer(1000, new ActionListener() {
