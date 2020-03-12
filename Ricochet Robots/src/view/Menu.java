@@ -24,7 +24,7 @@ public class Menu extends JFrame implements ActionListener {
 		//Button Help
 		JButton btnHelp = new JButton("HELP");
 		btnHelp.setBackground(Color.BLACK);
-		btnHelp.setForeground(Color.WHITE);
+		btnHelp.setForeground(Color.RED);
 		btnHelp.setBounds(149, 309, 200, 50);
 		frmRicochetRobots.getContentPane().add(btnHelp);
 		btnHelp.addActionListener(new ActionListener() {
