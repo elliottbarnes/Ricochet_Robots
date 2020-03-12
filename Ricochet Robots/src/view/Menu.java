@@ -37,7 +37,7 @@ public class Menu extends JFrame implements ActionListener {
 		//Button Load Game
 		JButton btnLoadGame = new JButton("LOAD GAME");
 		btnLoadGame.setBackground(Color.BLACK);
-		btnLoadGame.setForeground(Color.WHITE);
+		btnLoadGame.setForeground(Color.RED);
 		btnLoadGame.setBounds(149, 248, 200, 50);
 		frmRicochetRobots.getContentPane().add(btnLoadGame);
 		btnLoadGame.addActionListener(new ActionListener() {
@@ -47,7 +47,7 @@ public class Menu extends JFrame implements ActionListener {
 		
 		//Button New Game
 		JButton btnNewGame = new JButton("NEW GAME");
-		btnNewGame.setForeground(Color.WHITE);
+		btnNewGame.setForeground(Color.RED);
 		btnNewGame.setBackground(Color.BLACK);
 		btnNewGame.setBounds(149, 187, 200, 50);
 		frmRicochetRobots.getContentPane().add(btnNewGame);
