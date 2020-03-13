@@ -1,15 +1,18 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+
+import controller.*;
+
+import java.util.*;
 
 public class Settings extends JFrame implements ActionListener {
 
 	JFrame frmSettings;
+	JRadioButton rdbtnEasy, rdbtnDifficult, rdbtnSimple, rdbtnComplex, rdbtnRG, rdbtnClassic, rdbtnBY, rdbtnEnable, rdbtnDisable;
+	
 	
 	public Settings() {
 		frmSettings = new JFrame();
@@ -18,6 +21,10 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/Border.jpg"));
+		
+		SettingsController sc = new SettingsController();
+		
+		// Difficulty Buttons
 		
 		JRadioButton rdbtnEasy = new JRadioButton("EASY");
 //		rdbtnEasy.setSelected(true);
@@ -30,6 +37,8 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnDifficult.setBounds(246, 202, 109, 23);
 		frmSettings.getContentPane().add(rdbtnDifficult);
 		
+		// Board Buttons
+		
 		JRadioButton rdbtnSimple = new JRadioButton("SIMPLE");
 //		rdbtnSimple.setSelected(true);
 		rdbtnSimple.setHorizontalAlignment(SwingConstants.LEFT);
@@ -40,6 +49,8 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnComplex.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnComplex.setBounds(246, 261, 109, 23);
 		frmSettings.getContentPane().add(rdbtnComplex);
+		
+		// labels
 		
 		JLabel lblDifficulty = new JLabel("Difficulty:");
 		lblDifficulty.setBounds(48, 176, 76, 14);
@@ -58,6 +69,8 @@ public class Settings extends JFrame implements ActionListener {
 		lblHint.setBounds(48, 364, 46, 14);
 		frmSettings.getContentPane().add(lblHint);
 		
+		// Colour Buttons
+		
 		JRadioButton rdbtnRG = new JRadioButton("R-G");
 		rdbtnRG.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnRG.setBounds(246, 323, 109, 23);
@@ -74,6 +87,8 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnBY.setBounds(380, 323, 109, 23);
 		frmSettings.getContentPane().add(rdbtnBY);
 		
+		// Hints enabled button
+		
 		JRadioButton rdbtnEnable = new JRadioButton("ENABLE");
 //		rdbtnEnable.setSelected(true);
 		rdbtnEnable.setBounds(116, 397, 109, 23);
@@ -83,11 +98,15 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnDisable.setBounds(246, 397, 109, 23);
 		frmSettings.getContentPane().add(rdbtnDisable);
 		
+		// Start Button
+		
 		JButton btnStart = new JButton("START");
 		btnStart.setForeground(Color.WHITE);
 		btnStart.setBackground(new Color(0, 204, 51));
 		btnStart.setBounds(199, 460, 192, 51);
 		frmSettings.getContentPane().add(btnStart);
+		
+		// Player Checkboxes
 		
 		JCheckBox chckbxPlayer4 = new JCheckBox("PLAYER 4");
 		chckbxPlayer4.setBounds(427, 108, 97, 23);
@@ -105,26 +124,31 @@ public class Settings extends JFrame implements ActionListener {
 		chckbxPlayer1.setBounds(80, 108, 97, 23);
 		frmSettings.getContentPane().add(chckbxPlayer1);
 		
+		/*
+		 * This method closes the settings frame & creates the Game Gui
+		 */
+		
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPlayer1.isSelected()) {
-					new GameGUI();
+					sc.setPlayerNumber(1);
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer2.isSelected()){
-					new GameGUI();
+					sc.setPlayerNumber(2);
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer3.isSelected()) {
-					new GameGUI();
+					sc.setPlayerNumber(3);
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer4.isSelected()){
-					new GameGUI();
+					sc.setPlayerNumber(4);
 					frmSettings.setVisible(false);
 				}else {
-					JOptionPane.showMessageDialog(frmSettings, "One player is need to be selected");
+					JOptionPane.showMessageDialog(frmSettings, "One player must be selected");
 				}
 				
 			}
 		});
+		
 		
 		JLabel lblNewLabel = new JLabel("SETTINGS");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -141,11 +165,144 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.getContentPane().add(background);
 		
 		frmSettings.setVisible(true);
+		
+		
+		rdbtnEasy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnEasy.isSelected()) {
+					
+					rdbtnDifficult.setSelected(false);
+					
+				}
+				else {
+					rdbtnDifficult.setSelected(true);
+				}
+				
+			}
+		});
+		
+		rdbtnDifficult.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnDifficult.isSelected()) {
+					
+					rdbtnEasy.setSelected(false);
+					
+				}
+				else {
+					rdbtnEasy.setSelected(true);
+				}
+				
+			}
+		});
+		
+		rdbtnSimple.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnSimple.isSelected()) {
+					
+					rdbtnComplex.setSelected(false);
+					
+				}
+				else {
+					rdbtnComplex.setSelected(true);
+				}
+				
+			}
+		});
+		
+		rdbtnComplex.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnComplex.isSelected()) {
+					
+					rdbtnSimple.setSelected(false);
+					
+				}
+				else {
+					rdbtnSimple.setSelected(true);
+				}
+				
+			}
+		});
+		
+		rdbtnClassic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnClassic.isSelected()) {
+					
+					rdbtnRG.setSelected(false);
+					rdbtnBY.setSelected(false);
+				}
+				else {
+					rdbtnRG.setSelected(true);
+					rdbtnBY.setSelected(true);
+				}
+				
+			}
+		});
+		
+		rdbtnRG.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnRG.isSelected()) {
+					
+					rdbtnClassic.setSelected(false);
+					rdbtnBY.setSelected(false);
+				}
+				else {
+					rdbtnClassic.setSelected(true);
+					rdbtnBY.setSelected(true);
+				}
+				
+			}
+		});		
+		
+		rdbtnBY.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnBY.isSelected()) {
+					
+					rdbtnRG.setSelected(false);
+					rdbtnClassic.setSelected(false);
+				}
+				else {
+					rdbtnRG.setSelected(true);
+					rdbtnClassic.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnEnable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(rdbtnEnable.isSelected()) {
+					rdbtnDisable.setSelected(false);
+				}
+				else {
+					rdbtnDisable.setSelected(true);
+				}
+				
+			}
+		});
+		rdbtnDisable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnDisable.isSelected()) {
+					rdbtnEnable.setSelected(false);
+					
+				}
+				else {
+					rdbtnEnable.setSelected(true);
+				}
+			}
+		});
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent aevt) {
 		// This is a required method
+		
 		
 	}
 	
