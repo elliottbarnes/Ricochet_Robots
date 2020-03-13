@@ -1,8 +1,14 @@
 package controller;
 
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+import java.util.*;
+
 public class BidController {
 	
-	String [][] bids;
+	int [][] bids;
+	String playerName;
 	
 	public void addBid() {
 		

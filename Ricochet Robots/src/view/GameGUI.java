@@ -66,15 +66,19 @@ public class GameGUI extends JPanel implements MouseListener {
 				if(getPlayer()==1) {
 					lblp1bid.setText(textField.getText());
 					textField.setText("");
+					bidConfirmationPanel.bidConfirmation();
 				}else if(getPlayer()==2) {
 					lblp2bid.setText(textField.getText());
 					textField.setText("");
+					bidConfirmationPanel.bidConfirmation();
 				}else if(getPlayer()==3) {
 					lblp3bid.setText(textField.getText());
 					textField.setText("");
+					bidConfirmationPanel.bidConfirmation();
 				}else {
 					lblp4bid.setText(textField.getText());
 					textField.setText("");
+					bidConfirmationPanel.bidConfirmation();
 				}
 			}
 		});

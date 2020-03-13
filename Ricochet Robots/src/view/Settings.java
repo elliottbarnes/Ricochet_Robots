@@ -13,7 +13,6 @@ public class Settings extends JFrame implements ActionListener {
 	JFrame frmSettings;
 	JRadioButton rdbtnEasy, rdbtnDifficult, rdbtnSimple, rdbtnComplex, rdbtnRG, rdbtnClassic, rdbtnBY, rdbtnEnable, rdbtnDisable;
 	
-	
 	public Settings() {
 		frmSettings = new JFrame();
 		frmSettings.setTitle("Settings");
@@ -132,6 +131,7 @@ public class Settings extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPlayer1.isSelected()) {
 					sc.setPlayerNumber(1);
+					new GameGUI();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer2.isSelected()){
 					sc.setPlayerNumber(2);
