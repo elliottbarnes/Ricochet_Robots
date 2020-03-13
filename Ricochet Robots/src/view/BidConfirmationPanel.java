@@ -7,7 +7,8 @@ import java.awt.image.*;
 
 
 
-public class bidConfirmationPanel {
+public class BidConfirmationPanel {
+	static boolean confirmedBid = false;
 
 	public static void bidConfirmation() {
 		  // Create image icon
@@ -36,10 +37,18 @@ public class bidConfirmationPanel {
 	      int res = JOptionPane.showConfirmDialog(null, bidConfirmationPanel, "Bid Confirmation",
 	      JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
 	      if(res == 0) {
-	         System.out.println("Pressed YES");
+	         confirmedBid = true;
 	      } else {
-	         System.out.println("Pressed NO");
+	         confirmedBid = false;
 	   }
+	}
+	
+	public static boolean isConfirmedBid() {
+		return confirmedBid;
+	}
+
+	public static void setConfirmedBid(boolean confirmedBid) {
+		BidConfirmationPanel.confirmedBid = confirmedBid;
 	}
 	
 	

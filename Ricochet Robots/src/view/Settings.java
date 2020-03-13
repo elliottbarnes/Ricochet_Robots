@@ -12,8 +12,14 @@ public class Settings extends JFrame implements ActionListener {
 
 	JFrame frmSettings;
 	JRadioButton rdbtnEasy, rdbtnDifficult, rdbtnSimple, rdbtnComplex, rdbtnRG, rdbtnClassic, rdbtnBY, rdbtnEnable, rdbtnDisable;
-	
+	JCheckBox chckbxPlayer1, chckbxPlayer2, chckboxPlayer3, chckbxPlayer4;
+	boolean player1, player2, player3, player4;
 	public Settings() {
+		player1 = false;
+		player2 = false;
+		player3 = false;
+		player4 = false;
+		
 		frmSettings = new JFrame();
 		frmSettings.setTitle("Settings");
 		frmSettings.setBounds(100, 100, 600, 600);
@@ -122,6 +128,7 @@ public class Settings extends JFrame implements ActionListener {
 		JCheckBox chckbxPlayer1 = new JCheckBox("PLAYER 1");
 		chckbxPlayer1.setBounds(80, 108, 97, 23);
 		frmSettings.getContentPane().add(chckbxPlayer1);
+		
 		
 		/*
 		 * This method closes the settings frame & creates the Game Gui
@@ -297,6 +304,70 @@ public class Settings extends JFrame implements ActionListener {
 				}
 			}
 		});
+		//checkBox action listeners
+		chckbxPlayer1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxPlayer1.isSelected()) {
+					player1 = true;
+				}
+			}
+		});
+		
+		chckbxPlayer2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxPlayer2.isSelected()) {
+					player2 = true;
+				}
+			}
+		});
+		
+		chckbxPlayer3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxPlayer3.isSelected()) {
+					player3 = true;
+				}
+			}
+		});
+		
+		chckbxPlayer4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxPlayer4.isSelected()) {
+					player4 = true;
+				}
+			}
+		});
+	}
+
+	public boolean isPlayer1() {
+		return player1;
+	}
+
+	public void setPlayer1(boolean player1) {
+		this.player1 = player1;
+	}
+
+	public boolean isPlayer2() {
+		return player2;
+	}
+
+	public void setPlayer2(boolean player2) {
+		this.player2 = player2;
+	}
+
+	public boolean isPlayer3() {
+		return player3;
+	}
+
+	public void setPlayer3(boolean player3) {
+		this.player3 = player3;
+	}
+
+	public boolean isPlayer4() {
+		return player4;
+	}
+
+	public void setPlayer4(boolean player4) {
+		this.player4 = player4;
 	}
 
 	@Override
