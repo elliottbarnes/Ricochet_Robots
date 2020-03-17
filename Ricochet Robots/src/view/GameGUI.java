@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
 public class GameGUI extends JFrame implements MouseListener {
 	
 	private JFrame frmTakeTurn;
+	private Canvas canvas;
 	private JButton btnP1, btnP2, btnP3, btnP4;
 	private GameTimer gameTmr;
 	private JTextField textField;
@@ -27,6 +28,9 @@ public class GameGUI extends JFrame implements MouseListener {
 	private Board[][] gridSquares; 
 	
 	public GameGUI() {
+		Display();
+	}
+	public void Display() {
 		
 		int x=16;
 		int y=16;
@@ -43,7 +47,6 @@ public class GameGUI extends JFrame implements MouseListener {
 		leftPanel = new JPanel();
 		leftPanel.setLocation(0, 0);
 		frmTakeTurn.getContentPane().add(leftPanel);
-		leftPanel.setLayout(new GridLayout(x, y, 0, 0));
 		leftPanel.setSize(600, 600);
 		
 		rightPanel = new JPanel();
@@ -296,7 +299,11 @@ public class GameGUI extends JFrame implements MouseListener {
 //				leftPanel.add(gridSquares[column][row]);
 //			}
 //		}
-//		leftPanel.add(new Game());
+		canvas = new Canvas();
+		canvas.setPreferredSize(new Dimension(600,600));
+		canvas.setMaximumSize(new Dimension(600,600));
+		canvas.setMinimumSize(new Dimension(600,600));
+		leftPanel.add(canvas);
 		frmTakeTurn.setVisible(true);
 		
 	}
@@ -378,5 +385,9 @@ public class GameGUI extends JFrame implements MouseListener {
 
 	public static void setYcoord(int ycoord) {
 		Ycoord = ycoord;
+	}
+	
+	public Canvas getCanvas() {
+		return canvas;
 	}
 }
