@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class GameGUI extends JPanel implements MouseListener {
+public class GameGUI extends JFrame implements MouseListener {
 	
 	private JFrame frmTakeTurn;
 	private JButton btnP1, btnP2, btnP3, btnP4;
@@ -284,20 +284,21 @@ public class GameGUI extends JPanel implements MouseListener {
 		btnHint.setBounds(52, 11, 89, 23);
 		rightPanel.add(btnHint);
 		
-		gridSquares = new Board[x][y];
-		for (int column = 0; column < x; column++) {
-			for (int row = 0; row < y; row++) {
-				gridSquares[column][row] = new Board(x, y);
-				gridSquares[column][row].setOpaque(true);
-				gridSquares[column][row].setColor(column,row);
-				gridSquares[column][row].setRobots(column,row);
-				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				gridSquares[column][row].addMouseListener(this); 
-				leftPanel.add(gridSquares[column][row]);
-			}
-		}
-		
+//		gridSquares = new Board[x][y];
+//		for (int column = 0; column < x; column++) {
+//			for (int row = 0; row < y; row++) {
+//				gridSquares[column][row] = new Board(x, y);
+//				gridSquares[column][row].setOpaque(true);
+//				gridSquares[column][row].setColor(column,row);
+//				gridSquares[column][row].setRobots(column,row);
+//				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//				gridSquares[column][row].addMouseListener(this); 
+//				leftPanel.add(gridSquares[column][row]);
+//			}
+//		}
+//		leftPanel.add(new Game());
 		frmTakeTurn.setVisible(true);
+		
 	}
 
 	private void LastRobot(int currentX, int CurrentY) {
