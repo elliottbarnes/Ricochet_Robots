@@ -13,9 +13,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class GameGUI extends JPanel implements MouseListener {
+public class GameGUI extends JFrame implements MouseListener {
 	
 	private JFrame frmTakeTurn;
+	private Canvas canvas;
 	private JButton btnP1, btnP2, btnP3, btnP4;
 	private GameTimer gameTmr;
 	private JTextField textField;
@@ -28,6 +29,9 @@ public class GameGUI extends JPanel implements MouseListener {
 	private int player;
 	
 	public GameGUI() {
+		Display();
+	}
+	public void Display() {
 		
 		int x=16;
 		int y=16;
@@ -44,7 +48,6 @@ public class GameGUI extends JPanel implements MouseListener {
 		leftPanel = new JPanel();
 		leftPanel.setLocation(0, 0);
 		frmTakeTurn.getContentPane().add(leftPanel);
-		leftPanel.setLayout(new GridLayout(x, y, 0, 0));
 		leftPanel.setSize(600, 600);
 		
 		rightPanel = new JPanel();
@@ -213,20 +216,25 @@ public class GameGUI extends JPanel implements MouseListener {
 		btnHint.setBounds(52, 11, 89, 23);
 		rightPanel.add(btnHint);
 		
-		gridSquares = new Board[x][y];
-		for (int column = 0; column < x; column++) {
-			for (int row = 0; row < y; row++) {
-				gridSquares[column][row] = new Board(x, y);
-				gridSquares[column][row].setOpaque(true);
-				gridSquares[column][row].setColor(column,row);
-				gridSquares[column][row].setRobots(column,row);
-				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				gridSquares[column][row].addMouseListener(this); 
-				leftPanel.add(gridSquares[column][row]);
-			}
-		}
-		
+//		gridSquares = new Board[x][y];
+//		for (int column = 0; column < x; column++) {
+//			for (int row = 0; row < y; row++) {
+//				gridSquares[column][row] = new Board(x, y);
+//				gridSquares[column][row].setOpaque(true);
+//				gridSquares[column][row].setColor(column,row);
+//				gridSquares[column][row].setRobots(column,row);
+//				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//				gridSquares[column][row].addMouseListener(this); 
+//				leftPanel.add(gridSquares[column][row]);
+//			}
+//		}
+		canvas = new Canvas();
+		canvas.setPreferredSize(new Dimension(600,600));
+		canvas.setMaximumSize(new Dimension(600,600));
+		canvas.setMinimumSize(new Dimension(600,600));
+		leftPanel.add(canvas);
 		frmTakeTurn.setVisible(true);
+		
 	}
 	
 	private void setBid(String player, JLabel lbl) {
@@ -326,5 +334,9 @@ public class GameGUI extends JPanel implements MouseListener {
 
 	public static void setYcoord(int ycoord) {
 		Ycoord = ycoord;
+	}
+	
+	public Canvas getCanvas() {
+		return canvas;
 	}
 }

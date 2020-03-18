@@ -20,6 +20,8 @@ public class Settings extends JFrame implements ActionListener {
 		player3 = false;
 		player4 = false;
 		
+		GameBoard game = new GameBoard();
+		
 		frmSettings = new JFrame();
 		frmSettings.setTitle("Settings");
 		frmSettings.setBounds(100, 100, 600, 600);
@@ -138,7 +140,7 @@ public class Settings extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPlayer1.isSelected()) {
 					sc.setPlayerNumber(1);
-					new GameGUI();
+					game.start();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer2.isSelected()){
 					sc.setPlayerNumber(2);
