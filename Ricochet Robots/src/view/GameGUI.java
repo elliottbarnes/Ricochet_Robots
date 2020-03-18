@@ -27,6 +27,7 @@ public class GameGUI extends JFrame implements MouseListener {
 	private Board[][] gridSquares; 
 	private BidController bidController;
 	private int player;
+	private Settings settings;
 	
 	public GameGUI() {
 		Display();
@@ -35,6 +36,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		int x=16;
 		int y=16;
+		settings = new Settings();
 		
 		frmTakeTurn = new JFrame();
 		frmTakeTurn.setResizable(false);
@@ -94,7 +96,9 @@ public class GameGUI extends JFrame implements MouseListener {
 		});
 		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP1.setBounds(32, 188, 45, 23);
+		
 		rightPanel.add(btnP1);
+		
 		
 		JButton btnP2 = new JButton("P2");
 		btnP2.addActionListener(new ActionListener() {
@@ -106,7 +110,9 @@ public class GameGUI extends JFrame implements MouseListener {
 		});
 		btnP2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP2.setBounds(32, 222, 45, 23);
+		
 		rightPanel.add(btnP2);
+		
 		
 		JButton btnP3 = new JButton("P3");
 		btnP3.addActionListener(new ActionListener() {
@@ -118,7 +124,10 @@ public class GameGUI extends JFrame implements MouseListener {
 		});
 		btnP3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP3.setBounds(112, 188, 45, 23);
+		
+		
 		rightPanel.add(btnP3);
+		
 		
 		JButton btnP4 = new JButton("P4");
 		btnP4.addActionListener(new ActionListener() {
@@ -130,7 +139,9 @@ public class GameGUI extends JFrame implements MouseListener {
 		});
 		btnP4.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP4.setBounds(112, 222, 45, 23);
+		
 		rightPanel.add(btnP4);
+		
 		
 		textField = new JTextField();
 		textField.setEnabled(false);
@@ -252,7 +263,7 @@ public class GameGUI extends JFrame implements MouseListener {
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(frmTakeTurn, "You entered a bid greater then your previous bid. Try Again.");
+				JOptionPane.showMessageDialog(frmTakeTurn, "A new bid must be less than a previous bid. Please try Again.");
 			}
 		}
 	}

@@ -78,10 +78,10 @@ public class Settings extends JFrame implements ActionListener {
 		
 		// Colour Buttons
 		
-		JRadioButton rdbtnRG = new JRadioButton("R-G");
-		rdbtnRG.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnRG.setBounds(246, 323, 109, 23);
-		frmSettings.getContentPane().add(rdbtnRG);
+		JRadioButton rdbtnUltraVision = new JRadioButton("UltraVision");
+		rdbtnUltraVision.setHorizontalAlignment(SwingConstants.LEFT);
+		rdbtnUltraVision.setBounds(246, 323, 109, 23);
+		frmSettings.getContentPane().add(rdbtnUltraVision);
 		
 		JRadioButton rdbtnClassic = new JRadioButton("Classic");
 //		rdbtnClassic.setSelected(true);
@@ -89,10 +89,10 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnClassic.setBounds(116, 323, 109, 23);
 		frmSettings.getContentPane().add(rdbtnClassic);
 		
-		JRadioButton rdbtnBY = new JRadioButton("B-Y");
-		rdbtnBY.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnBY.setBounds(380, 323, 109, 23);
-		frmSettings.getContentPane().add(rdbtnBY);
+		JRadioButton rdbtnVivid = new JRadioButton("Vivid");
+		rdbtnVivid.setHorizontalAlignment(SwingConstants.LEFT);
+		rdbtnVivid.setBounds(380, 323, 109, 23);
+		frmSettings.getContentPane().add(rdbtnVivid);
 		
 		// Hints enabled button
 		
@@ -108,7 +108,7 @@ public class Settings extends JFrame implements ActionListener {
 		// Start Button
 		
 		JButton btnStart = new JButton("START");
-		btnStart.setForeground(Color.WHITE);
+		btnStart.setForeground(Color.RED);
 		btnStart.setBackground(new Color(0, 204, 51));
 		btnStart.setBounds(199, 460, 192, 51);
 		frmSettings.getContentPane().add(btnStart);
@@ -140,16 +140,23 @@ public class Settings extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxPlayer1.isSelected()) {
 					sc.setPlayerNumber(1);
+					setPlayer1(true);
 					game.start();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer2.isSelected()){
 					sc.setPlayerNumber(2);
+					setPlayer2(true);
+					game.start();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer3.isSelected()) {
 					sc.setPlayerNumber(3);
+					setPlayer3(true);
+					game.start();
 					frmSettings.setVisible(false);
 				}else if(chckbxPlayer4.isSelected()){
 					sc.setPlayerNumber(4);
+					setPlayer4(true);
+					game.start();
 					frmSettings.setVisible(false);
 				}else {
 					JOptionPane.showMessageDialog(frmSettings, "One player must be selected");
@@ -241,43 +248,43 @@ public class Settings extends JFrame implements ActionListener {
 				
 				if(rdbtnClassic.isSelected()) {
 					
-					rdbtnRG.setSelected(false);
-					rdbtnBY.setSelected(false);
+					rdbtnUltraVision.setSelected(false);
+					rdbtnVivid.setSelected(false);
 				}
 				else {
-					rdbtnRG.setSelected(true);
-					rdbtnBY.setSelected(true);
+					rdbtnUltraVision.setSelected(true);
+					rdbtnVivid.setSelected(true);
 				}
 				
 			}
 		});
 		
-		rdbtnRG.addActionListener(new ActionListener() {
+		rdbtnUltraVision.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(rdbtnRG.isSelected()) {
+				if(rdbtnUltraVision.isSelected()) {
 					
 					rdbtnClassic.setSelected(false);
-					rdbtnBY.setSelected(false);
+					rdbtnVivid.setSelected(false);
 				}
 				else {
 					rdbtnClassic.setSelected(true);
-					rdbtnBY.setSelected(true);
+					rdbtnVivid.setSelected(true);
 				}
 				
 			}
 		});		
 		
-		rdbtnBY.addActionListener(new ActionListener() {
+		rdbtnVivid.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(rdbtnBY.isSelected()) {
+				if(rdbtnVivid.isSelected()) {
 					
-					rdbtnRG.setSelected(false);
+					rdbtnUltraVision.setSelected(false);
 					rdbtnClassic.setSelected(false);
 				}
 				else {
-					rdbtnRG.setSelected(true);
+					rdbtnUltraVision.setSelected(true);
 					rdbtnClassic.setSelected(true);
 				}
 			}
