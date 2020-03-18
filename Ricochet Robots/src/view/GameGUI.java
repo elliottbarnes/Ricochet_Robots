@@ -98,6 +98,13 @@ public class GameGUI extends JFrame implements MouseListener {
 		btnP1.setBounds(32, 188, 45, 23);
 		
 		rightPanel.add(btnP1);
+		if(settings.isPlayer1()) {
+			btnP1.setEnabled(true);
+		}
+		else {
+			btnP1.setEnabled(false);
+		}
+		
 		
 		
 		JButton btnP2 = new JButton("P2");
@@ -113,6 +120,12 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		rightPanel.add(btnP2);
 		
+		if(settings.isPlayer2()) {
+			btnP2.setEnabled(true);
+		}
+		else {
+			btnP2.setEnabled(false);
+		}
 		
 		JButton btnP3 = new JButton("P3");
 		btnP3.addActionListener(new ActionListener() {
@@ -127,6 +140,12 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		
 		rightPanel.add(btnP3);
+		if(settings.isPlayer3()) {
+			btnP3.setEnabled(true);
+		}
+		else {
+			btnP3.setEnabled(false);
+		}
 		
 		
 		JButton btnP4 = new JButton("P4");
@@ -141,6 +160,12 @@ public class GameGUI extends JFrame implements MouseListener {
 		btnP4.setBounds(112, 222, 45, 23);
 		
 		rightPanel.add(btnP4);
+		if(settings.isPlayer4()) {
+			btnP4.setEnabled(true);
+		}
+		else {
+			btnP4.setEnabled(false);
+		}
 		
 		
 		textField = new JTextField();
