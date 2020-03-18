@@ -10,7 +10,7 @@ import java.awt.image.*;
 public class BidConfirmationPanel {
 	static boolean confirmedBid = false;
 
-	public static void bidConfirmation() {
+	public static void bidConfirmation(String bidValue) {
 		  // Create image icon
 		  /*ImageIcon icon = new ImageIcon("img/Bid.jpg");
 		  Image img = icon.getImage();
@@ -23,7 +23,7 @@ public class BidConfirmationPanel {
 		  JPanel bidConfirmationPanel = new JPanel();
 	      bidConfirmationPanel.setSize(new Dimension(100, 100));
 	      bidConfirmationPanel.setLayout(null);
-	      JLabel label1 = new JLabel("This will finalize your bid.");
+	      JLabel label1 = new JLabel("This will finalize your bid of " + bidValue + ".");
 	      label1.setVerticalAlignment(SwingConstants.BOTTOM);
 	      label1.setBounds(20, 20, 200, 30);
 	      label1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -38,9 +38,10 @@ public class BidConfirmationPanel {
 	      JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
 	      if(res == 0) {
 	         confirmedBid = true;
-	      } else {
+	      } 
+	      else {
 	         confirmedBid = false;
-	   }
+	      }
 	}
 	
 	public static boolean isConfirmedBid() {

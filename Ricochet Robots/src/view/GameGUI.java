@@ -21,10 +21,11 @@ public class GameGUI extends JPanel implements MouseListener {
 	private JTextField textField;
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
 	private JPanel leftPanel, rightPanel;
-	private int player, player1bid,player2bid,player3bid,player4bid;
 	private boolean flag;
 	private static int Xcoord, Ycoord;
 	private Board[][] gridSquares; 
+	private BidController bidController;
+	private int player;
 	
 	public GameGUI() {
 		
@@ -54,6 +55,7 @@ public class GameGUI extends JPanel implements MouseListener {
 		rightPanel.setLayout(null);
 		
 		flag = false;
+		bidController = new BidController();
 		
 		JButton btnBid = new JButton("Place Bid");
 		btnBid.addActionListener(new ActionListener() {
@@ -62,87 +64,16 @@ public class GameGUI extends JPanel implements MouseListener {
 				textField.setVisible(false);
 				textField.setEnabled(false);
 				if(getPlayer()==1) {
-					String lblp1 = textField.getText();
-					player1bid = Integer.parseInt(lblp1);
-					int temp = player1bid;
-					textField.setText("");
-					BidConfirmationPanel.bidConfirmation();
-					if(flag==false) {
-						if(BidConfirmationPanel.isConfirmedBid()) {
-						lblp1bid.setText(lblp1);
-						textField.setText("");
-						Timer();
-						flag=true;
-						}
-						
-					}
-					else {
-						 
-							if(BidConfirmationPanel.isConfirmedBid()) {
-								lblp1bid.setText(lblp1);
-								textField.setText("");
-							}
-					}
-				}else if(getPlayer()==2) {
-					String lblp2 = textField.getText();
-					player2bid = Integer.parseInt(lblp2);
-					textField.setText("");
-					BidConfirmationPanel.bidConfirmation();
-					if(flag==false) {
-						if(BidConfirmationPanel.isConfirmedBid()) {
-						lblp2bid.setText(lblp2);
-						textField.setText("");
-						Timer();
-						flag=true;
-						}
-						
-					}
-					else {
-						if(BidConfirmationPanel.isConfirmedBid()) {
-							lblp2bid.setText(lblp2);
-							textField.setText("");
-						}
-					}
-				}else if(getPlayer()==3) {
-					String lblp3 = textField.getText();
-					player3bid = Integer.parseInt(lblp3);
-					textField.setText("");
-					BidConfirmationPanel.bidConfirmation();
-					if(flag==false) {
-						if(BidConfirmationPanel.isConfirmedBid()) {
-						lblp3bid.setText(lblp3);
-						textField.setText("");
-						Timer();
-						flag=true;
-						}
-						
-					}
-					else {
-						if(BidConfirmationPanel.isConfirmedBid()) {
-							lblp3bid.setText(lblp3);
-							textField.setText("");
-						}
-					}
-				}else {
-					String lblp4 = textField.getText();
-					player4bid = Integer.parseInt(lblp4);
-					textField.setText("");
-					BidConfirmationPanel.bidConfirmation();
-					if(flag==false) {
-						if(BidConfirmationPanel.isConfirmedBid()) {
-						lblp4bid.setText(lblp4);
-						textField.setText("");
-						Timer();
-						flag=true;
-						}
-						
-					}
-					else {
-						if(BidConfirmationPanel.isConfirmedBid()) {
-							lblp4bid.setText(lblp4);
-							textField.setText("");
-						}
-					}
+					setBid("Player1", lblp1bid);
+				}
+				else if(getPlayer()==2) {
+					setBid("Player2", lblp2bid);
+				}
+				else if(getPlayer()==3) {
+					setBid("Player3", lblp3bid);
+				}
+				else {
+					setBid("Player4", lblp4bid);
 				}
 			}
 		});
@@ -151,7 +82,6 @@ public class GameGUI extends JPanel implements MouseListener {
 		
 		
 		JButton btnP1 = new JButton("P1");
-		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setPlayer(1);
@@ -159,8 +89,7 @@ public class GameGUI extends JPanel implements MouseListener {
 				textField.setEnabled(true);
 			}
 		});
-		
-		
+		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP1.setBounds(32, 188, 45, 23);
 		rightPanel.add(btnP1);
 		
@@ -299,6 +228,26 @@ public class GameGUI extends JPanel implements MouseListener {
 		
 		frmTakeTurn.setVisible(true);
 	}
+	
+	private void setBid(String player, JLabel lbl) {
+		String bidValue = textField.getText();
+		int playersBid = Integer.parseInt(bidValue);
+		textField.setText("");
+		BidConfirmationPanel.bidConfirmation(bidValue);
+		if(BidConfirmationPanel.isConfirmedBid()) {
+			boolean valid = bidController.newBid(player, playersBid);
+			if(valid) {
+				lbl.setText(bidValue);
+				if(flag == false) {
+					Timer();
+					flag=true;
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(frmTakeTurn, "You entered a bid greater then your previous bid. Try Again.");
+			}
+		}
+	}
 
 	private void LastRobot(int currentX, int CurrentY) {
 		if(gridSquares[currentX][CurrentY].getBackground()==Color.RED) {
@@ -315,7 +264,7 @@ public class GameGUI extends JPanel implements MouseListener {
 	}
 
 	public int getPlayer() {
-		return player;
+		return player ;
 	}
 
 	public void setPlayer(int player) {
