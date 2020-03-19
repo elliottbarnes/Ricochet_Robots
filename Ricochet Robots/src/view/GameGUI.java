@@ -24,20 +24,23 @@ public class GameGUI extends JFrame implements MouseListener {
 	private JPanel leftPanel, rightPanel;
 	private boolean flag;
 	private static int Xcoord, Ycoord;
-	private Board[][] gridSquares; 
 	private BidController bidController;
 	private int player;
-	private Settings settings;
+	private SettingsController  sc;
 	
 	public GameGUI() {
 		Display();
 	}
 	public void Display() {
 		
-		int x=16;
-		int y=16;
-		settings = new Settings();
+		//All classes needed in this class
+		sc = (SettingsController) Settings.object();
+		bidController = new BidController();
 		
+		
+		flag = false;
+		
+		//Creating all frames and dividing the screen
 		frmTakeTurn = new JFrame();
 		frmTakeTurn.setResizable(false);
 		frmTakeTurn.setLocationRelativeTo(null);
@@ -47,10 +50,20 @@ public class GameGUI extends JFrame implements MouseListener {
 		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTakeTurn.getContentPane().setLayout(null);
 		
+		//Left Panel
+		
 		leftPanel = new JPanel();
 		leftPanel.setLocation(0, 0);
 		frmTakeTurn.getContentPane().add(leftPanel);
 		leftPanel.setSize(600, 600);
+		
+		canvas = new Canvas();
+		canvas.setPreferredSize(new Dimension(600,600));
+		canvas.setMaximumSize(new Dimension(600,600));
+		canvas.setMinimumSize(new Dimension(600,600));
+		leftPanel.add(canvas);
+		
+		//Right Panel
 		
 		rightPanel = new JPanel();
 		rightPanel.setBackground(Color.GREEN);
@@ -59,93 +72,34 @@ public class GameGUI extends JFrame implements MouseListener {
 		rightPanel.setSize(184, 600);
 		rightPanel.setLayout(null);
 		
-		flag = false;
-		bidController = new BidController();
-		
 		JButton btnBid = new JButton("Place Bid");
-		btnBid.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				textField.setVisible(false);
-				textField.setEnabled(false);
-				if(getPlayer()==1) {
-					setBid("Player1", lblp1bid);
-				}
-				else if(getPlayer()==2) {
-					setBid("Player2", lblp2bid);
-				}
-				else if(getPlayer()==3) {
-					setBid("Player3", lblp3bid);
-				}
-				else {
-					setBid("Player4", lblp4bid);
-				}
-			}
-		});
 		btnBid.setBounds(52, 299, 89, 23);
 		rightPanel.add(btnBid);
 		
-		
 		JButton btnP1 = new JButton("P1");
-		btnP1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setPlayer(1);
-				textField.setVisible(true);
-				textField.setEnabled(true);
-			}
-		});
 		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP1.setBounds(32, 188, 45, 23);
-		
 		rightPanel.add(btnP1);
 		
-		
-		
-		
 		JButton btnP2 = new JButton("P2");
-		btnP2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setPlayer(2);
-				textField.setVisible(true);
-				textField.setEnabled(true);
-			}
-		});
 		btnP2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP2.setBounds(32, 222, 45, 23);
-		
 		rightPanel.add(btnP2);
 		
-		
-		
 		JButton btnP3 = new JButton("P3");
-		btnP3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setPlayer(3);
-				textField.setVisible(true);
-				textField.setEnabled(true);
-			}
-		});
 		btnP3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP3.setBounds(112, 188, 45, 23);
-		
-		
 		rightPanel.add(btnP3);
 		
-		
 		JButton btnP4 = new JButton("P4");
-		btnP4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setPlayer(4);
-				textField.setVisible(true);
-				textField.setEnabled(true);
-			}
-		});
 		btnP4.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP4.setBounds(112, 222, 45, 23);
-		
 		rightPanel.add(btnP4);
-		
-		
+
+		if(sc.isPlayer1()) {btnP1.setEnabled(true);} else {btnP1.setEnabled(false);}
+		if(sc.isPlayer2()) {btnP2.setEnabled(true);} else {btnP2.setEnabled(false);}
+		if(sc.isPlayer3()) {btnP3.setEnabled(true);} else {btnP3.setEnabled(false);}
+		if(sc.isPlayer4()) {btnP4.setEnabled(true);} else {btnP4.setEnabled(false);}
 		
 		textField = new JTextField();
 		textField.setEnabled(false);
@@ -187,68 +141,67 @@ public class GameGUI extends JFrame implements MouseListener {
 		rightPanel.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnUp = new JButton("UP");
-		btnUp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LastRobot(getXcoord(),getYcoord());
-				RobotMove(0,getYcoord(),Color.RED);
-			}
-		});
-		btnUp.setBounds(74, 458, 51, 23);
-		rightPanel.add(btnUp);
-		
-		JButton btnDown = new JButton("Down");
-		btnDown.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LastRobot(getXcoord(),getYcoord());
-				RobotMove(15,getYcoord(),Color.RED);
-			}
-		});
-		btnDown.setBounds(74, 518, 50, 23);
-		rightPanel.add(btnDown);
-		
-		JButton btnLeft = new JButton("Left");
-		btnLeft.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LastRobot(getXcoord(),getYcoord());
-				RobotMove(getXcoord(),0,Color.RED);
-			}
-		});
-		btnLeft.setBounds(45, 488, 51, 23);
-		rightPanel.add(btnLeft);
-		
-		JButton btnRight = new JButton("Right");
-		btnRight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LastRobot(getXcoord(),getYcoord());
-				RobotMove(getXcoord(),15,Color.RED);
-			}
-		});
-		btnRight.setBounds(106, 488, 51, 23);
-		rightPanel.add(btnRight);
-		
 		JButton btnHint = new JButton("HINT");
 		btnHint.setBounds(52, 11, 89, 23);
 		rightPanel.add(btnHint);
 		
-//		gridSquares = new Board[x][y];
-//		for (int column = 0; column < x; column++) {
-//			for (int row = 0; row < y; row++) {
-//				gridSquares[column][row] = new Board(x, y);
-//				gridSquares[column][row].setOpaque(true);
-//				gridSquares[column][row].setColor(column,row);
-//				gridSquares[column][row].setRobots(column,row);
-//				gridSquares[column][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//				gridSquares[column][row].addMouseListener(this); 
-//				leftPanel.add(gridSquares[column][row]);
-//			}
-//		}
-		canvas = new Canvas();
-		canvas.setPreferredSize(new Dimension(600,600));
-		canvas.setMaximumSize(new Dimension(600,600));
-		canvas.setMinimumSize(new Dimension(600,600));
-		leftPanel.add(canvas);
+		
 		frmTakeTurn.setVisible(true);
+		
+		
+		//All buttons' action listeners
+		
+		btnBid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				textField.setVisible(false);
+				textField.setEnabled(false);
+				if(getPlayer()==1) {
+					setBid("Player1", lblp1bid);
+				}
+				else if(getPlayer()==2) {
+					setBid("Player2", lblp2bid);
+				}
+				else if(getPlayer()==3) {
+					setBid("Player3", lblp3bid);
+				}
+				else {
+					setBid("Player4", lblp4bid);
+				}
+			}
+		});
+		
+		btnP1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPlayer(1);
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
+		
+		btnP2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPlayer(2);
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
+		
+		btnP3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPlayer(3);
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
+		
+		btnP4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPlayer(4);
+				textField.setVisible(true);
+				textField.setEnabled(true);
+			}
+		});
 		
 	}
 	
@@ -272,20 +225,6 @@ public class GameGUI extends JFrame implements MouseListener {
 		}
 	}
 
-	private void LastRobot(int currentX, int CurrentY) {
-		if(gridSquares[currentX][CurrentY].getBackground()==Color.RED) {
-			gridSquares[currentX][CurrentY].setBackground(Color.LIGHT_GRAY);
-		}else if(gridSquares[currentX][CurrentY].getBackground()==Color.BLUE) {
-			gridSquares[currentX][CurrentY].setBackground(Color.LIGHT_GRAY);
-		}
-	}
-	public Color getcolor(int currentX, int CurrentY ) {
-		return gridSquares[currentX][CurrentY].getBackground();
-	}
-	public void RobotMove(int xco, int yco, Color co) {
-		gridSquares[xco][yco].setBackground(co);
-	}
-
 	public int getPlayer() {
 		return player ;
 	}
@@ -296,7 +235,7 @@ public class GameGUI extends JFrame implements MouseListener {
 	public void Timer() {
 		gameTmr = new GameTimer();
 		gameTmr.setBounds(67, 46, 58, 58);
-		//frmTakeTurn.getContentPane().add(gameTmr);
+		frmTakeTurn.getContentPane().add(gameTmr);
 		
 		rightPanel.add(gameTmr);
 	}
@@ -311,10 +250,6 @@ public class GameGUI extends JFrame implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		Object selected = e.getSource();
 
-		if (selected instanceof Board) {
-			setXcoord(((Board) selected).getX()/37);
-			setYcoord(((Board) selected).getY()/37);	
-		}
 	}
 
 	@Override

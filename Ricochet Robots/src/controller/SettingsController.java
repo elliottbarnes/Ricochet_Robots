@@ -1,44 +1,55 @@
 package controller;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.*;
 
 
 public class SettingsController {
 	
 	int playerNumber, playerCount;
 	Color boardColor;
-	Board boardType;
 	Difficulty difficultyType;
 	boolean hintsEnabled;
+	boolean player1, player2, player3, player4;
 	
+	public boolean isPlayer1() {
+		return player1;
+	}
+
+	public void setPlayer1(boolean player1) {
+		this.player1 = player1;
+	}
+
+	public boolean isPlayer2() {
+		return player2;
+	}
+
+	public void setPlayer2(boolean player2) {
+		this.player2 = player2;
+	}
+
+	public boolean isPlayer3() {
+		return player3;
+	}
+
+	public void setPlayer3(boolean player3) {
+		this.player3 = player3;
+	}
+
+	public boolean isPlayer4() {
+		return player4;
+	}
+
+	public void setPlayer4(boolean player4) {
+		this.player4 = player4;
+	}
+
+	public void setPlayerCount(int playerCount) {
+		this.playerCount = playerCount;
+	}
+
 	public SettingsController() {
 		
-		this.boardType = boardType;
-		this.boardColor = boardColor;
-		this.playerNumber = playerNumber;
-		this.playerCount = playerCount;
-		this.difficultyType = difficultyType;
-		this.hintsEnabled = hintsEnabled;
-		
 	}
 	
-	/*
-	 * Getter/Setter for BoardType
-	 */
-	
-	public Board getBoardType() {
-		return boardType;
-	}
-
-
-
-
-	public void setBoardType(Board boardType) {
-		this.boardType = boardType;
-	}
-
 
 	/*
 	 * Getter/Setter for DifficultyType

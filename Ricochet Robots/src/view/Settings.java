@@ -13,14 +13,12 @@ public class Settings extends JFrame implements ActionListener {
 	JFrame frmSettings;
 	JRadioButton rdbtnEasy, rdbtnDifficult, rdbtnSimple, rdbtnComplex, rdbtnRG, rdbtnClassic, rdbtnBY, rdbtnEnable, rdbtnDisable;
 	JCheckBox chckbxPlayer1, chckbxPlayer2, chckboxPlayer3, chckbxPlayer4;
-	boolean player1, player2, player3, player4;
+	static SettingsController sc;
+	
 	public Settings() {
-		player1 = false;
-		player2 = false;
-		player3 = false;
-		player4 = false;
-		
+		//All Classes used in this class
 		GameBoard game = new GameBoard();
+		sc = new SettingsController();
 		
 		frmSettings = new JFrame();
 		frmSettings.setTitle("Settings");
@@ -29,12 +27,11 @@ public class Settings extends JFrame implements ActionListener {
 		
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/Border.jpg"));
 		
-		SettingsController sc = new SettingsController();
+		
 		
 		// Difficulty Buttons
 		
 		JRadioButton rdbtnEasy = new JRadioButton("EASY");
-//		rdbtnEasy.setSelected(true);
 		rdbtnEasy.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnEasy.setBounds(116, 202, 109, 23);
 		frmSettings.getContentPane().add(rdbtnEasy);
@@ -47,7 +44,6 @@ public class Settings extends JFrame implements ActionListener {
 		// Board Buttons
 		
 		JRadioButton rdbtnSimple = new JRadioButton("SIMPLE");
-//		rdbtnSimple.setSelected(true);
 		rdbtnSimple.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnSimple.setBounds(116, 261, 109, 23);
 		frmSettings.getContentPane().add(rdbtnSimple);
@@ -58,11 +54,15 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.getContentPane().add(rdbtnComplex);
 		
 		// labels
+		JLabel lblNewLabel = new JLabel("SETTINGS");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(226, 69, 129, 24);
+		frmSettings.getContentPane().add(lblNewLabel);
 		
 		JLabel lblDifficulty = new JLabel("Difficulty:");
 		lblDifficulty.setBounds(48, 176, 76, 14);
 		frmSettings.getContentPane().add(lblDifficulty);
-		
 		
 		JLabel lblBoard = new JLabel("Board:");
 		lblBoard.setBounds(48, 237, 46, 14);
@@ -84,7 +84,6 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.getContentPane().add(rdbtnUltraVision);
 		
 		JRadioButton rdbtnClassic = new JRadioButton("Classic");
-//		rdbtnClassic.setSelected(true);
 		rdbtnClassic.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnClassic.setBounds(116, 323, 109, 23);
 		frmSettings.getContentPane().add(rdbtnClassic);
@@ -97,7 +96,6 @@ public class Settings extends JFrame implements ActionListener {
 		// Hints enabled button
 		
 		JRadioButton rdbtnEnable = new JRadioButton("ENABLE");
-//		rdbtnEnable.setSelected(true);
 		rdbtnEnable.setBounds(116, 397, 109, 23);
 		frmSettings.getContentPane().add(rdbtnEnable);
 		
@@ -142,21 +140,21 @@ public class Settings extends JFrame implements ActionListener {
 				if((chckbxPlayer1.isSelected() || chckbxPlayer2.isSelected() || chckbxPlayer3.isSelected() || chckbxPlayer4.isSelected())&&(rdbtnEasy.isSelected() || rdbtnDifficult.isSelected())&&(rdbtnSimple.isSelected() || rdbtnComplex.isSelected())&&(rdbtnEnable.isSelected() || rdbtnDisable.isSelected())&&(rdbtnClassic.isSelected() || rdbtnVivid.isSelected() || rdbtnUltraVision.isSelected())){
 					
 					if(chckbxPlayer1.isSelected()) {
-						setPlayer1(true);
+						sc.setPlayer1(true);
 					}
 					if(chckbxPlayer2.isSelected()) {
-						setPlayer2(true);
+						sc.setPlayer2(true);
 					}
 					if(chckbxPlayer3.isSelected()) {
-						setPlayer3(true);
+						sc.setPlayer3(true);
 					}
 					if(chckbxPlayer4.isSelected()) {
-						setPlayer4(true);
+						sc.setPlayer4(true);
 					}
 					
 					if(rdbtnSimple.isSelected()) {
-					frmSettings.setVisible(false);
-					game.start();
+						frmSettings.setVisible(false);
+						game.start();
 					}
 					if(rdbtnComplex.isSelected()) {
 						frmSettings.setVisible(false);	
@@ -170,13 +168,6 @@ public class Settings extends JFrame implements ActionListener {
 		});
 		
 		
-		JLabel lblNewLabel = new JLabel("SETTINGS");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(226, 69, 129, 24);
-		frmSettings.getContentPane().add(lblNewLabel);
-		
-		
 		//Background has to be the last, if not the other components won't show
 		JLabel background; 
 		frmSettings.getContentPane().setLayout(null);
@@ -186,6 +177,8 @@ public class Settings extends JFrame implements ActionListener {
 		
 		frmSettings.setVisible(true);
 		
+		
+		//Action Listeners for each component
 		
 		rdbtnEasy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -317,70 +310,7 @@ public class Settings extends JFrame implements ActionListener {
 				}
 			}
 		});
-		//checkBox action listeners
-		chckbxPlayer1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(chckbxPlayer1.isSelected()) {
-					player1 = true;
-				}
-			}
-		});
-		
-		chckbxPlayer2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(chckbxPlayer2.isSelected()) {
-					player2 = true;
-				}
-			}
-		});
-		
-		chckbxPlayer3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(chckbxPlayer3.isSelected()) {
-					player3 = true;
-				}
-			}
-		});
-		
-		chckbxPlayer4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(chckbxPlayer4.isSelected()) {
-					player4 = true;
-				}
-			}
-		});
-	}
 
-	public boolean isPlayer1() {
-		return player1;
-	}
-
-	public void setPlayer1(boolean player1) {
-		this.player1 = player1;
-	}
-
-	public boolean isPlayer2() {
-		return player2;
-	}
-
-	public void setPlayer2(boolean player2) {
-		this.player2 = player2;
-	}
-
-	public boolean isPlayer3() {
-		return player3;
-	}
-
-	public void setPlayer3(boolean player3) {
-		this.player3 = player3;
-	}
-
-	public boolean isPlayer4() {
-		return player4;
-	}
-
-	public void setPlayer4(boolean player4) {
-		this.player4 = player4;
 	}
 
 	@Override
@@ -388,6 +318,10 @@ public class Settings extends JFrame implements ActionListener {
 		// This is a required method
 		
 		
+	}
+	
+	public static Object object() {
+		return sc;
 	}
 	
 }
