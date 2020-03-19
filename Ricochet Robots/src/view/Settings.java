@@ -140,6 +140,20 @@ public class Settings extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				if((chckbxPlayer1.isSelected() || chckbxPlayer2.isSelected() || chckbxPlayer3.isSelected() || chckbxPlayer4.isSelected())&&(rdbtnEasy.isSelected() || rdbtnDifficult.isSelected())&&(rdbtnSimple.isSelected() || rdbtnComplex.isSelected())&&(rdbtnEnable.isSelected() || rdbtnDisable.isSelected())&&(rdbtnClassic.isSelected() || rdbtnVivid.isSelected() || rdbtnUltraVision.isSelected())){
+					
+					if(chckbxPlayer1.isSelected()) {
+						setPlayer1(true);
+					}
+					if(chckbxPlayer2.isSelected()) {
+						setPlayer2(true);
+					}
+					if(chckbxPlayer3.isSelected()) {
+						setPlayer3(true);
+					}
+					if(chckbxPlayer4.isSelected()) {
+						setPlayer4(true);
+					}
+					
 					if(rdbtnSimple.isSelected()) {
 					frmSettings.setVisible(false);
 					game.start();
