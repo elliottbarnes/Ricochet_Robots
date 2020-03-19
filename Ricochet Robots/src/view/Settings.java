@@ -138,28 +138,18 @@ public class Settings extends JFrame implements ActionListener {
 		
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(chckbxPlayer1.isSelected()) {
-					sc.setPlayerNumber(1);
-					setPlayer1(true);
-					game.start();
+				
+				if((chckbxPlayer1.isSelected() || chckbxPlayer2.isSelected() || chckbxPlayer3.isSelected() || chckbxPlayer4.isSelected())&&(rdbtnEasy.isSelected() || rdbtnDifficult.isSelected())&&(rdbtnSimple.isSelected() || rdbtnComplex.isSelected())&&(rdbtnEnable.isSelected() || rdbtnDisable.isSelected())&&(rdbtnClassic.isSelected() || rdbtnVivid.isSelected() || rdbtnUltraVision.isSelected())){
+					if(rdbtnSimple.isSelected()) {
 					frmSettings.setVisible(false);
-				}else if(chckbxPlayer2.isSelected()){
-					sc.setPlayerNumber(2);
-					setPlayer2(true);
 					game.start();
-					frmSettings.setVisible(false);
-				}else if(chckbxPlayer3.isSelected()) {
-					sc.setPlayerNumber(3);
-					setPlayer3(true);
-					game.start();
-					frmSettings.setVisible(false);
-				}else if(chckbxPlayer4.isSelected()){
-					sc.setPlayerNumber(4);
-					setPlayer4(true);
-					game.start();
-					frmSettings.setVisible(false);
-				}else {
-					JOptionPane.showMessageDialog(frmSettings, "One player must be selected");
+					}
+					if(rdbtnComplex.isSelected()) {
+						frmSettings.setVisible(false);	
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(frmSettings, "Each setting must be selected");
 				}
 				
 			}
