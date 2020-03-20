@@ -151,6 +151,9 @@ public class Settings extends JFrame implements ActionListener {
 					if(chckbxPlayer4.isSelected()) {
 						sc.setPlayer4(true);
 					}
+					if(rdbtnClassic.isSelected()) {sc.setClassic(true);}
+					if(rdbtnVivid.isSelected()) {sc.setVision(true);}
+					if(rdbtnUltraVision.isSelected()) {sc.setVision(true);}
 					
 					if(rdbtnSimple.isSelected()) {
 						frmSettings.setVisible(false);
@@ -158,6 +161,12 @@ public class Settings extends JFrame implements ActionListener {
 					}
 					if(rdbtnComplex.isSelected()) {
 						frmSettings.setVisible(false);	
+					}
+					if(rdbtnEnable.isSelected()) {
+						sc.setHintsEnabled(true);
+					}
+					if(rdbtnDisable.isSelected()) {
+						sc.setHintsEnabled(false);
 					}
 				}
 				else {

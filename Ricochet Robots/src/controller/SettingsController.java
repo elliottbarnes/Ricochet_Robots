@@ -1,11 +1,10 @@
 package controller;
-import java.awt.*;
 
 
-public class SettingsController {
+public class SettingsController extends ColorPalette{
 	
 	int playerNumber, playerCount;
-	Color boardColor;
+	boolean Classic, vision, vivid;
 	Difficulty difficultyType;
 	boolean hintsEnabled;
 	boolean player1, player2, player3, player4;
@@ -79,16 +78,33 @@ public class SettingsController {
 	}
 	
 	/*
-	 * Getter/Setter for BoardColor
+	 * Getter/Setter for Color
 	 */
-
-	public Color getBoardColor() {
-		return boardColor;
+	
+	public boolean isClassic() {
+		return Classic;
 	}
 
-	public void setBoardColor(Color boardColor) {
-		this.boardColor = boardColor;
+	public void setClassic(boolean classic) {
+		Classic = classic;
 	}
+
+	public boolean isVision() {
+		return vision;
+	}
+
+	public void setVision(boolean vision) {
+		this.vision = vision;
+	}
+
+	public boolean isVivid() {
+		return vivid;
+	}
+
+	public void setVivid(boolean vivid) {
+		this.vivid = vivid;
+	}
+
 
 	/*
 	 * Getter/Setter for PlayerNumber

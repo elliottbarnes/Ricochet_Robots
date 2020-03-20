@@ -17,11 +17,11 @@ public class GameGUI extends JFrame implements MouseListener {
 	
 	private JFrame frmTakeTurn;
 	private Canvas canvas;
-	private JButton btnP1, btnP2, btnP3, btnP4;
+	private JButton btnP1, btnP2, btnP3, btnP4, btnHint;
 	private GameTimer gameTmr;
 	private JTextField textField;
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
-	private JPanel leftPanel, rightPanel;
+	private JPanel leftPanel, rightPanel, bottomPanel;
 	private boolean flag;
 	private static int Xcoord, Ycoord;
 	private BidController bidController;
@@ -76,22 +76,22 @@ public class GameGUI extends JFrame implements MouseListener {
 		btnBid.setBounds(52, 299, 89, 23);
 		rightPanel.add(btnBid);
 		
-		JButton btnP1 = new JButton("P1");
+		btnP1 = new JButton("P1");
 		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP1.setBounds(32, 188, 45, 23);
 		rightPanel.add(btnP1);
 		
-		JButton btnP2 = new JButton("P2");
+		btnP2 = new JButton("P2");
 		btnP2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP2.setBounds(32, 222, 45, 23);
 		rightPanel.add(btnP2);
 		
-		JButton btnP3 = new JButton("P3");
+		btnP3 = new JButton("P3");
 		btnP3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP3.setBounds(112, 188, 45, 23);
 		rightPanel.add(btnP3);
 		
-		JButton btnP4 = new JButton("P4");
+		btnP4 = new JButton("P4");
 		btnP4.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnP4.setBounds(112, 222, 45, 23);
 		rightPanel.add(btnP4);
@@ -141,13 +141,38 @@ public class GameGUI extends JFrame implements MouseListener {
 		rightPanel.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnHint = new JButton("HINT");
+		btnHint = new JButton("HINT");
 		btnHint.setBounds(52, 11, 89, 23);
 		rightPanel.add(btnHint);
 		
+		if(sc.isHintsEnabled()) {
+			btnHint.setVisible(true);
+			btnHint.setEnabled(true);
+		}else {
+			btnHint.setVisible(false);
+			btnHint.setEnabled(false);
+		}
+		
+		//Bottom Panel
+		
+		bottomPanel = new JPanel();
+		
+		bottomPanel.setLocation(0, 600);
+		frmTakeTurn.getContentPane().add(bottomPanel);
+		bottomPanel.setSize(800, 200);
+		bottomPanel.setLayout(null);
+		
+		//End of frame
+		//trying ColorPalette
+		if(sc.isClassic()) {
+			bottomPanel.setBackground(sc.classic1);
+		}else if(sc.isVision()) {
+			bottomPanel.setBackground(sc.visionI1);
+		}else if(sc.isVivid()) {
+			bottomPanel.setBackground(sc.vivid1);
+		}
 		
 		frmTakeTurn.setVisible(true);
-		
 		
 		//All buttons' action listeners
 		
@@ -234,7 +259,7 @@ public class GameGUI extends JFrame implements MouseListener {
 	}
 	public void Timer() {
 		gameTmr = new GameTimer();
-		gameTmr.setBounds(67, 46, 58, 58);
+		gameTmr.setBounds(67, 46, 58, 100);
 		frmTakeTurn.getContentPane().add(gameTmr);
 		
 		rightPanel.add(gameTmr);
