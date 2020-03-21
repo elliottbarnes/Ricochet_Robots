@@ -66,7 +66,6 @@ public class GameGUI extends JFrame implements MouseListener {
 		//Right Panel
 		
 		rightPanel = new JPanel();
-		rightPanel.setBackground(Color.GREEN);
 		rightPanel.setLocation(600, 0);
 		frmTakeTurn.getContentPane().add(rightPanel);
 		rightPanel.setSize(184, 600);
@@ -165,11 +164,12 @@ public class GameGUI extends JFrame implements MouseListener {
 		//End of frame
 		//trying ColorPalette
 		if(sc.isClassic()) {
-			bottomPanel.setBackground(sc.classic1);
+			bottomPanel.setBackground(sc.normal1);
+			rightPanel.setBackground(sc.normal2);
 		}else if(sc.isVision()) {
-			bottomPanel.setBackground(sc.visionI1);
+//			bottomPanel.setBackground(sc.visionI1);
 		}else if(sc.isVivid()) {
-			bottomPanel.setBackground(sc.vivid1);
+//			bottomPanel.setBackground(sc.vivid1);
 		}
 		
 		frmTakeTurn.setVisible(true);

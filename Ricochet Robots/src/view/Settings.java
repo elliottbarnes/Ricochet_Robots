@@ -152,7 +152,7 @@ public class Settings extends JFrame implements ActionListener {
 						sc.setPlayer4(true);
 					}
 					if(rdbtnClassic.isSelected()) {sc.setClassic(true);}
-					if(rdbtnVivid.isSelected()) {sc.setVision(true);}
+					if(rdbtnVivid.isSelected()) {sc.setVivid(true);}
 					if(rdbtnUltraVision.isSelected()) {sc.setVision(true);}
 					
 					if(rdbtnSimple.isSelected()) {

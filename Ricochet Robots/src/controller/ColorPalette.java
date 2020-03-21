@@ -3,35 +3,26 @@ import java.awt.*;
 
 public abstract class ColorPalette {
 	
-	public Color classic1,classic2,classic3, vivid1, vivid2,vivid3, visionI1,visionI2,visionI3;
+	public Color normal1, normal2, normal3, normal4,
+	deut1, deut2, deut3, deut4,
+	prot1, prot2, prot3, prot4,
+	trit1, trit2, trit3, trit4;
 	
-	public void ClassicPalette() {
-		
-		classic1 = Color.decode("#A7414A"); //darkRed
-		classic2 = Color.decode("#6A8A82"); //grayCyan
-		classic3 = Color.decode("282726"); //black
-		
+	
+	public void Normal() {
+		normal1 = Color.decode("0000c1"); //blue
 	}
 	
-	public void VisionPalette() {
-		
-//		visionI1 = Color.decode("EED971FF"); //orangeYellow
-//		visionI2 = Color.decode("FFBE7BFF"); //paleOrange
-//		visionI3 = Color.decode("FFA351FF"); //darkOrange
-
+	public void Deut() {
+		deut1 = Color.decode(""); //blue deut
 	}
 	
-	public void VividPalette() {
-		
-		vivid1 = Color.decode("#D91D81"); //vividCerise
-		vivid2 = Color.decode("#FFE302"); //vividYellow
-		vivid3 = Color.decode("#00AAEE"); //vividCerulean
+	public void Prot() {
 		
 	}
 
-	public ColorPalette() {
-		ClassicPalette();
-		VisionPalette();
-		VividPalette();
+	
+	public void Trit() {
+		Normal();
 	}
 }
