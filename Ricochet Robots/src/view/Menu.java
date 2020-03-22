@@ -1,16 +1,15 @@
 package view;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+import controller.*;
 
 public class Menu extends JFrame implements ActionListener {
 
 	private JFrame frmRicochetRobots;
 	public Menu() {
-
+		
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/Background.jpg"));
 	    
 		frmRicochetRobots = new JFrame();
@@ -42,6 +41,15 @@ public class Menu extends JFrame implements ActionListener {
 		frmRicochetRobots.getContentPane().add(btnLoadGame);
 		btnLoadGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					SaveData data = (SaveData) ResourceManager.load("1.save");
+					
+				}
+				catch(Exception ex) {
+					System.out.println("Unable to load save data: "+ ex.getMessage());
+				}
+				
 			}
 		});
 		

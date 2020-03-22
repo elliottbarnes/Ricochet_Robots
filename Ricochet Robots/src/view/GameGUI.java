@@ -2,6 +2,7 @@ package view;
 
 import java.awt.*;
 
+
 import javax.swing.*;
 
 import controller.*;
@@ -28,6 +29,8 @@ public class GameGUI extends JFrame implements MouseListener {
 	private int player;
 	private SettingsController  sc;
 	
+	
+	
 	public GameGUI() {
 		Display();
 	}
@@ -42,6 +45,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		//Creating all frames and dividing the screen
 		frmTakeTurn = new JFrame();
+		makeMenuBar(frmTakeTurn);
 		frmTakeTurn.setResizable(false);
 		frmTakeTurn.setLocationRelativeTo(null);
 
@@ -49,6 +53,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		frmTakeTurn.setBounds(100, 100, 800, 700);
 		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTakeTurn.getContentPane().setLayout(null);
+		
 		
 		//Left Panel
 		
@@ -230,6 +235,45 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 	}
 	
+	public void makeMenuBar(JFrame frame){
+				//menu bar
+				JMenuBar menubar = new JMenuBar();
+				
+				
+				JMenu fileMenu = new JMenu("Game Menu");
+				menubar.add(fileMenu);
+				
+				JMenuItem saveItem = new  JMenuItem("Save Game");
+				fileMenu.add(saveItem);
+				
+				saveItem.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						SaveData data = new SaveData();
+						
+						try {
+							ResourceManager.save(data,  "1.save");
+						} 
+						catch(Exception ex) {
+							System.out.println("Unable to save: "+ ex.getMessage());
+						}
+						
+				}
+				});
+				
+				JMenuItem manItem = new JMenuItem("Manual");
+				fileMenu.add(manItem);
+				manItem.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						new Help();
+					}
+				});
+				
+				JMenuItem hintItem = new JMenuItem("Hint");
+				fileMenu.add(hintItem);
+				
+				frame.setJMenuBar(menubar);
+	}
+	
 	private void setBid(String player, JLabel lbl) {
 		String bidValue = textField.getText();
 		int playersBid = Integer.parseInt(bidValue);
@@ -264,6 +308,13 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		rightPanel.add(gameTmr);
 	}
+	
+	/*
+	 * Save/Load function
+	 */
+	
+	
+	
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
