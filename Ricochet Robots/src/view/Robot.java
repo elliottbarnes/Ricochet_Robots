@@ -22,35 +22,34 @@ public class Robot extends GameObject{
 	boolean flag = false;
 	@Override
 	public void tick() {
+		
 		x += velX;
 		y += velY;
 		
-//		x= Game.clamp(x, 9, Game.WIDTH -46);
-//		y= Game.clamp(y, 9, Game.HEIGTH-46);
-//		collision();
+		x= GameBoard.clamp(x, 9, GameBoard.WIDTH -46);
+		y= GameBoard.clamp(y, 9, GameBoard.HEIGHT-46);
+		
+		if(collision()) {
+			System.out.println("Collision");
+		}
+		
 	}
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, width, height);
 	}
 	
-	public void collision(){
+	public boolean collision(){
 		
 		for(int i=0; i<handler.object.size(); i++) {
 			GameObject go = handler.object.get(i);
 			if(go.getId() == ID.Barrier) {
 				if(getBounds().intersects(go.getBounds())) {
-					int dx = go.getX()-x;
-					int dy = go.getY()-y;
-					int ox = (width/2)+(go.getWidth()/2)-dx;
-					int oy = (height/2)+(go.getHeight()/2)-dy;
-//					x+=ox;
-//					y+=oy;
-					velX=0;
-					velY=0;
+					flag = true;
 				}
 			}
 		}
+		return flag;
 	} 
 	
 	@Override

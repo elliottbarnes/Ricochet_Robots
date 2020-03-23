@@ -28,8 +28,7 @@ public class GameGUI extends JFrame implements MouseListener {
 	private BidController bidController;
 	private int player;
 	private SettingsController  sc;
-	
-	
+	private Handler handler;
 	
 	public GameGUI() {
 		Display();
@@ -39,7 +38,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		//All classes needed in this class
 		sc = (SettingsController) Settings.object();
 		bidController = new BidController();
-		
+		handler = new Handler();
 		
 		flag = false;
 		
@@ -166,6 +165,22 @@ public class GameGUI extends JFrame implements MouseListener {
 		bottomPanel.setSize(800, 200);
 		bottomPanel.setLayout(null);
 		
+		JButton btnUp = new JButton("UP");
+		btnUp.setBounds(25, 11, 89, 23);
+		bottomPanel.add(btnUp);
+		
+		JButton btnDown = new JButton("Down");
+		btnDown.setBounds(135, 11, 89, 23);
+		bottomPanel.add(btnDown);
+		
+		JButton btnRight = new JButton("Right");
+		btnRight.setBounds(242, 11, 89, 23);
+		bottomPanel.add(btnRight);
+		
+		JButton btnLeft = new JButton("Left");
+		btnLeft.setBounds(349, 11, 89, 23);
+		bottomPanel.add(btnLeft);
+		
 		//End of frame
 		
 		frmTakeTurn.setVisible(true);
@@ -221,6 +236,59 @@ public class GameGUI extends JFrame implements MouseListener {
 				setPlayer(4);
 				textField.setVisible(true);
 				textField.setEnabled(true);
+			}
+		});
+		
+		btnUp.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0; i<handler.object.size(); i++) {
+					GameObject gm = handler.object.get(i);
+					if(gm.getId() == ID.Robot) {
+						gm.tick();
+						gm.setVelY(-5);
+						gm.setVelX(0);
+					}
+				}
+			}
+		});
+		
+		btnDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0; i<handler.object.size(); i++) {
+					GameObject gm = handler.object.get(i);
+					if(gm.getId() == ID.Robot) {
+						gm.tick();
+						gm.setVelY(5);
+						gm.setVelX(0);
+					}
+				}
+			}
+		});
+		
+		btnRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0; i<handler.object.size(); i++) {
+					GameObject gm = handler.object.get(i);
+					if(gm.getId() == ID.Robot) {
+						gm.tick();
+						gm.setVelX(5);
+						gm.setVelY(0);
+					}
+				}
+			}
+		});
+		
+		btnLeft.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0; i<handler.object.size(); i++) {
+					GameObject gm = handler.object.get(i);
+					if(gm.getId() == ID.Robot) {
+						gm.tick();
+						gm.setVelX(-5);
+						gm.setVelX(0);
+					}
+				}
 			}
 		});
 		
@@ -374,5 +442,9 @@ public class GameGUI extends JFrame implements MouseListener {
 	
 	public Canvas getCanvas() {
 		return canvas;
+	}
+	
+	public void setHandler(Handler handler) {
+		this.handler = handler;
 	}
 }

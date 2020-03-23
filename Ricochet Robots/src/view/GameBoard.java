@@ -17,7 +17,6 @@ public class GameBoard implements Runnable{
 	
 	public GameBoard() { 
 		handler = new Handler();
-		
 		handler.addObject(new Barrier(0, 0, 8, 600, ID.Barrier));
 		handler.addObject(new Barrier(0, 0, 600, 8, ID.Barrier));
 		handler.addObject(new Barrier(584, 0, 8, 600, ID.Barrier));
@@ -114,6 +113,7 @@ public class GameBoard implements Runnable{
 	}
 	private void init() {
 		gameGui = new GameGUI();
+		gameGui.setHandler(handler);
 	}
 	public void run() {
 		init();
@@ -138,6 +138,14 @@ public class GameBoard implements Runnable{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	public static int clamp(int var, int min, int max) {
+		if(var>=max)
+			return var = max;
+		else if(var<=min) 
+			return var = min;
+		else
+			return var;
 	}
 
 }
