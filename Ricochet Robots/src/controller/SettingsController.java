@@ -4,7 +4,7 @@ package controller;
 public class SettingsController extends ColorPalette{
 	
 	int playerNumber, playerCount;
-	boolean Classic, vision, vivid;
+	boolean classic, vision, vivid;
 	Difficulty difficultyType;
 	boolean hintsEnabled;
 	boolean player1, player2, player3, player4;
@@ -82,11 +82,11 @@ public class SettingsController extends ColorPalette{
 	 */
 	
 	public boolean isClassic() {
-		return Classic;
+		return classic;
 	}
 
 	public void setClassic(boolean classic) {
-		Classic = classic;
+		this.classic = classic;
 	}
 
 	public boolean isVision() {

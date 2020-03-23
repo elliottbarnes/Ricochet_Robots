@@ -249,6 +249,21 @@ public class GameGUI extends JFrame implements MouseListener {
 				saveItem.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						SaveData data = new SaveData();
+						data.setBtnP1(btnP1);
+						data.setBtnP2(btnP2);
+						data.setBtnP3(btnP3);
+						data.setBtnP4(btnP4);
+						data.setLblP1(lblP1);
+						data.setLblp1bid(lblp1bid);
+						data.setLblP2(lblP2);
+						data.setLblp2bid(lblp2bid);
+						data.setLblP3(lblP3);
+						data.setLblp3bid(lblp3bid);
+						data.setLblP4(lblP4);
+						data.setLblp4bid(lblp4bid);
+						data.setDifficultyType(sc.getDifficultyType());
+						
+						
 						
 						try {
 							ResourceManager.save(data,  "1.save");
@@ -276,22 +291,30 @@ public class GameGUI extends JFrame implements MouseListener {
 	
 	private void setBid(String player, JLabel lbl) {
 		String bidValue = textField.getText();
-		int playersBid = Integer.parseInt(bidValue);
-		textField.setText("");
-		BidConfirmationPanel.bidConfirmation(bidValue);
-		if(BidConfirmationPanel.isConfirmedBid()) {
-			boolean valid = bidController.newBid(player, playersBid);
-			if(valid) {
-				lbl.setText(bidValue);
-				if(flag == false) {
-					Timer();
-					flag=true;
+		try {
+			int playersBid = Integer.parseInt(bidValue);
+			textField.setText("");
+			BidConfirmationPanel.bidConfirmation(bidValue);
+			if(BidConfirmationPanel.isConfirmedBid()) {
+				boolean valid = bidController.newBid(player, playersBid);
+				if(valid) {
+					lbl.setText(bidValue);
+					if(flag == false) {
+						Timer();
+						flag=true;
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(frmTakeTurn, "A new bid must be less than a previous bid. Please try Again.");
 				}
 			}
-			else {
-				JOptionPane.showMessageDialog(frmTakeTurn, "A new bid must be less than a previous bid. Please try Again.");
-			}
+			
 		}
+		catch (NumberFormatException e) {
+		     //Not an integer
+			JOptionPane.showMessageDialog(frmTakeTurn, "A bid must be a positive integer value.");
+		}
+		
 	}
 
 	public int getPlayer() {
@@ -308,10 +331,6 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		rightPanel.add(gameTmr);
 	}
-	
-	/*
-	 * Save/Load function
-	 */
 	
 	
 	
