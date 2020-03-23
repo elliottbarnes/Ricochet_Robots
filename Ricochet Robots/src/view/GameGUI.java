@@ -167,15 +167,6 @@ public class GameGUI extends JFrame implements MouseListener {
 		bottomPanel.setLayout(null);
 		
 		//End of frame
-		//trying ColorPalette
-		if(sc.isClassic()) {
-			bottomPanel.setBackground(sc.normal1);
-			rightPanel.setBackground(sc.normal2);
-		}else if(sc.isVision()) {
-//			bottomPanel.setBackground(sc.visionI1);
-		}else if(sc.isVivid()) {
-//			bottomPanel.setBackground(sc.vivid1);
-		}
 		
 		frmTakeTurn.setVisible(true);
 		

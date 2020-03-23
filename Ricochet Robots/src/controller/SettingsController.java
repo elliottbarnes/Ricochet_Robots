@@ -4,7 +4,8 @@ package controller;
 public class SettingsController extends ColorPalette{
 	
 	int playerNumber, playerCount;
-	boolean classic, vision, vivid;
+	boolean normal, deuteranope, protanope, tritanope;
+
 	Difficulty difficultyType;
 	boolean hintsEnabled;
 	boolean player1, player2, player3, player4;
@@ -81,28 +82,36 @@ public class SettingsController extends ColorPalette{
 	 * Getter/Setter for Color
 	 */
 	
-	public boolean isClassic() {
-		return classic;
+	public boolean isNormal() {
+		return normal;
 	}
 
-	public void setClassic(boolean classic) {
-		this.classic = classic;
+	public void setNormal(boolean normal) {
+		this.normal = normal;
+	}
+	
+	public boolean isDeuteranope() {
+		return deuteranope;
 	}
 
-	public boolean isVision() {
-		return vision;
+	public void setDeuteranope(boolean deuteranope) {
+		this.deuteranope = deuteranope;
 	}
 
-	public void setVision(boolean vision) {
-		this.vision = vision;
+	public boolean isProtanope() {
+		return protanope;
 	}
 
-	public boolean isVivid() {
-		return vivid;
+	public void setProtanope(boolean protanope) {
+		this.protanope = protanope;
 	}
 
-	public void setVivid(boolean vivid) {
-		this.vivid = vivid;
+	public boolean isTritanope() {
+		return tritanope;
+	}
+
+	public void setTritanope(boolean tritanope) {
+		this.tritanope = tritanope;
 	}
 
 

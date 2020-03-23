@@ -11,7 +11,7 @@ import java.util.*;
 public class Settings extends JFrame implements ActionListener {
 
 	JFrame frmSettings;
-	JRadioButton rdbtnEasy, rdbtnDifficult, rdbtnSimple, rdbtnComplex, rdbtnRG, rdbtnClassic, rdbtnBY, rdbtnEnable, rdbtnDisable;
+	JRadioButton rdbtnEasy, rdbtnDifficult, rdbtnSimple, rdbtnComplex, rdbtnEnable, rdbtnDisable;
 	JCheckBox chckbxPlayer1, chckbxPlayer2, chckboxPlayer3, chckbxPlayer4;
 	static SettingsController sc;
 	
@@ -40,6 +40,24 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnDifficult.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnDifficult.setBounds(246, 202, 109, 23);
 		frmSettings.getContentPane().add(rdbtnDifficult);
+		
+		//Color Buttons
+		
+		JRadioButton rdbtnNormal = new JRadioButton("Normal");
+		rdbtnNormal.setBounds(116, 311, 109, 23);
+		frmSettings.getContentPane().add(rdbtnNormal);
+		
+		JRadioButton rdbtnDeut = new JRadioButton("Deuteranope");
+		rdbtnDeut.setBounds(246, 311, 109, 23);
+		frmSettings.getContentPane().add(rdbtnDeut);
+		
+		JRadioButton rdbtnProt = new JRadioButton("Protanope");
+		rdbtnProt.setBounds(116, 342, 109, 23);
+		frmSettings.getContentPane().add(rdbtnProt);
+		
+		JRadioButton rdbtnTrit = new JRadioButton("Tritanope ");
+		rdbtnTrit.setBounds(246, 342, 109, 23);
+		frmSettings.getContentPane().add(rdbtnTrit);
 		
 		// Board Buttons
 		
@@ -75,23 +93,6 @@ public class Settings extends JFrame implements ActionListener {
 		JLabel lblHint = new JLabel("Hint:");
 		lblHint.setBounds(48, 364, 46, 14);
 		frmSettings.getContentPane().add(lblHint);
-		
-		// Colour Buttons
-		
-		JRadioButton rdbtnUltraVision = new JRadioButton("UltraVision");
-		rdbtnUltraVision.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnUltraVision.setBounds(246, 323, 109, 23);
-		frmSettings.getContentPane().add(rdbtnUltraVision);
-		
-		JRadioButton rdbtnClassic = new JRadioButton("Classic");
-		rdbtnClassic.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnClassic.setBounds(116, 323, 109, 23);
-		frmSettings.getContentPane().add(rdbtnClassic);
-		
-		JRadioButton rdbtnVivid = new JRadioButton("Vivid");
-		rdbtnVivid.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnVivid.setBounds(380, 323, 109, 23);
-		frmSettings.getContentPane().add(rdbtnVivid);
 		
 		// Hints enabled button
 		
@@ -137,7 +138,7 @@ public class Settings extends JFrame implements ActionListener {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if((chckbxPlayer1.isSelected() || chckbxPlayer2.isSelected() || chckbxPlayer3.isSelected() || chckbxPlayer4.isSelected())&&(rdbtnEasy.isSelected() || rdbtnDifficult.isSelected())&&(rdbtnSimple.isSelected() || rdbtnComplex.isSelected())&&(rdbtnEnable.isSelected() || rdbtnDisable.isSelected())&&(rdbtnClassic.isSelected() || rdbtnVivid.isSelected() || rdbtnUltraVision.isSelected())){
+				if((chckbxPlayer1.isSelected() || chckbxPlayer2.isSelected() || chckbxPlayer3.isSelected() || chckbxPlayer4.isSelected())&&(rdbtnEasy.isSelected() || rdbtnDifficult.isSelected())&&(rdbtnSimple.isSelected() || rdbtnComplex.isSelected())&&(rdbtnEnable.isSelected() || rdbtnDisable.isSelected())&&(rdbtnNormal.isSelected() || rdbtnDeut.isSelected() || rdbtnProt.isSelected() || rdbtnTrit.isSelected())){
 					
 					if(chckbxPlayer1.isSelected()) {
 						sc.setPlayer1(true);
@@ -151,9 +152,6 @@ public class Settings extends JFrame implements ActionListener {
 					if(chckbxPlayer4.isSelected()) {
 						sc.setPlayer4(true);
 					}
-					if(rdbtnClassic.isSelected()) {sc.setClassic(true);}
-					if(rdbtnVivid.isSelected()) {sc.setVivid(true);}
-					if(rdbtnUltraVision.isSelected()) {sc.setVision(true);}
 					
 					if(rdbtnSimple.isSelected()) {
 						frmSettings.setVisible(false);
@@ -168,6 +166,10 @@ public class Settings extends JFrame implements ActionListener {
 					if(rdbtnDisable.isSelected()) {
 						sc.setHintsEnabled(false);
 					}
+					if(rdbtnNormal.isSelected()) {sc.setNormal(true);}
+					if(rdbtnDeut.isSelected()) {sc.setDeuteranope(true);;}
+					if(rdbtnProt.isSelected()) {sc.setProtanope(true);;}
+					if(rdbtnTrit.isSelected()) {sc.setTritanope(true);;}
 				}
 				else {
 					JOptionPane.showMessageDialog(frmSettings, "Each setting must be selected");
@@ -249,53 +251,6 @@ public class Settings extends JFrame implements ActionListener {
 			}
 		});
 		
-		rdbtnClassic.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(rdbtnClassic.isSelected()) {
-					
-					rdbtnUltraVision.setSelected(false);
-					rdbtnVivid.setSelected(false);
-				}
-				else {
-					rdbtnUltraVision.setSelected(true);
-					rdbtnVivid.setSelected(true);
-				}
-				
-			}
-		});
-		
-		rdbtnUltraVision.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(rdbtnUltraVision.isSelected()) {
-					
-					rdbtnClassic.setSelected(false);
-					rdbtnVivid.setSelected(false);
-				}
-				else {
-					rdbtnClassic.setSelected(true);
-					rdbtnVivid.setSelected(true);
-				}
-				
-			}
-		});		
-		
-		rdbtnVivid.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(rdbtnVivid.isSelected()) {
-					
-					rdbtnUltraVision.setSelected(false);
-					rdbtnClassic.setSelected(false);
-				}
-				else {
-					rdbtnUltraVision.setSelected(true);
-					rdbtnClassic.setSelected(true);
-				}
-			}
-		});
-		
 		rdbtnEnable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -319,6 +274,51 @@ public class Settings extends JFrame implements ActionListener {
 				}
 			}
 		});
+		
+		rdbtnNormal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnNormal.isSelected()) {
+					rdbtnDeut.setSelected(false);
+					rdbtnProt.setSelected(false);
+					rdbtnTrit.setSelected(false);
+				}else {
+					rdbtnNormal.setSelected(true);
+				}
+			}
+		});
+		rdbtnDeut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnDeut.isSelected()) {
+					rdbtnNormal.setSelected(false);
+					rdbtnProt.setSelected(false);
+					rdbtnTrit.setSelected(false);
+				}else {
+					rdbtnDeut.setSelected(true);
+				}
+			}
+		});
+		rdbtnProt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnProt.isSelected()) {
+					rdbtnNormal.setSelected(false);
+					rdbtnDeut.setSelected(false);
+					rdbtnTrit.setSelected(false);
+				}else {
+					rdbtnProt.setSelected(true);
+				}
+			}
+		});
+		rdbtnTrit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnTrit.isSelected()) {
+					rdbtnNormal.setSelected(false);
+					rdbtnDeut.setSelected(false);
+					rdbtnProt.setSelected(false);
+				}else {
+					rdbtnTrit.setSelected(true);
+				}
+			}
+		});
 
 	}
 
@@ -332,5 +332,4 @@ public class Settings extends JFrame implements ActionListener {
 	public static Object object() {
 		return sc;
 	}
-	
 }
