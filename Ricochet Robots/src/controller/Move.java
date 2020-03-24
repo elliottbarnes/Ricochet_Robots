@@ -1,13 +1,23 @@
 package controller;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-import view.GameGUI;
+import view.*;
 
 public class Move {
+	Handler handler;
+	public Move(Handler handler) {
+		this.handler = handler;
+	}
 	
-	public Move() {
+	public void up() {
+
+	}
+	public void down() {
+		
+	}
+	public void right() {
+		
+	}
+	public void left() {
 		
 	}
 	
