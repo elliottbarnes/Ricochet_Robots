@@ -44,6 +44,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		//Creating all frames and dividing the screen
 		frmTakeTurn = new JFrame();
+		frmTakeTurn.setFont(new Font("Chalkduster", Font.BOLD, 12));
 		makeMenuBar(frmTakeTurn);
 		frmTakeTurn.setResizable(false);
 		frmTakeTurn.setLocationRelativeTo(null);
@@ -330,12 +331,17 @@ public class GameGUI extends JFrame implements MouseListener {
 	public void makeMenuBar(JFrame frame){
 				//menu bar
 				JMenuBar menubar = new JMenuBar();
+				menubar.setFont(new Font("Chalkduster", Font.BOLD, 14));
 				
 				
 				JMenu fileMenu = new JMenu("Game Menu");
+				fileMenu.setHorizontalAlignment(SwingConstants.CENTER);
+				fileMenu.setFont(new Font("Chalkduster", Font.BOLD, 14));
 				menubar.add(fileMenu);
 				
 				JMenuItem saveItem = new  JMenuItem("Save Game");
+				saveItem.setHorizontalAlignment(SwingConstants.CENTER);
+				saveItem.setFont(new Font("Chalkduster", Font.BOLD, 14));
 				fileMenu.add(saveItem);
 				
 				saveItem.addActionListener(new ActionListener() {
@@ -368,6 +374,8 @@ public class GameGUI extends JFrame implements MouseListener {
 				});
 				
 				JMenuItem manItem = new JMenuItem("Manual");
+				manItem.setHorizontalAlignment(SwingConstants.CENTER);
+				manItem.setFont(new Font("Chalkduster", Font.BOLD, 14));
 				fileMenu.add(manItem);
 				manItem.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -376,6 +384,8 @@ public class GameGUI extends JFrame implements MouseListener {
 				});
 				
 				JMenuItem hintItem = new JMenuItem("Hint");
+				hintItem.setHorizontalAlignment(SwingConstants.CENTER);
+				hintItem.setFont(new Font("Chalkduster", Font.BOLD, 14));
 				fileMenu.add(hintItem);
 				
 				frame.setJMenuBar(menubar);

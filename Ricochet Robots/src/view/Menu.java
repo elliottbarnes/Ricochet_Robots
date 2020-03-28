@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import controller.*;
+import javax.swing.border.Border;
 
 public class Menu extends JFrame implements ActionListener {
 
@@ -22,9 +23,12 @@ public class Menu extends JFrame implements ActionListener {
 		
 		//Button Help
 		JButton btnHelp = new JButton("HELP");
-		btnHelp.setBackground(Color.BLACK);
-		btnHelp.setForeground(Color.RED);
+		btnHelp.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		btnHelp.setBackground(new Color(52,101,36));
+		btnHelp.setForeground(new Color(210,170,153));
 		btnHelp.setBounds(149, 309, 200, 50);
+		btnHelp.setOpaque(true);
+		btnHelp.setBorderPainted(false);
 		frmRicochetRobots.getContentPane().add(btnHelp);
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -35,8 +39,11 @@ public class Menu extends JFrame implements ActionListener {
 		
 		//Button Load Game
 		JButton btnLoadGame = new JButton("LOAD GAME");
-		btnLoadGame.setBackground(Color.BLACK);
-		btnLoadGame.setForeground(Color.RED);
+		btnLoadGame.setOpaque(true);
+		btnLoadGame.setBorderPainted(false);
+		btnLoadGame.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		btnLoadGame.setBackground(new Color(52,101,36));
+		btnLoadGame.setForeground(new Color(218,212,94));
 		btnLoadGame.setBounds(149, 248, 200, 50);
 		frmRicochetRobots.getContentPane().add(btnLoadGame);
 		btnLoadGame.addActionListener(new ActionListener() {
@@ -55,8 +62,11 @@ public class Menu extends JFrame implements ActionListener {
 		
 		//Button New Game
 		JButton btnNewGame = new JButton("NEW GAME");
-		btnNewGame.setForeground(Color.RED);
-		btnNewGame.setBackground(Color.BLACK);
+		btnNewGame.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		btnNewGame.setForeground(new Color(109,194,202));
+		btnNewGame.setBackground(new Color(52,101,36));
+		btnNewGame.setOpaque(true);
+		btnNewGame.setBorderPainted(false);
 		btnNewGame.setBounds(149, 187, 200, 50);
 		frmRicochetRobots.getContentPane().add(btnNewGame);
 		btnNewGame.addActionListener(new ActionListener() {
