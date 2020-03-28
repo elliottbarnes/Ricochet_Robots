@@ -70,33 +70,40 @@ public class GameGUI extends JFrame implements MouseListener {
 		//Right Panel
 		
 		rightPanel = new JPanel();
+		rightPanel.setForeground(new Color(51, 204, 255));
 		rightPanel.setLocation(600, 0);
 		frmTakeTurn.getContentPane().add(rightPanel);
 		rightPanel.setSize(184, 600);
 		rightPanel.setLayout(null);
 		
 		JButton btnBid = new JButton("Place Bid");
-		btnBid.setBounds(52, 299, 89, 23);
+		btnBid.setForeground(Color.RED);
+		btnBid.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnBid.setBounds(50, 249, 81, 50);
 		rightPanel.add(btnBid);
 		
 		btnP1 = new JButton("P1");
-		btnP1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnP1.setBounds(32, 188, 45, 23);
+		btnP1.setForeground(new Color(51, 204, 255));
+		btnP1.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnP1.setBounds(32, 137, 45, 23);
 		rightPanel.add(btnP1);
 		
 		btnP2 = new JButton("P2");
-		btnP2.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnP2.setBounds(32, 222, 45, 23);
+		btnP2.setForeground(new Color(102, 102, 255));
+		btnP2.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnP2.setBounds(32, 171, 45, 23);
 		rightPanel.add(btnP2);
 		
 		btnP3 = new JButton("P3");
-		btnP3.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnP3.setBounds(112, 188, 45, 23);
+		btnP3.setForeground(new Color(204, 102, 255));
+		btnP3.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnP3.setBounds(112, 137, 45, 23);
 		rightPanel.add(btnP3);
 		
 		btnP4 = new JButton("P4");
-		btnP4.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnP4.setBounds(112, 222, 45, 23);
+		btnP4.setForeground(new Color(255, 255, 0));
+		btnP4.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnP4.setBounds(112, 171, 45, 23);
 		rightPanel.add(btnP4);
 
 		if(sc.isPlayer1()) {btnP1.setEnabled(true);} else {btnP1.setEnabled(false);}
@@ -105,48 +112,74 @@ public class GameGUI extends JFrame implements MouseListener {
 		if(sc.isPlayer4()) {btnP4.setEnabled(true);} else {btnP4.setEnabled(false);}
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		textField.setEnabled(false);
 		textField.setVisible(false);
-		textField.setBounds(50, 268, 86, 20);
+		textField.setBounds(50, 217, 81, 20);
 		
 		lblP1 = new JLabel("Player 1");
-		lblP1.setBounds(31, 354, 46, 14);
+		lblP1.setForeground(new Color(51, 204, 255));
+		lblP1.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblP1.setBounds(31, 386, 100, 25);
 		rightPanel.add(lblP1);
 		
 		lblP2 = new JLabel("Player 2");
-		lblP2.setBounds(31, 376, 46, 14);
+		lblP2.setForeground(new Color(102, 102, 255));
+		lblP2.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblP2.setBounds(31, 436, 100, 25);
 		rightPanel.add(lblP2);
 		
 		lblP3 = new JLabel("Player 3");
-		lblP3.setBounds(31, 401, 46, 14);
+		lblP3.setForeground(new Color(204, 102, 255));
+		lblP3.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblP3.setBounds(31, 486, 100, 25);
 		rightPanel.add(lblP3);
 		
 		lblP4 = new JLabel("Player 4");
-		lblP4.setBounds(31, 426, 46, 14);
+		lblP4.setForeground(new Color(255, 255, 0));
+		lblP4.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblP4.setBounds(31, 536, 100, 25);
 		rightPanel.add(lblP4);
 		
 		lblp1bid = new JLabel("0");
-		lblp1bid.setBounds(95, 354, 46, 14);
+		lblp1bid.setForeground(new Color(51, 204, 255));
+		lblp1bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp1bid.setBounds(137, 386, 20, 25);
 		rightPanel.add(lblp1bid);
 		
 		lblp2bid = new JLabel("0");
-		lblp2bid.setBounds(95, 376, 46, 14);
+		lblp2bid.setForeground(new Color(102, 102, 255));
+		lblp2bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp2bid.setBounds(137, 436, 20, 25);
 		rightPanel.add(lblp2bid);
 		
 		lblp3bid = new JLabel("0");
-		lblp3bid.setBounds(95, 401, 46, 14);
+		lblp3bid.setForeground(new Color(204, 102, 255));
+		lblp3bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp3bid.setBounds(137, 486, 20, 25);
 		rightPanel.add(lblp3bid);
 		
 		lblp4bid = new JLabel("0");
-		lblp4bid.setBounds(95, 426, 46, 14);
+		lblp4bid.setForeground(new Color(255, 255, 0));
+		lblp4bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp4bid.setBounds(137, 536, 20, 25);
 		rightPanel.add(lblp4bid);
 		
 		rightPanel.add(textField);
 		textField.setColumns(10);
 		
 		btnHint = new JButton("HINT");
+		btnHint.setForeground(new Color(0, 255, 0));
+		btnHint.setBackground(Color.WHITE);
+		btnHint.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnHint.setBounds(52, 11, 89, 23);
 		rightPanel.add(btnHint);
+		
+		JLabel lbl_BIDS = new JLabel("BIDS");
+		lbl_BIDS.setForeground(new Color(128, 0, 0));
+		lbl_BIDS.setFont(new Font("Chalkduster", Font.BOLD, 20));
+		lbl_BIDS.setBounds(67, 322, 60, 35);
+		rightPanel.add(lbl_BIDS);
 		
 		if(sc.isHintsEnabled()) {
 			btnHint.setVisible(true);
@@ -371,7 +404,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		}
 		catch (NumberFormatException e) {
 		     //Not an integer
-			JOptionPane.showMessageDialog(frmTakeTurn, "A bid must be a positive integer value.");
+			JOptionPane.showMessageDialog(frmTakeTurn, "A player must be selected before a bid can be placed (bids must be positive integer values)");
 		}
 		
 	}
