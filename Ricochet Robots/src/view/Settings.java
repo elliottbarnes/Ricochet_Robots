@@ -13,6 +13,7 @@ public class Settings extends JFrame implements ActionListener {
 	JFrame frmSettings;
 	JRadioButton rdbtnEasy, rdbtnDifficult, rdbtnSimple, rdbtnComplex, rdbtnEnable, rdbtnDisable;
 	JCheckBox chckbxPlayer1, chckbxPlayer2, chckboxPlayer3, chckbxPlayer4;
+	JButton btnBack;
 	static SettingsController sc;
 	
 	public Settings() {
@@ -25,8 +26,22 @@ public class Settings extends JFrame implements ActionListener {
 		frmSettings.setBounds(100, 100, 600, 600);
 		frmSettings.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ImageIcon img=new ImageIcon(this.getClass().getResource("/Border.jpg"));
+		// Back Button
 		
+		ImageIcon img=new ImageIcon(this.getClass().getResource("/Border.jpg"));
+		btnBack = new JButton("Back");
+		btnBack.setBackground(Color.white);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Menu();
+				frmSettings.setVisible(false);
+			}
+		});
+		
+		btnBack.setForeground(Color.black);
+		btnBack.setIcon(new ImageIcon(this.getClass().getResource("/Back.png")));
+		btnBack.setBounds(37,11,75,28);
+		frmSettings.getContentPane().add(btnBack);
 		
 		
 		

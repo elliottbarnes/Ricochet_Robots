@@ -24,8 +24,8 @@ public class Menu extends JFrame implements ActionListener {
 		//Button Help
 		JButton btnHelp = new JButton("HELP");
 		btnHelp.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		btnHelp.setBackground(new Color(52,101,36));
-		btnHelp.setForeground(new Color(210,170,153));
+		btnHelp.setBackground(new Color(210,170,153));
+		btnHelp.setForeground(new Color(52,101,36));
 		btnHelp.setBounds(149, 309, 200, 50);
 		btnHelp.setOpaque(true);
 		btnHelp.setBorderPainted(false);
@@ -42,7 +42,7 @@ public class Menu extends JFrame implements ActionListener {
 		btnLoadGame.setOpaque(true);
 		btnLoadGame.setBorderPainted(false);
 		btnLoadGame.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		btnLoadGame.setBackground(new Color(52,101,36));
+		btnLoadGame.setBackground(new Color(210,170,153));
 		btnLoadGame.setForeground(new Color(218,212,94));
 		btnLoadGame.setBounds(149, 248, 200, 50);
 		frmRicochetRobots.getContentPane().add(btnLoadGame);
@@ -64,7 +64,7 @@ public class Menu extends JFrame implements ActionListener {
 		JButton btnNewGame = new JButton("NEW GAME");
 		btnNewGame.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		btnNewGame.setForeground(new Color(109,194,202));
-		btnNewGame.setBackground(new Color(52,101,36));
+		btnNewGame.setBackground(new Color(210,170,153));
 		btnNewGame.setOpaque(true);
 		btnNewGame.setBorderPainted(false);
 		btnNewGame.setBounds(149, 187, 200, 50);
