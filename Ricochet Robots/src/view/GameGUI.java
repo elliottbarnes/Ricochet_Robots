@@ -9,8 +9,6 @@ import controller.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -24,11 +22,11 @@ public class GameGUI extends JFrame implements MouseListener {
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
 	private JPanel leftPanel, rightPanel, bottomPanel;
 	private boolean flag;
-	private static int Xcoord, Ycoord;
 	private BidController bidController;
 	private int player;
 	private SettingsController  sc;
 	private Handler handler;
+	private Move move;
 	
 	public GameGUI() {
 		Display();
@@ -39,6 +37,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		sc = (SettingsController) Settings.object();
 		bidController = new BidController();
 		handler = new Handler();
+		
 		
 		flag = false;
 		
@@ -68,6 +67,8 @@ public class GameGUI extends JFrame implements MouseListener {
 		canvas.setMinimumSize(new Dimension(600,600));
 		leftPanel.add(canvas);
 		
+		
+		
 		//Right Panel
 		
 		rightPanel = new JPanel();
@@ -86,25 +87,25 @@ public class GameGUI extends JFrame implements MouseListener {
 		btnP1 = new JButton("P1");
 		btnP1.setForeground(new Color(89,125,206));
 		btnP1.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		btnP1.setBounds(32, 137, 45, 23);
+		btnP1.setBounds(32, 137, 55, 23);
 		rightPanel.add(btnP1);
 		
 		btnP2 = new JButton("P2");
 		btnP2.setForeground(new Color(210,125,44));
 		btnP2.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		btnP2.setBounds(32, 171, 45, 23);
+		btnP2.setBounds(32, 171, 55, 23);
 		rightPanel.add(btnP2);
 		
 		btnP3 = new JButton("P3");
 		btnP3.setForeground(new Color(133,149,161));
 		btnP3.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		btnP3.setBounds(112, 137, 45, 23);
+		btnP3.setBounds(102, 137, 55, 23);
 		rightPanel.add(btnP3);
 		
 		btnP4 = new JButton("P4");
 		btnP4.setForeground(new Color(109,170,44));
 		btnP4.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		btnP4.setBounds(112, 171, 45, 23);
+		btnP4.setBounds(102, 171, 55, 23);
 		rightPanel.add(btnP4);
 
 		if(sc.isPlayer1()) {btnP1.setEnabled(true);} else {btnP1.setEnabled(false);}
@@ -217,6 +218,22 @@ public class GameGUI extends JFrame implements MouseListener {
 		btnLeft.setBounds(349, 11, 89, 23);
 		bottomPanel.add(btnLeft);
 		
+		JRadioButton rdbtnRobot1 = new JRadioButton("R1");
+		rdbtnRobot1.setBounds(471, 11, 49, 23);
+		bottomPanel.add(rdbtnRobot1);
+		
+		JRadioButton rdbtnRobot2 = new JRadioButton("R2");
+		rdbtnRobot2.setBounds(522, 11, 49, 23);
+		bottomPanel.add(rdbtnRobot2);
+		
+		JRadioButton rdbtnRobot3 = new JRadioButton("R3");
+		rdbtnRobot3.setBounds(581, 11, 49, 23);
+		bottomPanel.add(rdbtnRobot3);
+		
+		JRadioButton rdbtnRobot4 = new JRadioButton("R4");
+		rdbtnRobot4.setBounds(647, 11, 49, 23);
+		bottomPanel.add(rdbtnRobot4);
+		
 		//End of frame
 		
 		frmTakeTurn.setVisible(true);
@@ -275,58 +292,103 @@ public class GameGUI extends JFrame implements MouseListener {
 			}
 		});
 		
+		//BEGIN - Move a robot
+		
 		btnUp.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				for(int i=0; i<handler.object.size(); i++) {
-					GameObject gm = handler.object.get(i);
-					if(gm.getId() == ID.Robot) {
-						gm.tick();
-						gm.setVelY(-5);
-						gm.setVelX(0);
-					}
+				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+					move = new Move(handler);
+					move.up();
+				}else {
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}
+				
 			}
 		});
 		
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i=0; i<handler.object.size(); i++) {
-					GameObject gm = handler.object.get(i);
-					if(gm.getId() == ID.Robot) {
-						gm.tick();
-						gm.setVelY(5);
-						gm.setVelX(0);
-					}
+				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+					move = new Move(handler);
+					move.down();
+				}else {
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}
 			}
 		});
 		
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i=0; i<handler.object.size(); i++) {
-					GameObject gm = handler.object.get(i);
-					if(gm.getId() == ID.Robot) {
-						gm.tick();
-						gm.setVelX(5);
-						gm.setVelY(0);
-					}
+				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+					move = new Move(handler);
+					move.right();
+				}else {
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}
 			}
 		});
 		
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i=0; i<handler.object.size(); i++) {
-					GameObject gm = handler.object.get(i);
-					if(gm.getId() == ID.Robot) {
-						gm.tick();
-						gm.setVelX(-5);
-						gm.setVelX(0);
-					}
+				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+					move = new Move(handler);
+					move.left();
+				}else {
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}
 			}
 		});
+		
+		rdbtnRobot1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnRobot1.isSelected()) {
+					rdbtnRobot2.setSelected(false);
+					rdbtnRobot3.setSelected(false);
+					rdbtnRobot4.setSelected(false);
+				}else {
+					rdbtnRobot1.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnRobot2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnRobot2.isSelected()) {
+					rdbtnRobot1.setSelected(false);
+					rdbtnRobot3.setSelected(false);
+					rdbtnRobot4.setSelected(false);
+				}else {
+					rdbtnRobot2.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnRobot3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnRobot3.isSelected()) {
+					rdbtnRobot2.setSelected(false);
+					rdbtnRobot1.setSelected(false);
+					rdbtnRobot4.setSelected(false);
+				}else {
+					rdbtnRobot3.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnRobot4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnRobot4.isSelected()) {
+					rdbtnRobot2.setSelected(false);
+					rdbtnRobot3.setSelected(false);
+					rdbtnRobot1.setSelected(false);
+				}else {
+					rdbtnRobot4.setSelected(true);
+				}
+			}
+		});
+		
+		//END - Move a robot
 		
 	}
 	
@@ -471,22 +533,6 @@ public class GameGUI extends JFrame implements MouseListener {
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public static int getXcoord() {
-		return Xcoord;
-	}
-
-	public static void setXcoord(int xcoord) {
-		Xcoord = xcoord;
-	}
-
-	public static int getYcoord() {
-		return Ycoord;
-	}
-
-	public static void setYcoord(int ycoord) {
-		Ycoord = ycoord;
 	}
 	
 	public Canvas getCanvas() {

@@ -19,7 +19,7 @@ public class Robot extends GameObject{
 		super(x, y, width, height, id);
 		this.handler = handler; 
 	}
-	boolean flag = false;
+
 	@Override
 	public void tick() {
 		
@@ -29,27 +29,23 @@ public class Robot extends GameObject{
 		x= GameBoard.clamp(x, 9, GameBoard.WIDTH -46);
 		y= GameBoard.clamp(y, 9, GameBoard.HEIGHT-46);
 		
-		if(collision()) {
-			System.out.println("Collision");
-		}
-		
+		collision();
 	}
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, width, height);
 	}
 	
-	public boolean collision(){
+	public void collision(){
 		
 		for(int i=0; i<handler.object.size(); i++) {
 			GameObject go = handler.object.get(i);
 			if(go.getId() == ID.Barrier) {
 				if(getBounds().intersects(go.getBounds())) {
-					flag = true;
+					System.out.println("Collision");
 				}
 			}
 		}
-		return flag;
 	} 
 	
 	@Override

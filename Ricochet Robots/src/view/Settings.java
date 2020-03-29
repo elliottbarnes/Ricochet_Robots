@@ -29,8 +29,8 @@ public class Settings extends JFrame implements ActionListener {
 		// Back Button
 		
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/Border.jpg"));
-		btnBack = new JButton("Back");
-		btnBack.setBackground(Color.white);
+		btnBack = new JButton("Cancel");
+		btnBack.setBackground(new Color(249,112,104));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Menu();
@@ -38,9 +38,10 @@ public class Settings extends JFrame implements ActionListener {
 			}
 		});
 		
-		btnBack.setForeground(Color.black);
+		btnBack.setForeground(Color.BLACK);
+		btnBack.setBorderPainted(false);
 		btnBack.setIcon(new ImageIcon(this.getClass().getResource("/Back.png")));
-		btnBack.setBounds(37,11,75,28);
+		btnBack.setBounds(246,510,93,28);
 		frmSettings.getContentPane().add(btnBack);
 		
 		
@@ -155,10 +156,10 @@ public class Settings extends JFrame implements ActionListener {
 		JButton btnStart = new JButton("START");
 		btnStart.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		btnStart.setForeground(new Color(222,238,214));
-		btnStart.setBackground(new Color(109,170,44));
+		btnStart.setBackground(new Color(113,234,21));
 		btnStart.setOpaque(true);
 		btnStart.setBorderPainted(false);
-		btnStart.setBounds(199, 460, 192, 51);
+		btnStart.setBounds(197, 448, 192, 51);
 		frmSettings.getContentPane().add(btnStart);
 		
 		// Player Checkboxes
