@@ -298,8 +298,20 @@ public class GameGUI extends JFrame implements MouseListener {
 
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+					
 					move = new Move(handler);
-					move.up();
+					if(rdbtnRobot1.isSelected()) {
+						move.up(1);
+					}
+					if(rdbtnRobot2.isSelected()) {
+						move.up(2);
+					}
+					if(rdbtnRobot3.isSelected()) {
+						move.up(3);
+					}
+					if(rdbtnRobot4.isSelected()) {
+						move.up(4);
+					}
 				}else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}
@@ -311,7 +323,18 @@ public class GameGUI extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
 					move = new Move(handler);
-					move.down();
+					if(rdbtnRobot1.isSelected()) {
+						move.down(1);
+					}
+					if(rdbtnRobot2.isSelected()) {
+						move.down(2);
+					}
+					if(rdbtnRobot3.isSelected()) {
+						move.down(3);
+					}
+					if(rdbtnRobot4.isSelected()) {
+						move.down(4);
+					}
 				}else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}
@@ -322,7 +345,18 @@ public class GameGUI extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
 					move = new Move(handler);
-					move.right();
+					if(rdbtnRobot1.isSelected()) {
+						move.right(1);
+					}
+					if(rdbtnRobot2.isSelected()) {
+						move.right(2);
+					}
+					if(rdbtnRobot3.isSelected()) {
+						move.right(3);
+					}
+					if(rdbtnRobot4.isSelected()) {
+						move.right(4);
+					}
 				}else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}
@@ -333,7 +367,18 @@ public class GameGUI extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
 					move = new Move(handler);
-					move.left();
+					if(rdbtnRobot1.isSelected()) {
+						move.left(1);
+					}
+					if(rdbtnRobot2.isSelected()) {
+						move.left(2);
+					}
+					if(rdbtnRobot3.isSelected()) {
+						move.left(3);
+					}
+					if(rdbtnRobot4.isSelected()) {
+						move.left(4);
+					}
 				}else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
 				}

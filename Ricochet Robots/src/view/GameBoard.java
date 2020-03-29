@@ -79,7 +79,11 @@ public class GameBoard implements Runnable{
 		handler.addObject(new Token(377, 487, 28, 28, ID.Token, "13"));
 		handler.addObject(new Token(522, 335, 28, 28, ID.Token, "12"));
 		handler.addObject(new Token(488, 410, 28, 28, ID.Token, "6")); 
+		
 		handler.addObject(new Robot(8, 8, 28, 28, ID.Robot, handler));
+		handler.addObject(new Robot(40, 8, 28, 28, ID.Robot2, handler));
+		handler.addObject(new Robot(74, 8, 28, 28, ID.Robot3, handler));
+		handler.addObject(new Robot(106, 8, 28, 28, ID.Robot4, handler));
 	}
 
 	private void tick() {

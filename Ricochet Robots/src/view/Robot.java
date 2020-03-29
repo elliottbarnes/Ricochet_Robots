@@ -9,9 +9,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import controller.SettingsController;
+
 public class Robot extends GameObject{
 
-
+	private SettingsController  sc;
 
 	BufferedImage img;
 	Handler handler;
@@ -50,13 +52,67 @@ public class Robot extends GameObject{
 	
 	@Override
 	public void render(Graphics g) {
-		try {
-			img = ImageIO.read(this.getClass().getResource("/robot.png"));
-		}catch(IOException e) {
-			e.printStackTrace();
+//		try {
+//			img = ImageIO.read(this.getClass().getResource("/robot.png"));
+//		}catch(IOException e) {
+//			e.printStackTrace();
+//		}
+//		Graphics2D g2d= (Graphics2D) g;
+//		g2d.draw(getBounds());
+//		g.drawImage(img, x, y, width, height, null);
+		sc = (SettingsController) Settings.object();
+		if(sc.isNormal()) {
+			if(id==ID.Robot) {
+				g.setColor(sc.normal1);
+			}else if(id==ID.Robot2) {
+				g.setColor(sc.normal2);
+			}else if(id==ID.Robot3) {
+				g.setColor(sc.normal3);
+			}else if(id==ID.Robot4) {
+				g.setColor(sc.normal4);
+			}
 		}
-		Graphics2D g2d= (Graphics2D) g;
-		g2d.draw(getBounds());
-		g.drawImage(img, x, y, width, height, null);
+		if(sc.isDeuteranope()) {
+			if(id==ID.Robot) {
+				g.setColor(sc.deut1);
+			}else if(id==ID.Robot2) {
+				g.setColor(sc.deut2);
+			}else if(id==ID.Robot3) {
+				g.setColor(sc.deut3);
+			}else if(id==ID.Robot4) {
+				g.setColor(sc.deut4);
+			}
+		}
+		if(sc.isProtanope()) {
+			if(id==ID.Robot) {
+				g.setColor(sc.prot1);
+			}else if(id==ID.Robot2) {
+				g.setColor(sc.prot2);
+			}else if(id==ID.Robot3) {
+				g.setColor(sc.prot3);
+			}else if(id==ID.Robot4) {
+				g.setColor(sc.prot4);
+			}
+		}
+		if(sc.isTritanope()) {
+			if(id==ID.Robot) {
+				g.setColor(sc.trit1);
+			}else if(id==ID.Robot2) {
+				g.setColor(sc.trit2);
+			}else if(id==ID.Robot3) {
+				g.setColor(sc.trit3);
+			}else if(id==ID.Robot4) {
+				g.setColor(sc.trit4);
+			}
+		}
+		g.fillArc(x, y, width, height, 0, 360);
+		String word = "R";
+		if(id==ID.Robot) word = "R1";
+		if(id==ID.Robot2) word = "R2";
+		if(id==ID.Robot3) word = "R3";
+		if(id==ID.Robot4) word = "R4";
+		
+		g.setColor(Color.white);
+		g.drawString(word, x+6, y+17);
 	}
 }
