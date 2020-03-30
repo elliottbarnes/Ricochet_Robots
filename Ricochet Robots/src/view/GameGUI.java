@@ -27,6 +27,7 @@ public class GameGUI extends JFrame implements MouseListener {
 	private SettingsController  sc;
 	private Handler handler;
 	private Move move;
+	private ChangeToken next;
 	private int moves;
 	
 	public GameGUI() {
@@ -38,7 +39,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		sc = (SettingsController) Settings.object();
 		bidController = new BidController();
 		handler = new Handler();
-		
+		next = new ChangeToken();
 		
 		flag = false;
 		
@@ -194,6 +195,10 @@ public class GameGUI extends JFrame implements MouseListener {
 		lblMoveCount.setBounds(102, 82, 46, 14);
 		rightPanel.add(lblMoveCount);
 		
+		JButton btnToken = new JButton("Token");
+		btnToken.setBounds(50, 45, 89, 23);
+		rightPanel.add(btnToken);
+		
 		if(sc.isHintsEnabled()) {
 			btnHint.setVisible(true);
 			btnHint.setEnabled(true);
@@ -319,6 +324,12 @@ public class GameGUI extends JFrame implements MouseListener {
 				setPlayer(4);
 				textField.setVisible(true);
 				textField.setEnabled(true);
+			}
+		});
+		
+		btnToken.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				next.next(handler, frmTakeTurn);
 			}
 		});
 		
