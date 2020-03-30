@@ -27,6 +27,7 @@ public class GameGUI extends JFrame implements MouseListener {
 	private SettingsController  sc;
 	private Handler handler;
 	private Move move;
+	private int moves;
 	
 	public GameGUI() {
 		Display();
@@ -185,6 +186,14 @@ public class GameGUI extends JFrame implements MouseListener {
 		lbl_BIDS.setBounds(67, 322, 60, 35);
 		rightPanel.add(lbl_BIDS);
 		
+		JLabel lblMoves = new JLabel("Moves:");
+		lblMoves.setBounds(32, 82, 46, 14);
+		rightPanel.add(lblMoves);
+		
+		JLabel lblMoveCount = new JLabel("");
+		lblMoveCount.setBounds(102, 82, 46, 14);
+		rightPanel.add(lblMoveCount);
+		
 		if(sc.isHintsEnabled()) {
 			btnHint.setVisible(true);
 			btnHint.setEnabled(true);
@@ -203,36 +212,57 @@ public class GameGUI extends JFrame implements MouseListener {
 		bottomPanel.setLayout(null);
 		
 		JButton btnUp = new JButton("UP");
-		btnUp.setBounds(25, 11, 89, 23);
+		btnUp.setBounds(10, 7, 89, 23);
 		bottomPanel.add(btnUp);
 		
 		JButton btnDown = new JButton("Down");
-		btnDown.setBounds(135, 11, 89, 23);
+		btnDown.setBounds(109, 7, 89, 23);
 		bottomPanel.add(btnDown);
 		
 		JButton btnRight = new JButton("Right");
-		btnRight.setBounds(242, 11, 89, 23);
+		btnRight.setBounds(208, 7, 89, 23);
 		bottomPanel.add(btnRight);
 		
 		JButton btnLeft = new JButton("Left");
-		btnLeft.setBounds(349, 11, 89, 23);
+		btnLeft.setBounds(307, 7, 89, 23);
 		bottomPanel.add(btnLeft);
 		
 		JRadioButton rdbtnRobot1 = new JRadioButton("R1");
-		rdbtnRobot1.setBounds(471, 11, 49, 23);
+		rdbtnRobot1.setBounds(402, 7, 49, 23);
 		bottomPanel.add(rdbtnRobot1);
 		
 		JRadioButton rdbtnRobot2 = new JRadioButton("R2");
-		rdbtnRobot2.setBounds(522, 11, 49, 23);
+		rdbtnRobot2.setBounds(453, 7, 49, 23);
 		bottomPanel.add(rdbtnRobot2);
 		
 		JRadioButton rdbtnRobot3 = new JRadioButton("R3");
-		rdbtnRobot3.setBounds(581, 11, 49, 23);
+		rdbtnRobot3.setBounds(504, 7, 49, 23);
 		bottomPanel.add(rdbtnRobot3);
 		
 		JRadioButton rdbtnRobot4 = new JRadioButton("R4");
-		rdbtnRobot4.setBounds(647, 11, 49, 23);
+		rdbtnRobot4.setBounds(557, 7, 49, 23);
 		bottomPanel.add(rdbtnRobot4);
+		
+		JRadioButton rdbtnP1 = new JRadioButton("P1");
+		rdbtnP1.setBounds(608, 7, 37, 23);
+		bottomPanel.add(rdbtnP1);
+		
+		JRadioButton rdbtnP2 = new JRadioButton("P2");
+		rdbtnP2.setBounds(650, 7, 37, 23);
+		bottomPanel.add(rdbtnP2);
+		
+		JRadioButton rdbtnP3 = new JRadioButton("P3");
+		rdbtnP3.setBounds(689, 7, 37, 23);
+		bottomPanel.add(rdbtnP3);
+		
+		JRadioButton rdbtnP4 = new JRadioButton("P4");
+		rdbtnP4.setBounds(728, 7, 37, 23);
+		bottomPanel.add(rdbtnP4);
+		
+		if(sc.isPlayer1()) {rdbtnP1.setEnabled(true);} else {rdbtnP1.setEnabled(false);}
+		if(sc.isPlayer2()) {rdbtnP2.setEnabled(true);} else {rdbtnP2.setEnabled(false);}
+		if(sc.isPlayer3()) {rdbtnP3.setEnabled(true);} else {rdbtnP3.setEnabled(false);}
+		if(sc.isPlayer4()) {rdbtnP4.setEnabled(true);} else {rdbtnP4.setEnabled(false);}
 		
 		//End of frame
 		
@@ -300,6 +330,8 @@ public class GameGUI extends JFrame implements MouseListener {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
 					
 					move = new Move(handler);
+					moves +=1;
+					lblMoveCount.setText(""+moves+"");
 					if(rdbtnRobot1.isSelected()) {
 						move.up(1);
 					}
@@ -323,6 +355,8 @@ public class GameGUI extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
 					move = new Move(handler);
+					moves +=1;
+					lblMoveCount.setText(""+moves+"");
 					if(rdbtnRobot1.isSelected()) {
 						move.down(1);
 					}
@@ -345,6 +379,8 @@ public class GameGUI extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
 					move = new Move(handler);
+					moves +=1;
+					lblMoveCount.setText(""+moves+"");
 					if(rdbtnRobot1.isSelected()) {
 						move.right(1);
 					}
@@ -367,6 +403,8 @@ public class GameGUI extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
 					move = new Move(handler);
+					moves +=1;
+					lblMoveCount.setText(""+moves+"");
 					if(rdbtnRobot1.isSelected()) {
 						move.left(1);
 					}
@@ -429,6 +467,62 @@ public class GameGUI extends JFrame implements MouseListener {
 					rdbtnRobot1.setSelected(false);
 				}else {
 					rdbtnRobot4.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnP1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnP1.isSelected()) {
+					lblMoveCount.setText("0");
+					moves = 0;
+					rdbtnP2.setSelected(false);
+					rdbtnP3.setSelected(false);
+					rdbtnP4.setSelected(false);
+				}else {
+					rdbtnP1.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnP2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnP2.isSelected()) {
+					lblMoveCount.setText("0");
+					moves = 0;
+					rdbtnP1.setSelected(false);
+					rdbtnP3.setSelected(false);
+					rdbtnP4.setSelected(false);
+				}else {
+					rdbtnP2.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnP3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnP3.isSelected()) {
+					lblMoveCount.setText("0");
+					moves = 0;
+					rdbtnP2.setSelected(false);
+					rdbtnP1.setSelected(false);
+					rdbtnP4.setSelected(false);
+				}else {
+					rdbtnP3.setSelected(true);
+				}
+			}
+		});
+		
+		rdbtnP4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnP4.isSelected()) {
+					lblMoveCount.setText("0");
+					moves = 0;
+					rdbtnP2.setSelected(false);
+					rdbtnP3.setSelected(false);
+					rdbtnP1.setSelected(false);
+				}else {
+					rdbtnP4.setSelected(true);
 				}
 			}
 		});
