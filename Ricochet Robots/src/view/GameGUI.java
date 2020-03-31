@@ -81,31 +81,31 @@ public class GameGUI extends JFrame implements MouseListener {
 		rightPanel.setLayout(null);
 		
 		JButton btnBid = new JButton("Place Bid");
-		btnBid.setForeground(new Color(133,76,48));
+		btnBid.setForeground(new Color(75,0,146));
 		btnBid.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnBid.setBounds(50, 249, 81, 50);
 		rightPanel.add(btnBid);
 		
 		btnP1 = new JButton("P1");
-		btnP1.setForeground(new Color(89,125,206));
+		btnP1.setForeground(new Color(230,97,0));
 		btnP1.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnP1.setBounds(32, 137, 55, 23);
 		rightPanel.add(btnP1);
 		
 		btnP2 = new JButton("P2");
-		btnP2.setForeground(new Color(210,125,44));
+		btnP2.setForeground(new Color(93,58,155));
 		btnP2.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnP2.setBounds(32, 171, 55, 23);
 		rightPanel.add(btnP2);
 		
 		btnP3 = new JButton("P3");
-		btnP3.setForeground(new Color(133,149,161));
+		btnP3.setForeground(new Color(26,133,255));
 		btnP3.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnP3.setBounds(102, 137, 55, 23);
 		rightPanel.add(btnP3);
 		
 		btnP4 = new JButton("P4");
-		btnP4.setForeground(new Color(109,170,44));
+		btnP4.setForeground(new Color(212,17,89));
 		btnP4.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnP4.setBounds(102, 171, 55, 23);
 		rightPanel.add(btnP4);
@@ -122,49 +122,49 @@ public class GameGUI extends JFrame implements MouseListener {
 		textField.setBounds(50, 217, 81, 20);
 		
 		lblP1 = new JLabel("Player 1");
-		lblP1.setForeground(new Color(89,125,206));
+		lblP1.setForeground(new Color(230,97,0));
 		lblP1.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblP1.setBounds(31, 386, 100, 25);
 		rightPanel.add(lblP1);
 		
 		lblP2 = new JLabel("Player 2");
-		lblP2.setForeground(new Color(210,125,44));
+		lblP2.setForeground(new Color(93,58,155));
 		lblP2.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblP2.setBounds(31, 436, 100, 25);
 		rightPanel.add(lblP2);
 		
 		lblP3 = new JLabel("Player 3");
-		lblP3.setForeground(new Color(133,149,161));
+		lblP3.setForeground(new Color(26,133,255));
 		lblP3.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblP3.setBounds(31, 486, 100, 25);
 		rightPanel.add(lblP3);
 		
 		lblP4 = new JLabel("Player 4");
-		lblP4.setForeground(new Color(109,170,44));
+		lblP4.setForeground(new Color(212,17,89));
 		lblP4.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblP4.setBounds(31, 536, 100, 25);
 		rightPanel.add(lblP4);
 		
 		lblp1bid = new JLabel("0");
-		lblp1bid.setForeground(new Color(89,125,206));
+		lblp1bid.setForeground(new Color(230,97,0));
 		lblp1bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp1bid.setBounds(137, 386, 20, 25);
 		rightPanel.add(lblp1bid);
 		
 		lblp2bid = new JLabel("0");
-		lblp2bid.setForeground(new Color(210,125,44));
+		lblp2bid.setForeground(new Color(93,58,155));
 		lblp2bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp2bid.setBounds(137, 436, 20, 25);
 		rightPanel.add(lblp2bid);
 		
 		lblp3bid = new JLabel("0");
-		lblp3bid.setForeground(new Color(133,149,161));
+		lblp3bid.setForeground(new Color(26,133,255));
 		lblp3bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp3bid.setBounds(137, 486, 20, 25);
 		rightPanel.add(lblp3bid);
 		
 		lblp4bid = new JLabel("0");
-		lblp4bid.setForeground(new Color(109,170,44));
+		lblp4bid.setForeground(new Color(212,17,89));
 		lblp4bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp4bid.setBounds(137, 536, 20, 25);
 		rightPanel.add(lblp4bid);
@@ -173,30 +173,30 @@ public class GameGUI extends JFrame implements MouseListener {
 		textField.setColumns(10);
 		
 		btnHint = new JButton("HINT");
-		btnHint.setForeground(new Color(210,170,153));
-		btnHint.setBackground(new Color(222,238,214));
-		btnHint.setOpaque(true);
-		btnHint.setBorderPainted(false);
+		btnHint.setForeground(new Color(26,255,26));
 		btnHint.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnHint.setBounds(52, 11, 89, 23);
 		rightPanel.add(btnHint);
 		
 		JLabel lbl_BIDS = new JLabel("BIDS");
-		lbl_BIDS.setForeground(new Color(109,194,202));
+		lbl_BIDS.setForeground(new Color(220,50,32));
 		lbl_BIDS.setFont(new Font("Chalkduster", Font.BOLD, 20));
 		lbl_BIDS.setBounds(67, 322, 60, 35);
 		rightPanel.add(lbl_BIDS);
 		
 		JLabel lblMoves = new JLabel("Moves:");
-		lblMoves.setBounds(32, 82, 46, 14);
+		lblMoves.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		lblMoves.setBounds(32, 75, 50, 20);
 		rightPanel.add(lblMoves);
 		
 		JLabel lblMoveCount = new JLabel("");
-		lblMoveCount.setBounds(102, 82, 46, 14);
+		lblMoveCount.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		lblMoveCount.setBounds(102, 75, 46, 20);
 		rightPanel.add(lblMoveCount);
 		
 		JButton btnToken = new JButton("Token");
-		btnToken.setBounds(50, 45, 89, 23);
+		btnToken.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnToken.setBounds(50, 100, 89, 23);
 		rightPanel.add(btnToken);
 		
 		if(sc.isHintsEnabled()) {
@@ -217,51 +217,114 @@ public class GameGUI extends JFrame implements MouseListener {
 		bottomPanel.setLayout(null);
 		
 		JButton btnUp = new JButton("UP");
-		btnUp.setBounds(10, 7, 89, 23);
+		btnUp.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		btnUp.setBounds(10, 7, 75, 30);
 		bottomPanel.add(btnUp);
 		
 		JButton btnDown = new JButton("Down");
-		btnDown.setBounds(109, 7, 89, 23);
+		btnDown.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		btnDown.setBounds(90, 7, 75, 30);
 		bottomPanel.add(btnDown);
 		
 		JButton btnRight = new JButton("Right");
-		btnRight.setBounds(208, 7, 89, 23);
+		btnRight.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		btnRight.setBounds(250, 7, 75, 30);
 		bottomPanel.add(btnRight);
 		
 		JButton btnLeft = new JButton("Left");
-		btnLeft.setBounds(307, 7, 89, 23);
+		btnLeft.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		btnLeft.setBounds(170, 7, 75, 30);
 		bottomPanel.add(btnLeft);
 		
 		JRadioButton rdbtnRobot1 = new JRadioButton("R1");
-		rdbtnRobot1.setBounds(402, 7, 49, 23);
+		rdbtnRobot1.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		rdbtnRobot1.setBounds(350, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot1);
 		
 		JRadioButton rdbtnRobot2 = new JRadioButton("R2");
-		rdbtnRobot2.setBounds(453, 7, 49, 23);
+		rdbtnRobot2.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		rdbtnRobot2.setBounds(400, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot2);
 		
 		JRadioButton rdbtnRobot3 = new JRadioButton("R3");
-		rdbtnRobot3.setBounds(504, 7, 49, 23);
+		rdbtnRobot3.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		rdbtnRobot3.setBounds(450, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot3);
 		
 		JRadioButton rdbtnRobot4 = new JRadioButton("R4");
-		rdbtnRobot4.setBounds(557, 7, 49, 23);
+		rdbtnRobot4.setFont(new Font("Chalkduster", Font.BOLD, 10));
+		rdbtnRobot4.setBounds(500, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot4);
 		
+		//set color of robot buttons with the color of it's robot
+		
+		if(sc.isNormal()) {
+			
+			rdbtnRobot1.setForeground(sc.normal1);
+		
+			rdbtnRobot2.setForeground(sc.normal2);
+		
+			rdbtnRobot3.setForeground(sc.normal3);
+		
+			rdbtnRobot4.setForeground(sc.normal4);
+			
+		}
+		if(sc.isDeuteranope()) {
+		
+			rdbtnRobot1.setForeground(sc.deut1);
+		
+			rdbtnRobot2.setForeground(sc.deut2);
+		
+			rdbtnRobot3.setForeground(sc.deut3);
+		
+			rdbtnRobot4.setForeground(sc.deut4);
+		
+		}
+		if(sc.isProtanope()) {
+			
+			rdbtnRobot1.setForeground(sc.prot1);
+		
+			rdbtnRobot2.setForeground(sc.prot2);
+		
+			rdbtnRobot3.setForeground(sc.prot3);
+		
+			rdbtnRobot4.setForeground(sc.prot4);
+		
+		}
+		if(sc.isTritanope()) {
+
+			rdbtnRobot1.setForeground(sc.trit1);
+
+			rdbtnRobot2.setForeground(sc.trit2);
+
+			rdbtnRobot3.setForeground(sc.trit3);
+
+			rdbtnRobot4.setForeground(sc.trit4);
+
+		}
+		
 		JRadioButton rdbtnP1 = new JRadioButton("P1");
-		rdbtnP1.setBounds(608, 7, 37, 23);
+		rdbtnP1.setForeground(new Color(230,97,0));
+		rdbtnP1.setFont(new Font("Chalkduster", Font.BOLD, 10));
+		rdbtnP1.setBounds(575, 7, 52, 26);
 		bottomPanel.add(rdbtnP1);
 		
 		JRadioButton rdbtnP2 = new JRadioButton("P2");
-		rdbtnP2.setBounds(650, 7, 37, 23);
+		rdbtnP2.setForeground(new Color(93,58,155));
+		rdbtnP2.setFont(new Font("Chalkduster", Font.BOLD, 10));
+		rdbtnP2.setBounds(625, 7, 52, 26);
 		bottomPanel.add(rdbtnP2);
 		
 		JRadioButton rdbtnP3 = new JRadioButton("P3");
-		rdbtnP3.setBounds(689, 7, 37, 23);
+		rdbtnP3.setForeground(new Color(26,133,255));
+		rdbtnP3.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		rdbtnP3.setBounds(675, 7, 52, 26);
 		bottomPanel.add(rdbtnP3);
 		
 		JRadioButton rdbtnP4 = new JRadioButton("P4");
-		rdbtnP4.setBounds(728, 7, 37, 23);
+		rdbtnP4.setForeground(new Color(212,17,89));
+		rdbtnP4.setFont(new Font("Chalkduster", Font.BOLD, 11));
+		rdbtnP4.setBounds(721, 7, 52, 26);
 		bottomPanel.add(rdbtnP4);
 		
 		if(sc.isPlayer1()) {rdbtnP1.setEnabled(true);} else {rdbtnP1.setEnabled(false);}
@@ -539,6 +602,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		});
 		
 		//END - Move a robot
+	
 		
 	}
 	
@@ -597,7 +661,7 @@ public class GameGUI extends JFrame implements MouseListener {
 				fileMenu.add(manItem);
 				manItem.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						new Help();
+						new InGameHelp();
 					}
 				});
 				
