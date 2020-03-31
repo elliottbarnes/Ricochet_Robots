@@ -89,10 +89,10 @@ public class GameBoard implements Runnable{
 		
 		
 		
-		handler.addObject(new Robot(8, 8, 28, 28, ID.Robot, handler));
-		handler.addObject(new Robot(40, 8, 28, 28, ID.Robot2, handler));
-		handler.addObject(new Robot(74, 8, 28, 28, ID.Robot3, handler));
-		handler.addObject(new Robot(106, 8, 28, 28, ID.Robot4, handler));
+		handler.addObject(new Robot(8, 8, 22, 22, ID.Robot, handler));
+		handler.addObject(new Robot(40, 8, 22, 22, ID.Robot2, handler));
+		handler.addObject(new Robot(82, 8, 22, 22, ID.Robot3, handler));
+		handler.addObject(new Robot(120, 8, 22, 22, ID.Robot4, handler));
 	}
 
 	private void tick() {
