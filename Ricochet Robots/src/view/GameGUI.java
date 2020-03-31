@@ -388,7 +388,7 @@ public class GameGUI extends JFrame implements MouseListener {
 		
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected() || rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected()) {
 					move = new Move(handler);
 					moves +=1;
 					lblMoveCount.setText(""+moves+"");
