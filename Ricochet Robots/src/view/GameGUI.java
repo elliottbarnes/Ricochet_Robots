@@ -11,12 +11,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-public class GameGUI extends JFrame implements MouseListener {
+public class GameGUI extends JFrame implements MouseListener, WindowListener {
 	
 	private JFrame frmTakeTurn;
 	private Canvas canvas;
-	private JButton btnP1, btnP2, btnP3, btnP4, btnHint;
+	private JButton btnP1, btnP2, btnP3, btnP4;
 	private GameTimer gameTmr;
 	private JTextField textField;
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
@@ -40,7 +43,6 @@ public class GameGUI extends JFrame implements MouseListener {
 		bidController = new BidController();
 		handler = new Handler();
 		next = new ChangeToken();
-		
 		flag = false;
 		
 		//Creating all frames and dividing the screen
@@ -52,8 +54,26 @@ public class GameGUI extends JFrame implements MouseListener {
 
 		frmTakeTurn.setTitle("Ricochet Robots");
 		frmTakeTurn.setBounds(100, 100, 800, 700);
-		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frmTakeTurn.setDefaultCloseOperation(new ExitGamePanel());
 		frmTakeTurn.getContentPane().setLayout(null);
+		
+		// Exit confirmation dialogue asking user to play a new game
+		
+		frmTakeTurn.addWindowListener(new WindowAdapter() {
+			  public void windowClosing(WindowEvent e) {
+				    int confirmed = JOptionPane.showConfirmDialog(null, 
+				        "Are you sure you want to exit the game? Yes to exit. No to play again.", "Exit Confirmation",
+				        JOptionPane.YES_NO_OPTION);
+
+				    if (confirmed == JOptionPane.YES_OPTION) {
+				    	dispose();
+				    }
+				    else {
+				    	dispose();
+				    	new Settings();
+				    }
+				  }
+				});
 		
 		
 		//Left Panel
@@ -80,9 +100,9 @@ public class GameGUI extends JFrame implements MouseListener {
 		rightPanel.setSize(184, 600);
 		rightPanel.setLayout(null);
 		
-		JButton btnBid = new JButton("Place Bid");
+		JButton btnBid = new JButton("BID");
 		btnBid.setForeground(new Color(75,0,146));
-		btnBid.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnBid.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		btnBid.setBounds(50, 249, 81, 50);
 		rightPanel.add(btnBid);
 		
@@ -121,77 +141,76 @@ public class GameGUI extends JFrame implements MouseListener {
 		textField.setVisible(false);
 		textField.setBounds(50, 217, 81, 20);
 		
-		lblP1 = new JLabel("Player 1");
+		lblP1 = new JLabel("P1");
 		lblP1.setForeground(new Color(230,97,0));
 		lblP1.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblP1.setBounds(31, 386, 100, 25);
+		lblP1.setBounds(10, 386, 25, 25);
 		rightPanel.add(lblP1);
 		
-		lblP2 = new JLabel("Player 2");
+		lblP2 = new JLabel("P2");
 		lblP2.setForeground(new Color(93,58,155));
 		lblP2.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblP2.setBounds(31, 436, 100, 25);
+		lblP2.setBounds(10, 436, 25, 25);
 		rightPanel.add(lblP2);
 		
-		lblP3 = new JLabel("Player 3");
+		lblP3 = new JLabel("P3");
 		lblP3.setForeground(new Color(26,133,255));
 		lblP3.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblP3.setBounds(31, 486, 100, 25);
+		lblP3.setBounds(10, 486, 25, 25);
 		rightPanel.add(lblP3);
 		
-		lblP4 = new JLabel("Player 4");
+		lblP4 = new JLabel("P4");
 		lblP4.setForeground(new Color(212,17,89));
 		lblP4.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblP4.setBounds(31, 536, 100, 25);
+		lblP4.setBounds(10, 536, 25, 25);
 		rightPanel.add(lblP4);
 		
 		lblp1bid = new JLabel("0");
+		lblp1bid.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp1bid.setForeground(new Color(230,97,0));
 		lblp1bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblp1bid.setBounds(137, 386, 20, 25);
+		lblp1bid.setBounds(55, 386, 20, 25);
 		rightPanel.add(lblp1bid);
 		
 		lblp2bid = new JLabel("0");
+		lblp2bid.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp2bid.setForeground(new Color(93,58,155));
 		lblp2bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblp2bid.setBounds(137, 436, 20, 25);
+		lblp2bid.setBounds(55, 436, 20, 25);
 		rightPanel.add(lblp2bid);
 		
 		lblp3bid = new JLabel("0");
+		lblp3bid.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp3bid.setForeground(new Color(26,133,255));
 		lblp3bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblp3bid.setBounds(137, 486, 20, 25);
+		lblp3bid.setBounds(55, 486, 20, 25);
 		rightPanel.add(lblp3bid);
 		
 		lblp4bid = new JLabel("0");
+		lblp4bid.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp4bid.setForeground(new Color(212,17,89));
 		lblp4bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		lblp4bid.setBounds(137, 536, 20, 25);
+		lblp4bid.setBounds(55, 536, 20, 25);
 		rightPanel.add(lblp4bid);
 		
 		rightPanel.add(textField);
 		textField.setColumns(10);
 		
-		btnHint = new JButton("HINT");
-		btnHint.setForeground(new Color(26,255,26));
-		btnHint.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		btnHint.setBounds(52, 11, 89, 23);
-		rightPanel.add(btnHint);
-		
 		JLabel lbl_BIDS = new JLabel("BIDS");
+		lbl_BIDS.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_BIDS.setForeground(new Color(220,50,32));
-		lbl_BIDS.setFont(new Font("Chalkduster", Font.BOLD, 20));
-		lbl_BIDS.setBounds(67, 322, 60, 35);
+		lbl_BIDS.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lbl_BIDS.setBounds(35, 339, 60, 35);
 		rightPanel.add(lbl_BIDS);
 		
 		JLabel lblMoves = new JLabel("Moves:");
 		lblMoves.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		lblMoves.setBounds(32, 75, 50, 20);
+		lblMoves.setBounds(32, 60, 50, 20);
 		rightPanel.add(lblMoves);
 		
 		JLabel lblMoveCount = new JLabel("");
 		lblMoveCount.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		lblMoveCount.setBounds(102, 75, 46, 20);
+		lblMoveCount.setBounds(102, 60, 46, 20);
 		rightPanel.add(lblMoveCount);
 		
 		JButton btnToken = new JButton("Token");
@@ -199,13 +218,149 @@ public class GameGUI extends JFrame implements MouseListener {
 		btnToken.setBounds(50, 100, 89, 23);
 		rightPanel.add(btnToken);
 		
-		if(sc.isHintsEnabled()) {
-			btnHint.setVisible(true);
-			btnHint.setEnabled(true);
-		}else {
-			btnHint.setVisible(false);
-			btnHint.setEnabled(false);
-		}
+		JLabel lblNewLabel = new JLabel("|");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(90, 434, 15, 20);
+		rightPanel.add(lblNewLabel);
+		
+		JLabel label = new JLabel("|");
+		label.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBounds(90, 448, 15, 20);
+		rightPanel.add(label);
+		
+		JLabel label_1 = new JLabel("|");
+		label_1.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setBounds(90, 462, 15, 20);
+		rightPanel.add(label_1);
+		
+		JLabel label_2 = new JLabel("|");
+		label_2.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setBounds(90, 476, 15, 20);
+		rightPanel.add(label_2);
+		
+		JLabel label_3 = new JLabel("|");
+		label_3.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setBounds(90, 490, 15, 20);
+		rightPanel.add(label_3);
+		
+		JLabel label_4 = new JLabel("|");
+		label_4.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setBounds(90, 504, 15, 20);
+		rightPanel.add(label_4);
+		
+		JLabel label_5 = new JLabel("|");
+		label_5.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_5.setHorizontalAlignment(SwingConstants.CENTER);
+		label_5.setBounds(90, 518, 15, 20);
+		rightPanel.add(label_5);
+		
+		JLabel label_6 = new JLabel("|");
+		label_6.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_6.setHorizontalAlignment(SwingConstants.CENTER);
+		label_6.setBounds(90, 532, 15, 20);
+		rightPanel.add(label_6);
+		
+		JLabel label_7 = new JLabel("|");
+		label_7.setHorizontalAlignment(SwingConstants.CENTER);
+		label_7.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_7.setBounds(90, 541, 15, 20);
+		rightPanel.add(label_7);
+		
+		JLabel label_8 = new JLabel("|");
+		label_8.setHorizontalAlignment(SwingConstants.CENTER);
+		label_8.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_8.setBounds(90, 555, 15, 20);
+		rightPanel.add(label_8);
+		
+		JLabel label_9 = new JLabel("|");
+		label_9.setHorizontalAlignment(SwingConstants.CENTER);
+		label_9.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_9.setBounds(90, 434, 15, 20);
+		rightPanel.add(label_9);
+		
+		JLabel label_10 = new JLabel("|");
+		label_10.setHorizontalAlignment(SwingConstants.CENTER);
+		label_10.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_10.setBounds(90, 420, 15, 20);
+		rightPanel.add(label_10);
+		
+		JLabel label_11 = new JLabel("|");
+		label_11.setHorizontalAlignment(SwingConstants.CENTER);
+		label_11.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_11.setBounds(90, 406, 15, 20);
+		rightPanel.add(label_11);
+		
+		JLabel label_12 = new JLabel("|");
+		label_12.setHorizontalAlignment(SwingConstants.CENTER);
+		label_12.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_12.setBounds(90, 392, 15, 20);
+		rightPanel.add(label_12);
+		
+		JLabel label_13 = new JLabel("|");
+		label_13.setHorizontalAlignment(SwingConstants.CENTER);
+		label_13.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_13.setBounds(90, 386, 15, 20);
+		rightPanel.add(label_13);
+		
+		JLabel lbl_SCORE = new JLabel("SCORES");
+		lbl_SCORE.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_SCORE.setForeground(new Color(0, 0, 205));
+		lbl_SCORE.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lbl_SCORE.setBounds(105, 339, 65, 35);
+		rightPanel.add(lbl_SCORE);
+		
+		JLabel lblp1score = new JLabel("0");
+		lblp1score.setHorizontalAlignment(SwingConstants.CENTER);
+		lblp1score.setForeground(new Color(230, 97, 0));
+		lblp1score.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp1score.setBounds(125, 386, 20, 25);
+		rightPanel.add(lblp1score);
+		
+		JLabel lblp2score = new JLabel("0");
+		lblp2score.setHorizontalAlignment(SwingConstants.CENTER);
+		lblp2score.setForeground(new Color(93, 58, 155));
+		lblp2score.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp2score.setBounds(125, 436, 20, 25);
+		rightPanel.add(lblp2score);
+		
+		JLabel lblp3score = new JLabel("0");
+		lblp3score.setHorizontalAlignment(SwingConstants.CENTER);
+		lblp3score.setForeground(new Color(26, 133, 255));
+		lblp3score.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp3score.setBounds(125, 486, 20, 25);
+		rightPanel.add(lblp3score);
+		
+		JLabel lblp4score = new JLabel("0");
+		lblp4score.setHorizontalAlignment(SwingConstants.CENTER);
+		lblp4score.setForeground(new Color(212, 17, 89));
+		lblp4score.setFont(new Font("Chalkduster", Font.BOLD, 15));
+		lblp4score.setBounds(125, 536, 20, 25);
+		rightPanel.add(lblp4score);
+		
+		JLabel label_14 = new JLabel("|");
+		label_14.setHorizontalAlignment(SwingConstants.CENTER);
+		label_14.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_14.setBounds(90, 373, 15, 20);
+		rightPanel.add(label_14);
+		
+		JLabel label_15 = new JLabel("|");
+		label_15.setHorizontalAlignment(SwingConstants.CENTER);
+		label_15.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		label_15.setBounds(90, 361, 15, 20);
+		rightPanel.add(label_15);
+		
+		JLabel lblNewLabel_1 = new JLabel("_____________________");
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(28, 360, 170, 15);
+		rightPanel.add(lblNewLabel_1);
+		
+		
 		
 		//Bottom Panel
 		
@@ -668,8 +823,10 @@ public class GameGUI extends JFrame implements MouseListener {
 				JMenuItem hintItem = new JMenuItem("Hint");
 				hintItem.setHorizontalAlignment(SwingConstants.CENTER);
 				hintItem.setFont(new Font("Chalkduster", Font.BOLD, 14));
-				fileMenu.add(hintItem);
-				hintItem.setForeground(new Color(133,76,48));
+				if(sc.isHintsEnabled()) {
+					fileMenu.add(hintItem);
+					hintItem.setForeground(new Color(133,76,48));
+				}
 				frame.setJMenuBar(menubar);
 	}
 	
@@ -710,7 +867,7 @@ public class GameGUI extends JFrame implements MouseListener {
 	}
 	public void Timer() {
 		gameTmr = new GameTimer();
-		gameTmr.setBounds(67, 46, 58, 100);
+		gameTmr.setBounds(67, 15, 58, 100);
 		frmTakeTurn.getContentPane().add(gameTmr);
 		
 		rightPanel.add(gameTmr);
@@ -755,5 +912,40 @@ public class GameGUI extends JFrame implements MouseListener {
 	
 	public void setHandler(Handler handler) {
 		this.handler = handler;
+	}
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowClosing(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
