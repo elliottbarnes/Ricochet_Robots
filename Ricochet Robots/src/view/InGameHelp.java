@@ -20,7 +20,7 @@ public class InGameHelp extends JFrame implements ActionListener {
 		frmHelp = new JFrame();
 		frmHelp.setTitle("Help");
 		frmHelp.setBounds(100, 100, 600, 600);
-		frmHelp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHelp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/Pages.jpg"));
 		
