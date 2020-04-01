@@ -2,6 +2,8 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
+
 import javax.swing.*;
 
 import controller.*;
@@ -49,14 +51,14 @@ public class Settings extends JFrame implements ActionListener {
 		// Difficulty Buttons
 		
 		JRadioButton rdbtnEasy = new JRadioButton("EASY");
-		rdbtnEasy.setForeground(new Color(52, 101, 36));
+		rdbtnEasy.setForeground(new Color(26,186,255));
 		rdbtnEasy.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnEasy.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnEasy.setBounds(116, 187, 109, 38);
 		frmSettings.getContentPane().add(rdbtnEasy);
 		
 		JRadioButton rdbtnDifficult = new JRadioButton("HARD");
-		rdbtnDifficult.setForeground(new Color(208,70,72));
+		rdbtnDifficult.setForeground(new Color(255,169,26));
 		rdbtnDifficult.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnDifficult.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnDifficult.setBounds(246, 187, 109, 38);
@@ -65,7 +67,7 @@ public class Settings extends JFrame implements ActionListener {
 		//Color Buttons
 		
 		JRadioButton rdbtnNormal = new JRadioButton("Normal");
-		rdbtnNormal.setForeground(new Color(117,113,97));
+		rdbtnNormal.setForeground(sc.normal4);
 		rdbtnNormal.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnNormal.setBounds(116, 311, 125, 23);
 		frmSettings.getContentPane().add(rdbtnNormal);
@@ -73,19 +75,19 @@ public class Settings extends JFrame implements ActionListener {
 		JRadioButton rdbtnDeut = new JRadioButton("Deuteranope");
 		rdbtnDeut.setForeground(new Color(89,125,206));
 		rdbtnDeut.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		rdbtnDeut.setForeground(new Color(0, 0, 0));
+		rdbtnDeut.setForeground(sc.deut4);
 		rdbtnDeut.setBounds(246, 311, 150, 23);
 		frmSettings.getContentPane().add(rdbtnDeut);
 		
 		JRadioButton rdbtnProt = new JRadioButton("Protanope");
-		rdbtnProt.setForeground(new Color(210,125,44));
+		rdbtnProt.setForeground(sc.prot4);
 		rdbtnProt.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnProt.setBounds(116, 342, 125, 23);
 		frmSettings.getContentPane().add(rdbtnProt);
 		
 		JRadioButton rdbtnTrit = new JRadioButton("Tritanope ");
 		rdbtnTrit.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		rdbtnTrit.setForeground(new Color(133,149,161));
+		rdbtnTrit.setForeground(sc.trit4);
 		rdbtnTrit.setBounds(246, 342, 150, 23);
 		frmSettings.getContentPane().add(rdbtnTrit);
 		
@@ -95,7 +97,7 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnSimple.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnSimple.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnSimple.setBounds(116, 261, 109, 23);
-		rdbtnSimple.setForeground(new Color(109,170,44));
+		rdbtnSimple.setForeground(new Color(255,212,26));
 		frmSettings.getContentPane().add(rdbtnSimple);
 		
 		JRadioButton rdbtnComplex = new JRadioButton("COMPLEX");
@@ -142,22 +144,22 @@ public class Settings extends JFrame implements ActionListener {
 		JRadioButton rdbtnEnable = new JRadioButton("ENABLE");
 		rdbtnEnable.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnEnable.setBounds(116, 397, 109, 25);
-		rdbtnEnable.setForeground(new Color(109,194,202));
+		rdbtnEnable.setForeground(new Color(99,255,26));
 		frmSettings.getContentPane().add(rdbtnEnable);
 		
 		JRadioButton rdbtnDisable = new JRadioButton("DISABLE");
 		rdbtnDisable.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnDisable.setBounds(246, 397, 109, 25);
-		rdbtnDisable.setForeground(new Color(218,212,94));
+		rdbtnDisable.setForeground(new Color(255,26,26));
 		frmSettings.getContentPane().add(rdbtnDisable);
 		
 		// Start Button
 		
-		JButton btnStart = new JButton("START");
+		RoundButton btnStart = new RoundButton("START");
 		btnStart.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		btnStart.setForeground(new Color(222,238,214));
-		btnStart.setBackground(new Color(113,234,21));
-		btnStart.setOpaque(true);
+		btnStart.setBackground(sc.normal1);
+		//btnStart.setOpaque(true);
 		btnStart.setBorderPainted(false);
 		btnStart.setBounds(197, 448, 192, 51);
 		frmSettings.getContentPane().add(btnStart);
@@ -165,25 +167,25 @@ public class Settings extends JFrame implements ActionListener {
 		// Player Checkboxes
 		
 		JCheckBox chckbxPlayer4 = new JCheckBox("PLAYER 4");
-		chckbxPlayer4.setForeground(new Color(133, 76, 48));
+		chckbxPlayer4.setForeground(new Color(212,17,89));
 		chckbxPlayer4.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer4.setBounds(425, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer4);
 		
 		JCheckBox chckbxPlayer3 = new JCheckBox("PLAYER 3");
-		chckbxPlayer3.setForeground(new Color(78,74,78));
+		chckbxPlayer3.setForeground(new Color(26,133,255));
 		chckbxPlayer3.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer3.setBounds(300, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer3);
 		
 		JCheckBox chckbxPlayer2 = new JCheckBox("PLAYER 2");
-		chckbxPlayer2.setForeground(new Color(48, 52, 109));
+		chckbxPlayer2.setForeground(new Color(93,58,155));
 		chckbxPlayer2.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer2.setBounds(175, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer2);
 		
 		JCheckBox chckbxPlayer1 = new JCheckBox("PLAYER 1");
-		chckbxPlayer1.setForeground(new Color(68, 36, 52));
+		chckbxPlayer1.setForeground(new Color(230,97,0));
 		chckbxPlayer1.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer1.setBounds(50, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer1);
@@ -391,5 +393,46 @@ public class Settings extends JFrame implements ActionListener {
 	
 	public static Object object() {
 		return sc;
+	}
+	
+	class RoundButton extends JButton
+	{
+	   // for mouse detection purposes
+	   Shape shape;
+	 
+	   public RoundButton(String label) {
+	      super(label);
+	      // allows us to paint a round background
+	      // if true, it would be rectangular
+	      setContentAreaFilled(false);
+	   }
+	  
+	   protected void paintComponent(Graphics g) {
+	      // if the button is pressed and ready to be released
+	      if (getModel().isArmed()) {
+	         g.setColor(Color.lightGray);
+	      } else {
+	         g.setColor(getBackground());
+	      }
+	  
+	      g.fillOval(0, 0, getSize().width-1, getSize().height-1);
+	  
+	      super.paintComponent(g);
+	   }
+	  
+	   // paint a round border as opposed to a rectangular one
+	   protected void paintBorder(Graphics g) {
+	      g.setColor(getForeground());
+	      g.drawOval(0, 0, getSize().width-1, getSize().height-1);
+	   }
+	  
+	   // only clicks within the round shape should be accepted
+	   public boolean contains(int x, int y) {
+	      if (shape == null || !shape.getBounds().equals(getBounds())) {
+	         shape = new Ellipse2D.Float(0, 0, getWidth(), getHeight());
+	      }
+	  
+	      return shape.contains(x, y);
+	   }
 	}
 }
