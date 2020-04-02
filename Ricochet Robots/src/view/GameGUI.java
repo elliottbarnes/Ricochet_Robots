@@ -23,6 +23,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 	private GameTimer gameTmr;
 	private JTextField textField;
 	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
+	private JRadioButton rdbtnRobot1, rdbtnRobot2, rdbtnRobot3, rdbtnRobot4;
 	private JPanel leftPanel, rightPanel, bottomPanel;
 	private boolean flag;
 	private BidController bidController;
@@ -392,22 +393,22 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		btnLeft.setBounds(170, 7, 75, 30);
 		bottomPanel.add(btnLeft);
 		
-		JRadioButton rdbtnRobot1 = new JRadioButton("R1");
+		rdbtnRobot1 = new JRadioButton("R1");
 		rdbtnRobot1.setFont(new Font("Chalkduster", Font.BOLD, 11));
 		rdbtnRobot1.setBounds(350, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot1);
 		
-		JRadioButton rdbtnRobot2 = new JRadioButton("R2");
+		rdbtnRobot2 = new JRadioButton("R2");
 		rdbtnRobot2.setFont(new Font("Chalkduster", Font.BOLD, 11));
 		rdbtnRobot2.setBounds(400, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot2);
 		
-		JRadioButton rdbtnRobot3 = new JRadioButton("R3");
+		rdbtnRobot3 = new JRadioButton("R3");
 		rdbtnRobot3.setFont(new Font("Chalkduster", Font.BOLD, 11));
 		rdbtnRobot3.setBounds(450, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot3);
 		
-		JRadioButton rdbtnRobot4 = new JRadioButton("R4");
+		rdbtnRobot4 = new JRadioButton("R4");
 		rdbtnRobot4.setFont(new Font("Chalkduster", Font.BOLD, 10));
 		rdbtnRobot4.setBounds(500, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot4);
@@ -558,22 +559,27 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 
 			public void actionPerformed(ActionEvent e) {
 				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
-					
 					move = new Move(handler);
-					moves +=1;
-					lblMoveCount.setText(""+moves+"");
-					if(rdbtnRobot1.isSelected()) {
-						move.up(1);
+					if(rdbtnP1.isSelected()==true && bidController.compareMoves("Player1", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotUp();
+					}else if(rdbtnP2.isSelected()==true && bidController.compareMoves("Player2", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotUp();
+					}else if(rdbtnP3.isSelected()==true && bidController.compareMoves("Player3", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotUp();
+					}else if(rdbtnP4.isSelected()==true && bidController.compareMoves("Player4", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotUp();
+					}else {
+						JOptionPane.showMessageDialog(frmTakeTurn, "This Player does not have any more moves");
 					}
-					if(rdbtnRobot2.isSelected()) {
-						move.up(2);
-					}
-					if(rdbtnRobot3.isSelected()) {
-						move.up(3);
-					}
-					if(rdbtnRobot4.isSelected()) {
-						move.up(4);
-					}
+					
 				}
 				else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
@@ -586,19 +592,24 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 			public void actionPerformed(ActionEvent e) {
 				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
 					move = new Move(handler);
-					moves +=1;
-					lblMoveCount.setText(""+moves+"");
-					if(rdbtnRobot1.isSelected()) {
-						move.down(1);
-					}
-					if(rdbtnRobot2.isSelected()) {
-						move.down(2);
-					}
-					if(rdbtnRobot3.isSelected()) {
-						move.down(3);
-					}
-					if(rdbtnRobot4.isSelected()) {
-						move.down(4);
+					if(rdbtnP1.isSelected()==true && bidController.compareMoves("Player1", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotDown();
+					}else if(rdbtnP2.isSelected()==true && bidController.compareMoves("Player2", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotDown();
+					}else if(rdbtnP3.isSelected()==true && bidController.compareMoves("Player3", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotDown();
+					}else if(rdbtnP4.isSelected()==true && bidController.compareMoves("Player4", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotDown();
+					}else {
+						JOptionPane.showMessageDialog(frmTakeTurn, "This Player does not have any more moves");
 					}
 				}else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
@@ -610,20 +621,26 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 			public void actionPerformed(ActionEvent e) {
 				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
 					move = new Move(handler);
-					moves +=1;
-					lblMoveCount.setText(""+moves+"");
-					if(rdbtnRobot1.isSelected()) {
-						move.right(1);
+					if(rdbtnP1.isSelected()==true && bidController.compareMoves("Player1", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotRight();
+					}else if(rdbtnP2.isSelected()==true && bidController.compareMoves("Player2", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotRight();
+					}else if(rdbtnP3.isSelected()==true && bidController.compareMoves("Player3", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotRight();
+					}else if(rdbtnP4.isSelected()==true && bidController.compareMoves("Player4", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotRight();
+					}else {
+						JOptionPane.showMessageDialog(frmTakeTurn, "This Player does not have any more moves");
 					}
-					if(rdbtnRobot2.isSelected()) {
-						move.right(2);
-					}
-					if(rdbtnRobot3.isSelected()) {
-						move.right(3);
-					}
-					if(rdbtnRobot4.isSelected()) {
-						move.right(4);
-					}
+					
 				}else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
 				}
@@ -634,19 +651,24 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 			public void actionPerformed(ActionEvent e) {
 				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
 					move = new Move(handler);
-					moves +=1;
-					lblMoveCount.setText(""+moves+"");
-					if(rdbtnRobot1.isSelected()) {
-						move.left(1);
-					}
-					if(rdbtnRobot2.isSelected()) {
-						move.left(2);
-					}
-					if(rdbtnRobot3.isSelected()) {
-						move.left(3);
-					}
-					if(rdbtnRobot4.isSelected()) {
-						move.left(4);
+					if(rdbtnP1.isSelected()==true && bidController.compareMoves("Player1", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotLeft();
+					}else if(rdbtnP2.isSelected()==true && bidController.compareMoves("Player2", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotLeft();
+					}else if(rdbtnP3.isSelected()==true && bidController.compareMoves("Player3", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotLeft();
+					}else if(rdbtnP4.isSelected()==true && bidController.compareMoves("Player4", moves)==false) {
+						moves +=1;
+						lblMoveCount.setText(""+moves+"");
+						moveRobotLeft();
+					}else {
+						JOptionPane.showMessageDialog(frmTakeTurn, "This Player does not have any more moves");
 					}
 				}else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
@@ -889,18 +911,72 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		rightPanel.add(gameTmr);
 	}
 	
+	public void moveRobotUp() {
+		if(rdbtnRobot1.isSelected()) {
+			move.up(1);
+		}
+		if(rdbtnRobot2.isSelected()) {
+			move.up(2);
+		}
+		if(rdbtnRobot3.isSelected()) {
+			move.up(3);
+		}
+		if(rdbtnRobot4.isSelected()) {
+			move.up(4);
+		}
+	}
 	
-	
+	public void moveRobotDown() {
+		if(rdbtnRobot1.isSelected()) {
+			move.down(1);
+		}
+		if(rdbtnRobot2.isSelected()) {
+			move.down(2);
+		}
+		if(rdbtnRobot3.isSelected()) {
+			move.down(3);
+		}
+		if(rdbtnRobot4.isSelected()) {
+			move.down(4);
+		}
+	}
+	public void moveRobotRight() {
+		if(rdbtnRobot1.isSelected()) {
+			move.right(1);
+		}
+		if(rdbtnRobot2.isSelected()) {
+			move.right(2);
+		}
+		if(rdbtnRobot3.isSelected()) {
+			move.right(3);
+		}
+		if(rdbtnRobot4.isSelected()) {
+			move.right(4);
+		}
+	}
+	public void moveRobotLeft() {
+		if(rdbtnRobot1.isSelected()) {
+			move.left(1);
+		}
+		if(rdbtnRobot2.isSelected()) {
+			move.left(2);
+		}
+		if(rdbtnRobot3.isSelected()) {
+			move.left(3);
+		}
+		if(rdbtnRobot4.isSelected()) {
+			move.left(4);
+		}
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Object selected = e.getSource();
+		
 
 	}
 

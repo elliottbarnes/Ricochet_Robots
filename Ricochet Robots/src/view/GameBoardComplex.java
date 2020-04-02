@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-public class GameBoard implements Runnable{
+public class GameBoardComplex implements Runnable {
 
 	private GameGUI gameGui;
 	private Thread thread;
@@ -15,7 +15,7 @@ public class GameBoard implements Runnable{
 	
 	public static final int WIDTH=600, HEIGHT=600; 
 	
-	public GameBoard() { 
+	public GameBoardComplex() { 
 		handler = new Handler();
 		
 		//Cells
@@ -32,46 +32,7 @@ public class GameBoard implements Runnable{
 		//Middle
 		handler.addObject(new Barrier(255, 255, 80, 80, ID.Barrier));
 		//Inside
-		handler.addObject(new Barrier(70, 0, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(0, 218, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(0, 440, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(256, 554, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(554, 404, 36, 6, ID.Barrier));//
-		handler.addObject(new Barrier(554, 144, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(36, 72, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(70, 74, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(110, 256 , 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(110, 221, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(148, 34 , 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(145, 36, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(254, 110, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(222, 144, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(333, 106, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(365, 72, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(440, 0, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(482, 34, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(478, 36, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(518, 184, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(518, 217, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(406, 221, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(440, 221, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(37, 366, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(70, 332, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(148, 402, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(147, 368, 6, 36, ID.Barrier));	
-		handler.addObject(new Barrier(110, 517, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(110, 517, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(185, 480, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(218, 480, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(295, 369, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(328, 369, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(518, 365, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(514, 332, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(480, 440, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(480, 407, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(369, 480, 36, 6, ID.Barrier));
-		handler.addObject(new Barrier(369, 481, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(440, 555, 6, 36, ID.Barrier));
+
 		
 		//Tokens
 		handler.addObject(new Token(334, 74, 28, 28, ID.Token, 1));
@@ -157,5 +118,4 @@ public class GameBoard implements Runnable{
 		else
 			return var;
 	}
-
 }

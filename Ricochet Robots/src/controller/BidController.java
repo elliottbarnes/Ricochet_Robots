@@ -61,4 +61,25 @@ public class BidController {
 			bid.printBid();
 		}
 	}
+	
+	//Comparing moves with bid
+	public boolean compareMoves(String player2, int moves) {
+		int index = 0;
+		while(index < bids.size()) {
+			Bid searchBid = bids.get(index);
+			String searchPlayer = searchBid.getPlayer();
+			int searchValue = searchBid.getValue();
+			if(searchPlayer.equals(player2)) {
+				if(moves >= searchValue) {
+					return true;
+				}else {
+					return false;
+				}
+			}
+			else {
+				index++;
+			}
+		}
+		return false;
+	}
 }

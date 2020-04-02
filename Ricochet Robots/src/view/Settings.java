@@ -20,7 +20,8 @@ public class Settings extends JFrame implements ActionListener {
 	
 	public Settings() {
 		//All Classes used in this class
-		GameBoard game = new GameBoard();
+		GameBoard gameSimple = new GameBoard();
+		GameBoardComplex gameComplex = new GameBoardComplex();
 		sc = new SettingsController();
 		
 		frmSettings = new JFrame();
@@ -215,10 +216,11 @@ public class Settings extends JFrame implements ActionListener {
 					
 					if(rdbtnSimple.isSelected()) {
 						frmSettings.setVisible(false);
-						game.start();
+						gameSimple.start();
 					}
 					if(rdbtnComplex.isSelected()) {
 						frmSettings.setVisible(false);	
+						gameComplex.start();
 					}
 					if(rdbtnEnable.isSelected()) {
 						sc.setHintsEnabled(true);
