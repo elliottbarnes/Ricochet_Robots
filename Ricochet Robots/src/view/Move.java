@@ -1,11 +1,26 @@
 package view;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class Move {
 	Handler handler;
 	int tokenNum;
+	JFrame frame;
+	ChangeToken next;
+	int player;
+	public int getPlayer() {
+		return player;
+	}
 
-	public Move(Handler handler) {
+	public void setPlayer(int player) {
+		this.player = player;
+	}
+
+	public Move(Handler handler, JFrame frame, ChangeToken next) {
 		this.handler = handler;
+		this.frame = frame;
+		this.next = next;
 	}
 	
 	public int getTokenNum() {
@@ -26,6 +41,7 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -34,6 +50,7 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -42,6 +59,7 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -50,6 +68,7 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 		}
 	}
@@ -63,6 +82,7 @@ public class Move {
 					gm.y+=5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -71,6 +91,7 @@ public class Move {
 					gm.y+=5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -79,6 +100,7 @@ public class Move {
 					gm.y+=5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -87,6 +109,7 @@ public class Move {
 					gm.y+=5;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 		}
 	}
@@ -100,6 +123,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -108,6 +132,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -116,6 +141,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -124,6 +150,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 		}
 	}
@@ -138,6 +165,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -146,6 +174,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -154,6 +183,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -162,6 +192,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
 			}
 		}
 	}
@@ -263,4 +294,68 @@ public class Move {
 		return false;
 	}
 	
+	public boolean tokenTaken(GameObject gm, ID id) {
+		for(int i=0; i<handler.object.size(); i++) {
+			GameObject go = handler.object.get(i);
+			if(go.getId() == id) {
+				if(gm.getBounds().intersects(go.getBounds())) {
+					if(gm.getId() == ID.Robot &&(tokenNum==1 || tokenNum==5 || tokenNum==9 || tokenNum==13)) return true;
+					if(gm.getId() == ID.Robot2 &&(tokenNum==2 || tokenNum==6 || tokenNum==10 || tokenNum==14)) return true;
+					if(gm.getId() == ID.Robot3 &&(tokenNum==3 || tokenNum==7 || tokenNum==11 || tokenNum==15)) return true;
+					if(gm.getId() == ID.Robot4 &&(tokenNum==4 || tokenNum==8 || tokenNum==12 || tokenNum==16)) return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public ID getIDToken(int num) {
+		switch(num){
+			case 1:
+				return ID.Token1;
+			case 2:
+				return ID.Token2;
+			case 3:
+				return ID.Token3;
+			case 4:
+				return ID.Token4;
+			case 5:
+				return ID.Token5;
+			case 6:
+				return ID.Token6;
+			case 7:
+				return ID.Token7;
+			case 8:
+				return ID.Token8;
+			case 9:
+				return ID.Token9;
+			case 10:
+				return ID.Token10;
+			case 11:
+				return ID.Token11;
+			case 12:
+				return ID.Token12;
+			case 13:
+				return ID.Token13;
+			case 14:
+				return ID.Token14;
+			case 15:
+				return ID.Token15;
+			case 16:
+				return ID.Token16;
+			default:
+				return null;
+		}
+	}
+	
+	public void message() {
+		int confirmed = JOptionPane.showConfirmDialog(frame, 
+		        "Next Token", "Token Taken", JOptionPane.OK_OPTION);
+
+		    if (confirmed == JOptionPane.OK_OPTION) {
+		    	next.next(handler, frame);
+		    }else {
+		    	//nothing
+		    }
+	}
 }
