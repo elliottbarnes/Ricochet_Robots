@@ -1,20 +1,23 @@
 package controller;
 import java.awt.*;
+
 import javax.swing.*;
 import java.awt.event.*;
 public class GameTimer extends JPanel {
-	int count = 61;
-
+	
+	private int count = 61;
+	private JLabel tmrDisplay;
+	private Timer timer;
+	
 	public GameTimer() {
 	
-		JLabel tmrDisplay;
-		Timer timer;
+		
 		
 		tmrDisplay = new JLabel("...");
 		tmrDisplay.setForeground(new Color(255, 0, 0));
 		tmrDisplay.setFont(new Font("Chalkduster", Font.BOLD, 17));
 		add(tmrDisplay);
-		timer = new Timer(1000, new ActionListener() {
+		setTimer(new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				count--;
@@ -29,13 +32,19 @@ public class GameTimer extends JPanel {
 					((Timer) (e.getSource())).stop();
 				}
 			}
-		});
-		timer.setInitialDelay(0);
-		timer.start();
+		}));
+		getTimer().setInitialDelay(0);
+		getTimer().start();
 	}
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(200,200);
+	}
+	public Timer getTimer() {
+		return timer;
+	}
+	public void setTimer(Timer timer) {
+		this.timer = timer;
 	}
 		
 

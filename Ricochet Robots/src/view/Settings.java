@@ -51,14 +51,14 @@ public class Settings extends JFrame implements ActionListener {
 		// Difficulty Buttons
 		
 		JRadioButton rdbtnEasy = new JRadioButton("EASY");
-		rdbtnEasy.setForeground(new Color(26,186,255));
+		rdbtnEasy.setForeground(new Color(102,178,255));
 		rdbtnEasy.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnEasy.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnEasy.setBounds(116, 187, 109, 38);
 		frmSettings.getContentPane().add(rdbtnEasy);
 		
 		JRadioButton rdbtnDifficult = new JRadioButton("HARD");
-		rdbtnDifficult.setForeground(new Color(255,169,26));
+		rdbtnDifficult.setForeground(new Color(255,178,102));
 		rdbtnDifficult.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnDifficult.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnDifficult.setBounds(246, 187, 109, 38);
@@ -67,27 +67,27 @@ public class Settings extends JFrame implements ActionListener {
 		//Color Buttons
 		
 		JRadioButton rdbtnNormal = new JRadioButton("Normal");
-		rdbtnNormal.setForeground(sc.normal4);
+		rdbtnNormal.setForeground(sc.normal1);
 		rdbtnNormal.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnNormal.setBounds(116, 311, 125, 23);
 		frmSettings.getContentPane().add(rdbtnNormal);
 		
 		JRadioButton rdbtnDeut = new JRadioButton("Deuteranope");
-		rdbtnDeut.setForeground(new Color(89,125,206));
+		rdbtnDeut.setForeground(sc.deut1);
 		rdbtnDeut.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnDeut.setForeground(sc.deut4);
 		rdbtnDeut.setBounds(246, 311, 150, 23);
 		frmSettings.getContentPane().add(rdbtnDeut);
 		
 		JRadioButton rdbtnProt = new JRadioButton("Protanope");
-		rdbtnProt.setForeground(sc.prot4);
+		rdbtnProt.setForeground(sc.prot1);
 		rdbtnProt.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnProt.setBounds(116, 342, 125, 23);
 		frmSettings.getContentPane().add(rdbtnProt);
 		
 		JRadioButton rdbtnTrit = new JRadioButton("Tritanope ");
 		rdbtnTrit.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		rdbtnTrit.setForeground(sc.trit4);
+		rdbtnTrit.setForeground(sc.trit1);
 		rdbtnTrit.setBounds(246, 342, 150, 23);
 		frmSettings.getContentPane().add(rdbtnTrit);
 		
@@ -97,14 +97,14 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnSimple.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnSimple.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnSimple.setBounds(116, 261, 109, 23);
-		rdbtnSimple.setForeground(new Color(255,212,26));
+		rdbtnSimple.setForeground(new Color(102,255,178));
 		frmSettings.getContentPane().add(rdbtnSimple);
 		
 		JRadioButton rdbtnComplex = new JRadioButton("COMPLEX");
 		rdbtnComplex.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnComplex.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnComplex.setBounds(246, 261, 109, 23);
-		rdbtnComplex.setForeground(new Color(210,170,153));
+		rdbtnComplex.setForeground(new Color(102,102,255));
 		frmSettings.getContentPane().add(rdbtnComplex);
 		
 		// labels
@@ -144,21 +144,21 @@ public class Settings extends JFrame implements ActionListener {
 		JRadioButton rdbtnEnable = new JRadioButton("ENABLE");
 		rdbtnEnable.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnEnable.setBounds(116, 397, 109, 25);
-		rdbtnEnable.setForeground(new Color(99,255,26));
+		rdbtnEnable.setForeground(new Color(102,255,102));
 		frmSettings.getContentPane().add(rdbtnEnable);
 		
 		JRadioButton rdbtnDisable = new JRadioButton("DISABLE");
 		rdbtnDisable.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnDisable.setBounds(246, 397, 109, 25);
-		rdbtnDisable.setForeground(new Color(255,26,26));
+		rdbtnDisable.setForeground(new Color(255,102,102));
 		frmSettings.getContentPane().add(rdbtnDisable);
 		
 		// Start Button
 		
-		RoundButton btnStart = new RoundButton("START");
-		btnStart.setFont(new Font("Chalkduster", Font.BOLD, 15));
-		btnStart.setForeground(new Color(222,238,214));
-		btnStart.setBackground(sc.normal1);
+		RoundButton btnStart = new RoundButton("PLAY");
+		btnStart.setFont(new Font("Chalkduster", Font.BOLD, 20));
+		btnStart.setForeground(new Color(255,255,255));
+		btnStart.setBackground(new Color(102,255,255));
 		//btnStart.setOpaque(true);
 		btnStart.setBorderPainted(false);
 		btnStart.setBounds(197, 448, 192, 51);

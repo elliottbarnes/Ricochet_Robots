@@ -100,6 +100,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		rightPanel.setSize(184, 600);
 		rightPanel.setLayout(null);
 		
+		
 		JButton btnBid = new JButton("BID");
 		btnBid.setForeground(new Color(75,0,146));
 		btnBid.setFont(new Font("Chalkduster", Font.BOLD, 15));
@@ -757,6 +758,19 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		});
 		
 		//END - Move a robot
+		
+		// reset timer
+		
+		JButton btnResetTmr = new JButton("RESET");
+		btnResetTmr.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnResetTmr.setBounds(115, 19, 75, 29);
+		rightPanel.add(btnResetTmr);
+		btnResetTmr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 	
 		
 	}
@@ -841,6 +855,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 				if(valid) {
 					lbl.setText(bidValue);
 					if(flag == false) {
+						
 						Timer();
 						flag=true;
 					}
