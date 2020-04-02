@@ -17,6 +17,13 @@ public class GameBoard implements Runnable{
 	
 	public GameBoard() { 
 		handler = new Handler();
+		
+		//Cells
+		for(int col=0; col<WIDTH-8; col=col+(WIDTH/16)) {
+			for(int row=0; row<HEIGHT-8; row=row+(HEIGHT/16)) {
+				handler.addObject(new BoardCell(col, row, ((WIDTH/16)-1), ((HEIGHT/16)-1), ID.Cell));
+			}
+		}
 		//Borders
 		handler.addObject(new Barrier(0, 0, 6, 600, ID.Barrier));
 		handler.addObject(new Barrier(0, 0, 600, 6, ID.Barrier));
@@ -29,7 +36,7 @@ public class GameBoard implements Runnable{
 		handler.addObject(new Barrier(0, 218, 36, 6, ID.Barrier));
 		handler.addObject(new Barrier(0, 440, 36, 6, ID.Barrier));
 		handler.addObject(new Barrier(254, 554, 6, 36, ID.Barrier));
-		handler.addObject(new Barrier(554, 402, 36, 6, ID.Barrier));
+		handler.addObject(new Barrier(554, 404, 36, 6, ID.Barrier));//
 		handler.addObject(new Barrier(554, 144, 36, 6, ID.Barrier));
 		handler.addObject(new Barrier(36, 72, 36, 6, ID.Barrier));
 		handler.addObject(new Barrier(70, 74, 6, 36, ID.Barrier));
@@ -107,13 +114,6 @@ public class GameBoard implements Runnable{
 		g = bs.getDrawGraphics();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 600, 600);
-		
-		for(int col=0; col<WIDTH-8; col=col+(WIDTH/16)) {
-			for(int row=0; row<HEIGHT-8; row=row+(HEIGHT/16)) {
-				g.setColor(Color.lightGray);
-				g.fillRect(col, row, (WIDTH/16)-1, (HEIGHT/16)-1);
-			}
-		}
 		
 		handler.render(g);
 

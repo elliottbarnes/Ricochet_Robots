@@ -15,7 +15,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=-5;
 				}
-				gm.y+=7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -23,7 +23,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=-5;
 				}
-				gm.y+=7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -31,7 +31,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=-5;
 				}
-				gm.y+=7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -39,7 +39,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=-5;
 				}
-				gm.x+=7;
+				setNewPosition(gm);
 			}
 		}
 	}
@@ -52,7 +52,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=5;
 				}
-				gm.y+=-7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -60,7 +60,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=5;
 				}
-				gm.y+=-7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -68,7 +68,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=5;
 				}
-				gm.y+=-7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -76,7 +76,7 @@ public class Move {
 					gm.x+=0;
 					gm.y+=5;
 				}
-				gm.y+=-7;
+				setNewPosition(gm);
 			}
 		}
 	}
@@ -89,7 +89,7 @@ public class Move {
 					gm.x+=5;
 					gm.y+=0;
 				}
-				gm.x+=-7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -97,7 +97,7 @@ public class Move {
 					gm.x+=5;
 					gm.y+=0;
 				}
-				gm.x+=-7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -105,7 +105,7 @@ public class Move {
 					gm.x+=5;
 					gm.y+=0;
 				}
-				gm.x+=-7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -113,7 +113,7 @@ public class Move {
 					gm.x+=5;
 					gm.y+=0;
 				}
-				gm.x+=-7;
+				setNewPosition(gm);
 			}
 		}
 	}
@@ -127,7 +127,7 @@ public class Move {
 					gm.x+=-5;
 					gm.y+=0;
 				}
-				gm.x+=7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -135,7 +135,7 @@ public class Move {
 					gm.x+=-5;
 					gm.y+=0;
 				}
-				gm.x+=7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -143,7 +143,7 @@ public class Move {
 					gm.x+=-5;
 					gm.y+=0;
 				}
-				gm.x+=7;
+				setNewPosition(gm);
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -151,22 +151,25 @@ public class Move {
 					gm.x+=-5;
 					gm.y+=0;
 				}
-				gm.x+=7;
+				setNewPosition(gm);
 			}
 		}
 	}
 	
-	public boolean collision(GameObject gm) {
+	public void setNewPosition(GameObject gm) {
 		for(int i=0; i<handler.object.size(); i++) {
 			GameObject go = handler.object.get(i);
-			if(go.getId() == ID.Barrier) {
+			if(go.getId() == ID.Cell) {
 				if(gm.getBounds().intersects(go.getBounds())) {
-					return true;
+					int middlex = go.getX() + (go.getWidth()/2);
+					int middley = go.getY() + (go.getHeight()/2);
+					gm.x=middlex-11;
+					gm.y=middley-11;
+					
 				}
 			}
 			
 		}
-		return false;
 	}
 	public boolean collision2(GameObject gm, ID iden) {
 		for(int i=0; i<handler.object.size(); i++) {

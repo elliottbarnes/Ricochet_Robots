@@ -66,7 +66,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 				        JOptionPane.YES_NO_OPTION);
 
 				    if (confirmed == JOptionPane.YES_OPTION) {
-				    	dispose();
+				    	frmTakeTurn.setDefaultCloseOperation(frmTakeTurn.EXIT_ON_CLOSE);
 				    }
 				    else {
 				    	dispose();
@@ -557,7 +557,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		btnUp.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
 					
 					move = new Move(handler);
 					moves +=1;
@@ -574,8 +574,9 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 					if(rdbtnRobot4.isSelected()) {
 						move.up(4);
 					}
-				}else {
-					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
+				}
+				else {
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
 				}
 				
 			}
@@ -583,7 +584,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
 					move = new Move(handler);
 					moves +=1;
 					lblMoveCount.setText(""+moves+"");
@@ -600,14 +601,14 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 						move.down(4);
 					}
 				}else {
-					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
 				}
 			}
 		});
 		
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected() || rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected()) {
+				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
 					move = new Move(handler);
 					moves +=1;
 					lblMoveCount.setText(""+moves+"");
@@ -624,14 +625,14 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 						move.right(4);
 					}
 				}else {
-					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
 				}
 			}
 		});
 		
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) {
+				if((rdbtnRobot1.isSelected() || rdbtnRobot2.isSelected() || rdbtnRobot3.isSelected() || rdbtnRobot4.isSelected()) && (rdbtnP1.isSelected() || rdbtnP2.isSelected() || rdbtnP3.isSelected() || rdbtnP4.isSelected())) {
 					move = new Move(handler);
 					moves +=1;
 					lblMoveCount.setText(""+moves+"");
@@ -648,7 +649,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 						move.left(4);
 					}
 				}else {
-					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot needs to be selected");
+					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
 				}
 			}
 		});

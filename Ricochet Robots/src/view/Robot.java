@@ -32,21 +32,21 @@ public class Robot extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x-1, y-1, width+2, height+2);
+		return new Rectangle(x, y, width, height);
 	}
 	
-	public boolean collision(){
-		
-		for(int i=0; i<handler.object.size(); i++) {
-			GameObject go = handler.object.get(i);
-			if(go.getId() == ID.Barrier) {
-				if(getBounds().intersects(go.getBounds())) {
-					return true;
-				}
-			}
-		}
-		return false;
-	} 
+//	public boolean collision(){
+//		
+//		for(int i=0; i<handler.object.size(); i++) {
+//			GameObject go = handler.object.get(i);
+//			if(go.getId() == ID.Barrier) {
+//				if(getBounds().intersects(go.getBounds())) {
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	} 
 	
 	@Override
 	public void render(Graphics g) {
