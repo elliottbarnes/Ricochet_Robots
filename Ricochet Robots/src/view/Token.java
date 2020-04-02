@@ -54,8 +54,7 @@ public class Token extends GameObject {
 
 	@Override
 	protected Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle(x, y, width, height);
 	}
 	
 	public void Triangle(Graphics g) {

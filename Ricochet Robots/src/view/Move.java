@@ -2,8 +2,18 @@ package view;
 
 public class Move {
 	Handler handler;
+	int tokenNum;
+
 	public Move(Handler handler) {
 		this.handler = handler;
+	}
+	
+	public int getTokenNum() {
+		return tokenNum;
+	}
+
+	public void setTokenNum(int tokenNum) {
+		this.tokenNum = tokenNum;
 	}
 	
 	public void up(int num) {

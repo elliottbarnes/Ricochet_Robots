@@ -579,12 +579,10 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 					}else {
 						JOptionPane.showMessageDialog(frmTakeTurn, "This Player does not have any more moves");
 					}
-					
 				}
 				else {
 					JOptionPane.showMessageDialog(frmTakeTurn, "A Robot and Player needs to be selected");
 				}
-				
 			}
 		});
 		
@@ -912,6 +910,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 	}
 	
 	public void moveRobotUp() {
+		move.setTokenNum(next.getCurrentToken());
 		if(rdbtnRobot1.isSelected()) {
 			move.up(1);
 		}
@@ -927,6 +926,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 	}
 	
 	public void moveRobotDown() {
+		move.setTokenNum(next.getCurrentToken());
 		if(rdbtnRobot1.isSelected()) {
 			move.down(1);
 		}
@@ -941,6 +941,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		}
 	}
 	public void moveRobotRight() {
+		move.setTokenNum(next.getCurrentToken());
 		if(rdbtnRobot1.isSelected()) {
 			move.right(1);
 		}
@@ -955,6 +956,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		}
 	}
 	public void moveRobotLeft() {
+		move.setTokenNum(next.getCurrentToken());
 		if(rdbtnRobot1.isSelected()) {
 			move.left(1);
 		}
