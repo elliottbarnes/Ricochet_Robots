@@ -98,14 +98,14 @@ public class Settings extends JFrame implements ActionListener {
 		rdbtnSimple.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnSimple.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnSimple.setBounds(116, 261, 109, 23);
-		rdbtnSimple.setForeground(new Color(102,255,178));
+		rdbtnSimple.setForeground(new Color(169,72,152));
 		frmSettings.getContentPane().add(rdbtnSimple);
 		
 		JRadioButton rdbtnComplex = new JRadioButton("COMPLEX");
 		rdbtnComplex.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnComplex.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnComplex.setBounds(246, 261, 109, 23);
-		rdbtnComplex.setForeground(new Color(102,102,255));
+		rdbtnComplex.setForeground(new Color(73,170,153));
 		frmSettings.getContentPane().add(rdbtnComplex);
 		
 		// labels
@@ -145,13 +145,13 @@ public class Settings extends JFrame implements ActionListener {
 		JRadioButton rdbtnEnable = new JRadioButton("ENABLE");
 		rdbtnEnable.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnEnable.setBounds(116, 397, 109, 25);
-		rdbtnEnable.setForeground(new Color(102,255,102));
+		rdbtnEnable.setForeground(new Color(25,118,54));
 		frmSettings.getContentPane().add(rdbtnEnable);
 		
 		JRadioButton rdbtnDisable = new JRadioButton("DISABLE");
 		rdbtnDisable.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		rdbtnDisable.setBounds(246, 397, 109, 25);
-		rdbtnDisable.setForeground(new Color(255,102,102));
+		rdbtnDisable.setForeground(new Color(135,37,85));
 		frmSettings.getContentPane().add(rdbtnDisable);
 		
 		// Start Button
@@ -159,7 +159,7 @@ public class Settings extends JFrame implements ActionListener {
 		RoundButton btnStart = new RoundButton("PLAY");
 		btnStart.setFont(new Font("Chalkduster", Font.BOLD, 20));
 		btnStart.setForeground(new Color(255,255,255));
-		btnStart.setBackground(new Color(102,255,255));
+		btnStart.setBackground(new Color(139,205,237));
 		//btnStart.setOpaque(true);
 		btnStart.setBorderPainted(false);
 		btnStart.setBounds(197, 448, 192, 51);
@@ -168,25 +168,25 @@ public class Settings extends JFrame implements ActionListener {
 		// Player Checkboxes
 		
 		JCheckBox chckbxPlayer4 = new JCheckBox("PLAYER 4");
-		chckbxPlayer4.setForeground(new Color(212,17,89));
+		chckbxPlayer4.setForeground(sc.normal8);
 		chckbxPlayer4.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer4.setBounds(425, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer4);
 		
 		JCheckBox chckbxPlayer3 = new JCheckBox("PLAYER 3");
-		chckbxPlayer3.setForeground(new Color(26,133,255));
+		chckbxPlayer3.setForeground(sc.normal7);
 		chckbxPlayer3.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer3.setBounds(300, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer3);
 		
 		JCheckBox chckbxPlayer2 = new JCheckBox("PLAYER 2");
-		chckbxPlayer2.setForeground(new Color(93,58,155));
+		chckbxPlayer2.setForeground(sc.normal6);
 		chckbxPlayer2.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer2.setBounds(175, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer2);
 		
 		JCheckBox chckbxPlayer1 = new JCheckBox("PLAYER 1");
-		chckbxPlayer1.setForeground(new Color(230,97,0));
+		chckbxPlayer1.setForeground(sc.normal5);
 		chckbxPlayer1.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		chckbxPlayer1.setBounds(50, 108, 110, 25);
 		frmSettings.getContentPane().add(chckbxPlayer1);

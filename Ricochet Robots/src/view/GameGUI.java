@@ -98,7 +98,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		rightPanel.setForeground(new Color(51, 204, 255));
 		rightPanel.setLocation(600, 0);
 		frmTakeTurn.getContentPane().add(rightPanel);
-		rightPanel.setSize(184, 600);
+		rightPanel.setSize(200, 600);
 		rightPanel.setLayout(null);
 		
 		
@@ -109,7 +109,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		rightPanel.add(btnBid);
 		
 		btnP1 = new JButton("P1");
-		btnP1.setForeground(new Color(230,97,0));
+		btnP1.setForeground(new Color(255,51,51));
 		btnP1.setFont(new Font("Chalkduster", Font.BOLD, 13));
 		btnP1.setBounds(32, 137, 55, 23);
 		rightPanel.add(btnP1);
@@ -144,7 +144,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		textField.setBounds(50, 217, 81, 20);
 		
 		lblP1 = new JLabel("P1");
-		lblP1.setForeground(new Color(230,97,0));
+		lblP1.setForeground(new Color(255,51,51));
 		lblP1.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblP1.setBounds(10, 386, 25, 25);
 		rightPanel.add(lblP1);
@@ -169,7 +169,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		
 		lblp1bid = new JLabel("0");
 		lblp1bid.setHorizontalAlignment(SwingConstants.CENTER);
-		lblp1bid.setForeground(new Color(230,97,0));
+		lblp1bid.setForeground(new Color(255,51,51));
 		lblp1bid.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp1bid.setBounds(55, 386, 20, 25);
 		rightPanel.add(lblp1bid);
@@ -319,7 +319,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		
 		JLabel lblp1score = new JLabel("0");
 		lblp1score.setHorizontalAlignment(SwingConstants.CENTER);
-		lblp1score.setForeground(new Color(230, 97, 0));
+		lblp1score.setForeground(new Color(255,51,51));
 		lblp1score.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp1score.setBounds(125, 386, 20, 25);
 		rightPanel.add(lblp1score);
@@ -413,55 +413,9 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		rdbtnRobot4.setBounds(500, 7, 49, 30);
 		bottomPanel.add(rdbtnRobot4);
 		
-		//set color of robot buttons with the color of it's robot
-		
-		if(sc.isNormal()) {
-			
-			rdbtnRobot1.setForeground(sc.normal1);
-		
-			rdbtnRobot2.setForeground(sc.normal2);
-		
-			rdbtnRobot3.setForeground(sc.normal3);
-		
-			rdbtnRobot4.setForeground(sc.normal4);
-			
-		}
-		if(sc.isDeuteranope()) {
-		
-			rdbtnRobot1.setForeground(sc.deut1);
-		
-			rdbtnRobot2.setForeground(sc.deut2);
-		
-			rdbtnRobot3.setForeground(sc.deut3);
-		
-			rdbtnRobot4.setForeground(sc.deut4);
-		
-		}
-		if(sc.isProtanope()) {
-			
-			rdbtnRobot1.setForeground(sc.prot1);
-		
-			rdbtnRobot2.setForeground(sc.prot2);
-		
-			rdbtnRobot3.setForeground(sc.prot3);
-		
-			rdbtnRobot4.setForeground(sc.prot4);
-		
-		}
-		if(sc.isTritanope()) {
-
-			rdbtnRobot1.setForeground(sc.trit1);
-
-			rdbtnRobot2.setForeground(sc.trit2);
-
-			rdbtnRobot3.setForeground(sc.trit3);
-
-			rdbtnRobot4.setForeground(sc.trit4);
-
-		}
 		
 		JRadioButton rdbtnP1 = new JRadioButton("P1");
-		rdbtnP1.setForeground(new Color(230,97,0));
+		rdbtnP1.setForeground(sc.normal5);
 		rdbtnP1.setFont(new Font("Chalkduster", Font.BOLD, 10));
 		rdbtnP1.setBounds(575, 7, 52, 26);
 		bottomPanel.add(rdbtnP1);
@@ -488,6 +442,192 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		if(sc.isPlayer2()) {rdbtnP2.setEnabled(true);} else {rdbtnP2.setEnabled(false);}
 		if(sc.isPlayer3()) {rdbtnP3.setEnabled(true);} else {rdbtnP3.setEnabled(false);}
 		if(sc.isPlayer4()) {rdbtnP4.setEnabled(true);} else {rdbtnP4.setEnabled(false);}
+		
+		// reset timer
+		
+		JButton btnResetTmr = new JButton("RESET");
+		btnResetTmr.setFont(new Font("Chalkduster", Font.BOLD, 13));
+		btnResetTmr.setBounds(125, 19, 75, 29);
+		rightPanel.add(btnResetTmr);
+		btnResetTmr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		
+		//set color of game components 
+		
+				if(sc.isNormal()) {
+					
+					rdbtnRobot1.setForeground(sc.normal1);
+				
+					rdbtnRobot2.setForeground(sc.normal2);
+				
+					rdbtnRobot3.setForeground(sc.normal3);
+				
+					rdbtnRobot4.setForeground(sc.normal4);
+					
+					btnP1.setForeground(sc.normal5);
+					lblP1.setForeground(sc.normal5);
+					lblp1bid.setForeground(sc.normal5);
+					rdbtnP1.setForeground(sc.normal5);
+					lblp1score.setForeground(sc.normal5);
+
+					btnP2.setForeground(sc.normal6);
+					lblP2.setForeground(sc.normal6);
+					lblp2bid.setForeground(sc.normal6);
+					rdbtnP2.setForeground(sc.normal6);
+					lblp2score.setForeground(sc.normal6);
+
+					
+					btnP3.setForeground(sc.normal7);
+					lblP3.setForeground(sc.normal7);
+					lblp3bid.setForeground(sc.normal7);
+					rdbtnP3.setForeground(sc.normal7);
+					lblp3score.setForeground(sc.normal7);
+
+					
+					btnP4.setForeground(sc.normal8);
+					lblP4.setForeground(sc.normal8);
+					lblp4bid.setForeground(sc.normal8);
+					rdbtnP4.setForeground(sc.normal8);
+					lblp4score.setForeground(sc.normal8);
+					btnResetTmr.setForeground(sc.normal9);
+					btnBid.setForeground(sc.normal15);
+					lbl_BIDS.setForeground(sc.normal16);
+					lbl_SCORE.setForeground(sc.normal17);
+					btnToken.setForeground(sc.normal18);
+					
+				}
+				if(sc.isDeuteranope()) {
+				
+					rdbtnRobot1.setForeground(sc.deut1);
+				
+					rdbtnRobot2.setForeground(sc.deut2);
+				
+					rdbtnRobot3.setForeground(sc.deut3);
+				
+					rdbtnRobot4.setForeground(sc.deut4);
+					
+					btnP1.setForeground(sc.deut5);
+					lblP1.setForeground(sc.deut5);
+					lblp1bid.setForeground(sc.deut5);
+					rdbtnP1.setForeground(sc.deut5);
+					lblp1score.setForeground(sc.deut5);
+
+					btnP2.setForeground(sc.deut6);
+					lblP2.setForeground(sc.deut6);
+					lblp2bid.setForeground(sc.deut6);
+					rdbtnP2.setForeground(sc.deut6);
+					lblp2score.setForeground(sc.deut6);
+
+					
+					btnP3.setForeground(sc.deut7);
+					lblP3.setForeground(sc.deut7);
+					lblp3bid.setForeground(sc.deut7);
+					rdbtnP3.setForeground(sc.deut7);
+					lblp3score.setForeground(sc.deut7);
+
+					
+					btnP4.setForeground(sc.deut8);
+					lblP4.setForeground(sc.deut8);
+					lblp4bid.setForeground(sc.deut8);
+					rdbtnP4.setForeground(sc.deut8);
+					lblp4score.setForeground(sc.deut8);
+					btnResetTmr.setForeground(sc.deut9);
+					btnBid.setForeground(sc.deut15);
+					lbl_BIDS.setForeground(sc.deut16);
+					lbl_SCORE.setForeground(sc.deut17);
+					btnToken.setForeground(sc.deut18);
+					
+				
+				}
+				if(sc.isProtanope()) {
+					
+					rdbtnRobot1.setForeground(sc.prot1);
+				
+					rdbtnRobot2.setForeground(sc.prot2);
+				
+					rdbtnRobot3.setForeground(sc.prot3);
+				
+					rdbtnRobot4.setForeground(sc.prot4);
+					
+					btnP1.setForeground(sc.prot5);
+					lblP1.setForeground(sc.prot5);
+					lblp1bid.setForeground(sc.prot5);
+					rdbtnP1.setForeground(sc.prot5);
+					lblp1score.setForeground(sc.prot5);
+
+					btnP2.setForeground(sc.prot6);
+					lblP2.setForeground(sc.prot6);
+					lblp2bid.setForeground(sc.prot6);
+					rdbtnP2.setForeground(sc.prot6);
+					lblp2score.setForeground(sc.prot6);
+
+					
+					btnP3.setForeground(sc.prot7);
+					lblP3.setForeground(sc.prot7);
+					lblp3bid.setForeground(sc.prot7);
+					rdbtnP3.setForeground(sc.prot7);
+					lblp3score.setForeground(sc.prot7);
+
+					
+					btnP4.setForeground(sc.prot8);
+					lblP4.setForeground(sc.prot8);
+					lblp4bid.setForeground(sc.prot8);
+					rdbtnP4.setForeground(sc.prot8);
+					lblp4score.setForeground(sc.prot8);
+					btnResetTmr.setForeground(sc.prot9);
+					btnBid.setForeground(sc.prot15);
+					lbl_BIDS.setForeground(sc.prot16);
+					lbl_SCORE.setForeground(sc.prot17);
+					btnToken.setForeground(sc.prot18);
+				
+				}
+				if(sc.isTritanope()) {
+
+					rdbtnRobot1.setForeground(sc.trit1);
+
+					rdbtnRobot2.setForeground(sc.trit2);
+
+					rdbtnRobot3.setForeground(sc.trit3);
+
+					rdbtnRobot4.setForeground(sc.trit4);
+					
+					btnP1.setForeground(sc.trit5);
+					lblP1.setForeground(sc.trit5);
+					lblp1bid.setForeground(sc.trit5);
+					rdbtnP1.setForeground(sc.trit5);
+					lblp1score.setForeground(sc.trit5);
+
+					btnP2.setForeground(sc.trit6);
+					lblP2.setForeground(sc.trit6);
+					lblp2bid.setForeground(sc.trit6);
+					rdbtnP2.setForeground(sc.trit6);
+					lblp2score.setForeground(sc.trit6);
+
+					
+					btnP3.setForeground(sc.trit7);
+					lblP3.setForeground(sc.trit7);
+					lblp3bid.setForeground(sc.trit7);
+					rdbtnP3.setForeground(sc.trit7);
+					lblp3score.setForeground(sc.trit7);
+
+					
+					btnP4.setForeground(sc.trit8);
+					lblP4.setForeground(sc.trit8);
+					lblp4bid.setForeground(sc.trit8);
+					rdbtnP4.setForeground(sc.trit8);
+					lblp4score.setForeground(sc.trit8);
+					btnResetTmr.setForeground(sc.trit9);
+					btnBid.setForeground(sc.trit15);
+					lbl_BIDS.setForeground(sc.trit16);
+					lbl_SCORE.setForeground(sc.trit17);
+					btnToken.setForeground(sc.trit18);
+					
+
+				}
 		
 		//End of frame
 		
@@ -780,18 +920,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		
 		//END - Move a robot
 		
-		// reset timer
 		
-		JButton btnResetTmr = new JButton("RESET");
-		btnResetTmr.setFont(new Font("Chalkduster", Font.BOLD, 13));
-		btnResetTmr.setBounds(115, 19, 75, 29);
-		rightPanel.add(btnResetTmr);
-		btnResetTmr.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
 	
 		
 	}
@@ -860,8 +989,37 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 				hintItem.setFont(new Font("Chalkduster", Font.BOLD, 14));
 				if(sc.isHintsEnabled()) {
 					fileMenu.add(hintItem);
-					hintItem.setForeground(new Color(133,76,48));
+					
 				}
+				
+				if(sc.isNormal()) {
+					fileMenu.setForeground(sc.normal11);
+					saveItem.setForeground(sc.normal12);
+					manItem.setForeground(sc.normal13);
+					hintItem.setForeground(sc.normal14);
+				}
+				if(sc.isDeuteranope()) {
+					
+					fileMenu.setForeground(sc.deut11);
+					saveItem.setForeground(sc.deut12);
+					manItem.setForeground(sc.deut13);
+					hintItem.setForeground(sc.deut14);
+					
+				}
+				if(sc.isProtanope()) {
+					fileMenu.setForeground(sc.prot11);
+					saveItem.setForeground(sc.prot12);
+					manItem.setForeground(sc.prot13);
+					hintItem.setForeground(sc.prot14);
+				}
+				
+				if(sc.isTritanope()) {
+					fileMenu.setForeground(sc.trit11);
+					saveItem.setForeground(sc.trit12);
+					manItem.setForeground(sc.trit13);
+					hintItem.setForeground(sc.trit14);
+				}
+				
 				frame.setJMenuBar(menubar);
 	}
 	

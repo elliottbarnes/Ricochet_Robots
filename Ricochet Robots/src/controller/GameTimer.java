@@ -8,13 +8,26 @@ public class GameTimer extends JPanel {
 	private int count = 61;
 	private JLabel tmrDisplay;
 	private Timer timer;
+	private SettingsController sc;
 	
 	public GameTimer() {
 	
 		
 		
 		tmrDisplay = new JLabel("...");
-		tmrDisplay.setForeground(new Color(255, 0, 0));
+		
+		/*if(sc.isNormal()) {
+			tmrDisplay.setForeground(sc.normal10);
+		}
+		if(sc.isDeuteranope()) {
+			tmrDisplay.setForeground(sc.deut10);
+		}
+		if(sc.isProtanope()) {
+			tmrDisplay.setForeground(sc.prot10);
+		}
+		if(sc.isTritanope()) {
+			tmrDisplay.setForeground(sc.trit10);
+		}*/
 		tmrDisplay.setFont(new Font("Chalkduster", Font.BOLD, 17));
 		add(tmrDisplay);
 		setTimer(new Timer(1000, new ActionListener() {
