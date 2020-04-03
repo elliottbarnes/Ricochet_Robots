@@ -7,10 +7,10 @@ import controller.*;
 import javax.swing.border.Border;
 import java.awt.geom.*;
 
-public class Menu extends JFrame implements ActionListener {
+public class MainMenu extends JFrame implements ActionListener {
 
 	private JFrame frmRicochetRobots;
-	public Menu() {
+	public MainMenu() {
 		
 		ImageIcon img=new ImageIcon(this.getClass().getResource("/Background.jpg"));
 	    

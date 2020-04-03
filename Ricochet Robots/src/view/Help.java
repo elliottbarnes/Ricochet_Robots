@@ -23,7 +23,7 @@ public class Help extends JFrame implements ActionListener {
 		btnBack.setBackground(Color.WHITE);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Menu();
+				new MainMenu();
 				frmHelp.setVisible(false);
 			}
 		});
