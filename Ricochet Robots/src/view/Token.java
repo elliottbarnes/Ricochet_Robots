@@ -43,7 +43,7 @@ public class Token extends GameObject {
 			Star(g);
 		}else {
 			try {
-				img = ImageIO.read(this.getClass().getResource("/"+name+".PNG"));
+				img = ImageIO.read(this.getClass().getResource("/17.png"));
 			}catch(IOException e) {
 				e.printStackTrace();
 			}

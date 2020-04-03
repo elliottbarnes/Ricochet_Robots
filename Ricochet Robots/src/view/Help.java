@@ -17,7 +17,7 @@ public class Help extends JFrame implements ActionListener {
 		frmHelp.setBounds(100, 100, 600, 600);
 		frmHelp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ImageIcon img=new ImageIcon(this.getClass().getResource("/Pages.jpg"));
+		ImageIcon img=new ImageIcon(this.getClass().getResource("/pages.jpg"));
 		
 		JButton btnBack= new JButton("Back");
 		btnBack.setBackground(Color.WHITE);
@@ -28,7 +28,7 @@ public class Help extends JFrame implements ActionListener {
 			}
 		});
 		btnBack.setForeground(Color.BLACK);
-		btnBack.setIcon(new ImageIcon(this.getClass().getResource("/Back.png")));
+		btnBack.setIcon(new ImageIcon(this.getClass().getResource("/back.png")));
 		btnBack.setBounds(10, 11, 108, 28);
 		frmHelp.getContentPane().add(btnBack);
 		

@@ -43,7 +43,7 @@ public class Settings extends JFrame implements ActionListener {
 		
 		btnBack.setForeground(Color.BLACK);
 		btnBack.setBorderPainted(false);
-		btnBack.setIcon(new ImageIcon(this.getClass().getResource("/Back.png")));
+		btnBack.setIcon(new ImageIcon(this.getClass().getResource("/back.png")));
 		btnBack.setBounds(246,510,93,28);
 		frmSettings.getContentPane().add(btnBack);
 		
