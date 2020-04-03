@@ -8,7 +8,8 @@ public class Move {
 	int tokenNum;
 	JFrame frame;
 	ChangeToken next;
-	int player;
+	int player, p1score, p2score, p3score, p4score;
+	public boolean flag;
 	public int getPlayer() {
 		return player;
 	}
@@ -41,7 +42,7 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -50,7 +51,7 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -59,7 +60,7 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -68,10 +69,11 @@ public class Move {
 					gm.y+=-5;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 		}
 	}
+
 	public void down(int num) {
 		for(int i=0; i<handler.object.size(); i++) {
 			GameObject gm = handler.object.get(i);
@@ -82,7 +84,7 @@ public class Move {
 					gm.y+=5;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -91,7 +93,7 @@ public class Move {
 					gm.y+=5;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -100,7 +102,7 @@ public class Move {
 					gm.y+=5;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -123,7 +125,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -132,7 +134,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -141,7 +143,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -150,7 +152,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 		}
 	}
@@ -165,7 +167,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot2 && num ==2) {
 				gm.tick();
@@ -174,7 +176,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot3 && num ==3) {
 				gm.tick();
@@ -183,7 +185,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 			if(gm.getId() == ID.Robot4 && num ==4) {
 				gm.tick();
@@ -192,7 +194,7 @@ public class Move {
 					gm.y+=0;
 				}
 				setNewPosition(gm);
-				if(tokenTaken(gm, getIDToken(getTokenNum()))) message();
+				if(tokenTaken(gm, getIDToken(getTokenNum()))) message(); 
 			}
 		}
 	}
@@ -349,13 +351,54 @@ public class Move {
 	}
 	
 	public void message() {
+		String ms = "Token Taken by Player "+getPlayer();
 		int confirmed = JOptionPane.showConfirmDialog(frame, 
-		        "Next Token", "Token Taken", JOptionPane.OK_OPTION);
+		        "Next Token", ms, JOptionPane.OK_OPTION);
 
 		    if (confirmed == JOptionPane.OK_OPTION) {
 		    	next.next(handler, frame);
+		    	setFlag(true);
 		    }else {
 		    	//nothing
 		    }
+	}
+
+	public int getP1score() {
+		return p1score;
+	}
+
+	public void setP1score(int p1score) {
+		this.p1score = p1score;
+	}
+
+	public int getP2score() {
+		return p2score;
+	}
+
+	public void setP2score(int p2score) {
+		this.p2score = p2score;
+	}
+
+	public int getP3score() {
+		return p3score;
+	}
+
+	public void setP3score(int p3score) {
+		this.p3score = p3score;
+	}
+
+	public int getP4score() {
+		return p4score;
+	}
+
+	public void setP4score(int p4score) {
+		this.p4score = p4score;
+	}
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
 	}
 }

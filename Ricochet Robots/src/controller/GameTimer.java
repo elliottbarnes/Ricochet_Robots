@@ -2,6 +2,9 @@ package controller;
 import java.awt.*;
 
 import javax.swing.*;
+
+import view.Settings;
+
 import java.awt.event.*;
 public class GameTimer extends JPanel {
 	
@@ -13,10 +16,11 @@ public class GameTimer extends JPanel {
 	public GameTimer() {
 	
 		
+		sc = (SettingsController) Settings.object();
 		
 		tmrDisplay = new JLabel("...");
 		
-		/*if(sc.isNormal()) {
+		if(sc.isNormal()) {
 			tmrDisplay.setForeground(sc.normal10);
 		}
 		if(sc.isDeuteranope()) {
@@ -27,7 +31,7 @@ public class GameTimer extends JPanel {
 		}
 		if(sc.isTritanope()) {
 			tmrDisplay.setForeground(sc.trit10);
-		}*/
+		}
 		tmrDisplay.setFont(new Font("Chalkduster", Font.BOLD, 17));
 		add(tmrDisplay);
 		setTimer(new Timer(1000, new ActionListener() {

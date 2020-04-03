@@ -22,12 +22,12 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 	private JButton btnP1, btnP2, btnP3, btnP4;
 	private GameTimer gameTmr;
 	private JTextField textField;
-	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid;
+	private JLabel lblP1, lblP2, lblP3, lblP4,lblp1bid, lblp2bid, lblp3bid, lblp4bid, lblp1score, lblp2score, lblp3score, lblp4score;
 	private JRadioButton rdbtnRobot1, rdbtnRobot2, rdbtnRobot3, rdbtnRobot4;
 	private JPanel leftPanel, rightPanel, bottomPanel;
 	private boolean flag;
 	private BidController bidController;
-	private int player;
+	private int player, p1s, p2s, p3s, p4s;
 	private SettingsController  sc;
 	private Handler handler;
 	private Move move;
@@ -37,6 +37,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 	public GameGUI() {
 		Display();
 	}
+	
 	public void Display() {
 		
 		//All classes needed in this class
@@ -317,28 +318,28 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		lbl_SCORE.setBounds(105, 339, 65, 35);
 		rightPanel.add(lbl_SCORE);
 		
-		JLabel lblp1score = new JLabel("0");
+		lblp1score = new JLabel("0");
 		lblp1score.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp1score.setForeground(new Color(255,51,51));
 		lblp1score.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp1score.setBounds(125, 386, 20, 25);
 		rightPanel.add(lblp1score);
 		
-		JLabel lblp2score = new JLabel("0");
+		lblp2score = new JLabel("0");
 		lblp2score.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp2score.setForeground(new Color(93, 58, 155));
 		lblp2score.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp2score.setBounds(125, 436, 20, 25);
 		rightPanel.add(lblp2score);
 		
-		JLabel lblp3score = new JLabel("0");
+		lblp3score = new JLabel("0");
 		lblp3score.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp3score.setForeground(new Color(26, 133, 255));
 		lblp3score.setFont(new Font("Chalkduster", Font.BOLD, 15));
 		lblp3score.setBounds(125, 486, 20, 25);
 		rightPanel.add(lblp3score);
 		
-		JLabel lblp4score = new JLabel("0");
+		lblp4score = new JLabel("0");
 		lblp4score.setHorizontalAlignment(SwingConstants.CENTER);
 		lblp4score.setForeground(new Color(212, 17, 89));
 		lblp4score.setFont(new Font("Chalkduster", Font.BOLD, 15));
@@ -689,6 +690,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		btnToken.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				next.next(handler, frmTakeTurn);
+				if(next.isFlag()) finalScore();
 			}
 		});
 		
@@ -1080,6 +1082,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		if(rdbtnRobot4.isSelected()) {
 			move.up(4);
 		}
+		if(move.isFlag()) setScore(move.getPlayer()); move.setFlag(false);
 	}
 	
 	public void moveRobotDown(int i) {
@@ -1097,6 +1100,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		if(rdbtnRobot4.isSelected()) {
 			move.down(4);
 		}
+		if(move.isFlag()) setScore(move.getPlayer()); move.setFlag(false);
 	}
 	public void moveRobotRight(int i) {
 		move.setTokenNum(next.getCurrentToken());
@@ -1113,6 +1117,7 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		if(rdbtnRobot4.isSelected()) {
 			move.right(4);
 		}
+		if(move.isFlag()) setScore(move.getPlayer()); move.setFlag(false);
 	}
 	public void moveRobotLeft(int i) {
 		move.setTokenNum(next.getCurrentToken());
@@ -1129,8 +1134,27 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		if(rdbtnRobot4.isSelected()) {
 			move.left(4);
 		}
+		if(move.isFlag()) setScore(move.getPlayer()); move.setFlag(false);
 	}
-
+	
+	public void setScore(int p) {
+		if(p==1) {p1s+=1; lblp1score.setText(""+p1s+"");}
+		if(p==2) {p2s+=1; lblp2score.setText(""+p2s+"");}
+		if(p==3) {p3s+=1; lblp3score.setText(""+p3s+"");}
+		if(p==4) {p4s+=1; lblp4score.setText(""+p4s+"");}
+	}
+	
+	public void finalScore() {
+		if(p1s>p2s && p1s>p3s && p1s>p4s) {
+			JOptionPane.showMessageDialog(frmTakeTurn, "The winner is Player 1 - GAME OVER");
+		} else if(p2s>p1s && p2s>p3s && p2s>p4s) {
+			JOptionPane.showMessageDialog(frmTakeTurn, "The winner is Player 2 - GAME OVER");
+		} else if(p3s>p1s && p3s>p2s && p3s>p4s) {
+			JOptionPane.showMessageDialog(frmTakeTurn, "The winner is Player 3 - GAME OVER");
+		} else if(p4s>p1s && p4s>p2s && p4s>p3s) {
+			JOptionPane.showMessageDialog(frmTakeTurn, "The winner is Player 4 - GAME OVER");
+		}
+	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
