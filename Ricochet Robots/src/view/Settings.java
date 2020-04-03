@@ -36,7 +36,7 @@ public class Settings extends JFrame implements ActionListener {
 		btnBack.setBackground(new Color(249,112,104));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Menu();
+				new MainMenu();
 				frmSettings.setVisible(false);
 			}
 		});

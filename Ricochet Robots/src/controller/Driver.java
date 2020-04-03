@@ -1,11 +1,11 @@
 package controller;
 
-import view.Menu;
+import view.MainMenu;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		new Menu();
+		new MainMenu();
 	}
 
 }
