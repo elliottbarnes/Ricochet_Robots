@@ -133,10 +133,10 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		btnP4.setBounds(102, 171, 55, 23);
 		rightPanel.add(btnP4);
 
-		if(sc.isPlayer1()) {btnP1.setEnabled(true);} else {btnP1.setEnabled(false);}
-		if(sc.isPlayer2()) {btnP2.setEnabled(true);} else {btnP2.setEnabled(false);}
-		if(sc.isPlayer3()) {btnP3.setEnabled(true);} else {btnP3.setEnabled(false);}
-		if(sc.isPlayer4()) {btnP4.setEnabled(true);} else {btnP4.setEnabled(false);}
+		btnP1.setEnabled(false);
+		btnP2.setEnabled(false);
+		btnP3.setEnabled(false);
+		btnP4.setEnabled(false);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Chalkduster", Font.BOLD, 13));
@@ -689,6 +689,18 @@ public class GameGUI extends JFrame implements MouseListener, WindowListener {
 		
 		btnToken.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(sc.isPlayer1()) {
+                    btnP1.setEnabled(true);
+                }
+                if(sc.isPlayer2()) {
+                    btnP2.setEnabled(true);
+                }
+                if(sc.isPlayer3()) {
+                    btnP3.setEnabled(true);
+                }
+                if(sc.isPlayer4()) {
+                    btnP4.setEnabled(true);
+                }
 				next.next(handler, frmTakeTurn);
 				if(next.isFlag()) finalScore();
 			}
